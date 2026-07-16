@@ -57,9 +57,18 @@ function normalizeState(raw) {
   const stringOr = (value, fallback = "") =>
     typeof value === "string" ? value : fallback;
 
-  let cards = Array.isArray(source.cards) ? source.cards : null;
+  let cards = Array.isArray(source.cards) ? clone(source.cards) : null;
   if (!cards || cards.length === 0) {
     cards = clone(seedCards);
+  } else {
+    const existingIds = new Set(
+      cards.map((card) => card && card.id).filter(Boolean)
+    );
+    seedCards.forEach((seedCard) => {
+      if (!existingIds.has(seedCard.id)) {
+        cards.push(clone(seedCard));
+      }
+    });
   }
 
   return {
@@ -557,6 +566,84 @@ function renderProgress() {
     : "<p style='color:var(--muted)'>Тесты пока не пройдены.</p>";
 }
 
+
+const CATEGORY_LABELS = {
+  cell: "Клетка",
+  genetics: "Генетика",
+  anatomy: "Анатомия",
+  physiology: "Физиология",
+  biochemistry: "Биохимия"
+};
+
+function fillSelect(select, options, preferredValue) {
+  if (!select) return;
+
+  select.innerHTML = "";
+  options.forEach(([value, label]) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = label;
+    select.appendChild(option);
+  });
+
+  const available = options.some(([value]) => value === preferredValue);
+  select.value = available ? preferredValue : options[0][0];
+}
+
+function syncDataSelectors() {
+  const reviewSelect = $("reviewCategory");
+  const quizSelect = $("quizCategory");
+  const addCardSelect = $("cardCategory");
+
+  const cardCategories = [
+    ...new Set(
+      [...seedCards, ...(Array.isArray(state.cards) ? state.cards : [])]
+        .map((card) => card && card.category)
+        .filter(Boolean)
+    )
+  ].sort((a, b) => a.localeCompare(b, "ru"));
+
+  fillSelect(
+    reviewSelect,
+    [["all", "Все"], ...cardCategories.map((category) => [category, category])],
+    reviewSelect ? reviewSelect.value : "all"
+  );
+
+  const quizCategories = [
+    ...new Set(quizBank.map((question) => question.category).filter(Boolean))
+  ];
+
+  fillSelect(
+    quizSelect,
+    [
+      ["all", "Смешанный"],
+      ...quizCategories.map((category) => [
+        category,
+        CATEGORY_LABELS[category] || category
+      ])
+    ],
+    quizSelect ? quizSelect.value : "all"
+  );
+
+  const addCategories = [
+    ...new Set([
+      "Биология",
+      "Биохимия",
+      "Medical English",
+      "Scientific English",
+      "Latin",
+      "Анатомия",
+      ...cardCategories
+    ])
+  ];
+
+  fillSelect(
+    addCardSelect,
+    addCategories.map((category) => [category, category]),
+    addCardSelect ? addCardSelect.value : "Биология"
+  );
+}
+
 function renderAll() {
   renderHome();
   renderLessons();
@@ -763,5 +850,7 @@ if ("serviceWorker" in navigator) {
 (async function init() {
   await loadData();
   state = loadState();
+  syncDataSelectors();
+  saveState();
   renderAll();
 })();
