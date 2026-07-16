@@ -1,234 +1,767 @@
 "use strict";
-const STORAGE_KEY="medbio_v03";
-const $=id=>document.getElementById(id);
-function plural(n,forms){n=Math.abs(Number(n))%100;const n1=n%10;if(n>10&&n<20)return forms[2];if(n1>1&&n1<5)return forms[1];if(n1===1)return forms[0];return forms[2];}
-let lessons=[],seedCards=[],quizBank=[],modules=[]; // учебные данные грузятся из data/*.json
-let activeModuleId=null; // null = показываем каталог модулей
-const defaults={cards:[],completedLessons:[],sessions:[],quizHistory:[]};
-const DAILY_TARGET_MIN=30;                 // цель на день, минут
-const MINUTES_PER={lesson:15,quiz:5,card:2}; // оценка минут за одно действие
-const WEIGHTS={lessons:40,tests:35,cards:25}; // вклад в общий прогресс, %
-let state=null,reviewDeck=[],currentCardIndex=0,activeLessonId=null,quizQuestions=[],quizIndex=0,quizScore=0;
 
-// Приводит любое (в т.ч. старое или повреждённое) состояние к актуальной схеме,
-// не теряя пользовательских данных. Совместимо со STORAGE_KEY medbio_v03.
-function normalizeState(raw){
-  if(!raw||typeof raw!=="object")raw={};
-  const base=structuredClone(defaults);
-  const num=(v,d)=>Number.isFinite(+v)?+v:d;
-  const str=(v,d="")=>typeof v==="string"?v:d;
-  let cards=Array.isArray(raw.cards)?raw.cards:null;
-  if(!cards||!cards.length)cards=structuredClone(seedCards);
-  const s={...base,...raw};
-  s.cards=cards.filter(c=>c&&typeof c==="object").map(c=>({
-    id:str(c.id)||crypto.randomUUID(),
-    category:str(c.category,"Биология"),
-    front:str(c.front),
-    pronunciation:str(c.pronunciation),
-    back:str(c.back),
-    interval:num(c.interval,1),
-    nextReview:num(c.nextReview,0),
-    mastery:num(c.mastery,0)
-  }));
-  s.completedLessons=Array.isArray(raw.completedLessons)?raw.completedLessons.filter(x=>typeof x==="string"):[];
-  s.sessions=Array.isArray(raw.sessions)?raw.sessions.filter(x=>x&&typeof x==="object"&&typeof x.date==="string"&&typeof x.type==="string"):[];
-  s.quizHistory=Array.isArray(raw.quizHistory)?raw.quizHistory.filter(x=>x&&typeof x==="object").map(h=>({
-    date:str(h.date),
-    score:num(h.score,0),
-    category:typeof h.category==="string"?h.category:null // старые записи не знают категорию
-  })):[];
-  return s;
-}
-function load(){try{return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)))}catch{return normalizeState(null)}}
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+const STORAGE_KEY = "medbio_v03";
+const DAILY_TARGET_MIN = 30;
+const MINUTES_PER = { lesson: 15, quiz: 5, card: 2 };
+const WEIGHTS = { lessons: 40, tests: 35, cards: 25 };
 
-function todayStr(){return new Date().toISOString().slice(0,10)}
+const $ = (id) => document.getElementById(id);
 
-// Наборы тестов: «Смешанный» + по одному на каждую тему, где есть вопросы.
-function testSets(){return ["all",...new Set(quizBank.map(q=>q.category))]}
-function strictDueCount(category){
-  const now=Date.now();
-  return (Array.isArray(state.cards)?state.cards:[])
-    .filter(c=>(category==="all"||c.category===category)&&Number(c.nextReview)>0&&Number(c.nextReview)<=now).length;
-}
+let modules = [];
+let lessons = [];
+let seedCards = [];
+let quizBank = [];
 
-// Единый источник фактической статистики — считается только из state.
-function computeStats(){
-  const now=Date.now();
-  const cards=Array.isArray(state.cards)?state.cards:[];
-  const done=Array.isArray(state.completedLessons)?state.completedLessons:[];
-  const hist=Array.isArray(state.quizHistory)?state.quizHistory:[];
+let state = null;
+let activeModuleId = null;
+let activeLessonId = null;
+let reviewDeck = [];
+let currentCardIndex = 0;
+let quizCategoryActive = "all";
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
 
-  const totalLessons=lessons.length;
-  const completedLessons=done.filter(id=>lessons.some(l=>l.id===id)).length;
-  const lessonProgressPercent=totalLessons?Math.round(completedLessons/totalLessons*100):0;
-
-  const sets=testSets();
-  const totalTests=sets.length;
-  const completedTests=[...new Set(hist.map(h=>h&&h.category).filter(c=>sets.includes(c)))].length;
-  const scores=hist.map(h=>Number(h&&h.score)).filter(Number.isFinite);
-  const averageTestScore=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):0;
-
-  const totalCards=cards.length;
-  const learnedCards=cards.filter(c=>Number(c.nextReview)>0).length; // повторяли хотя бы раз
-  const dueCards=cards.filter(c=>Number(c.nextReview)>0&&Number(c.nextReview)<=now).length;
-
-  const lp=totalLessons?completedLessons/totalLessons:0;
-  const tp=totalTests?completedTests/totalTests:0;
-  const cp=totalCards?learnedCards/totalCards:0;
-  const overallProgress=Math.round(lp*WEIGHTS.lessons+tp*WEIGHTS.tests+cp*WEIGHTS.cards);
-
-  return {totalLessons,completedLessons,lessonProgressPercent,totalTests,completedTests,
-    averageTestScore,totalCards,learnedCards,dueCards,overallProgress};
-}
-
-// Дневная активность считается ТОЛЬКО по действиям за сегодняшний календарный день.
-function todayActivity(){
-  const today=todayStr();
-  const todays=(Array.isArray(state.sessions)?state.sessions:[]).filter(s=>s&&s.date===today);
-  const minutesRaw=todays.reduce((sum,s)=>sum+(MINUTES_PER[s.type]||0),0);
-  const minutes=Math.min(DAILY_TARGET_MIN,minutesRaw);
-  const percent=Math.min(100,Math.round(minutesRaw/DAILY_TARGET_MIN*100));
-  return {count:todays.length,minutes,target:DAILY_TARGET_MIN,percent,
-    lessonToday:todays.some(s=>s.type==="lesson"),
-    testToday:todays.some(s=>s.type==="quiz"),
-    cardToday:todays.some(s=>s.type==="card")};
-}
-function activatePage(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));scrollTo({top:0,behavior:"smooth"})}
-function goTo(page){activatePage(page);if(page==="lessons"){activeModuleId=null;renderLessons()}if(page==="progress")renderProgress();if(page==="cards")buildDeck();if(page==="quiz")startQuiz()}
-document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>goTo(b.dataset.page));
-document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>goTo(b.dataset.go));
-
-function renderHome(){
-  const st=computeStats(),day=todayActivity();
-  $("homeCardsCount").textContent=`${st.totalCards} ${plural(st.totalCards,["карточка","карточки","карточек"])}`;
-  $("homeProgress").textContent=st.overallProgress+"%";
-  $("quickLessonsCount").textContent=`${st.totalLessons} ${plural(st.totalLessons,["тема","темы","тем"])}`;
-  $("quickTestsCount").textContent=`${st.totalTests} ${plural(st.totalTests,["тест","теста","тестов"])}`;
-  $("heroProgressBar").style.width=st.lessonProgressPercent+"%";
-  $("heroProgressValue").textContent=st.lessonProgressPercent+"%";
-  $("dailyMinutes").textContent=day.minutes;
-  $("dailyBar").style.width=day.percent+"%";
-}
-function renderModules(){
-  const box=$("moduleList");box.innerHTML="";
-  const done=Array.isArray(state&&state.completedLessons)?state.completedLessons:[];
-  [...modules].sort((a,b)=>(a.order||0)-(b.order||0)).forEach(m=>{
-    const inModule=lessons.filter(l=>l.moduleId===m.id);
-    const total=inModule.length,completed=inModule.filter(l=>done.includes(l.id)).length;
-    const percent=total?Math.round(completed/total*100):0;
-    const meta=total
-      ?`${total} ${plural(total,["урок","урока","уроков"])} • завершено ${completed} • ${percent}%`
-      :"Материалы готовятся";
-    const d=document.createElement("button");d.className="lesson-card glass-card";
-    d.innerHTML=`<div class="lesson-thumb"></div><div><h3>${m.title}</h3><p>${m.description}</p><p class="module-meta">${meta}</p></div><div class="lesson-arrow">›</div>`;
-    d.onclick=()=>openModule(m.id);box.appendChild(d);
-  });
-}
-function openModule(id){activeModuleId=id;renderLessons()}
-function backToModules(){activeModuleId=null;renderLessons()}
-function renderLessons(){
-  const catalog=activeModuleId===null;
-  $("moduleList").classList.toggle("hidden",!catalog);
-  $("lessonList").classList.toggle("hidden",catalog);
-  $("modulesBack").classList.toggle("hidden",catalog);
-  if(catalog){$("lessonsHeading").textContent="Модули";renderModules();return}
-  const m=modules.find(x=>x.id===activeModuleId);
-  $("lessonsHeading").textContent=m?m.title:"Уроки";
-  const box=$("lessonList");box.innerHTML="";
-  const inModule=lessons.filter(l=>l.moduleId===activeModuleId).sort((a,b)=>(a.order||0)-(b.order||0));
-  if(!inModule.length){box.innerHTML=`<p class="empty-note">Материалы готовятся</p>`;return}
-  inModule.forEach(l=>{
-    const d=document.createElement("button");d.className="lesson-card glass-card";
-    d.innerHTML=`<div class="lesson-thumb"></div><div><h3>${l.title}</h3><p>${l.level} • ${l.duration} минут ${state.completedLessons.includes(l.id)?"• завершён":""}</p></div><div class="lesson-arrow">›</div>`;
-    d.onclick=()=>openLesson(l.id);box.appendChild(d);
-  });
-}
-$("modulesBack").onclick=backToModules;
-function openLesson(id){activeLessonId=id;$("lessonArticle").innerHTML=lessons.find(l=>l.id===id).content;goTo("lessonView")}
-$("backToLessons").onclick=()=>{activatePage("lessons");renderLessons()}; // возврат к урокам выбранного модуля
-$("completeLessonBtn").onclick=()=>{if(activeLessonId&&!state.completedLessons.includes(activeLessonId)){state.completedLessons.push(activeLessonId);state.sessions.push({date:todayStr(),type:"lesson"});save();renderLessons();renderHome();renderProgress()}alert("Урок отмечен как завершённый.")};
-
-function buildDeck(){
-  const category=$("reviewCategory").value,now=Date.now();
-  const inCat=c=>category==="all"||c.category===category;
-  const cards=Array.isArray(state.cards)?state.cards:[];
-  // Для изучения показываем и просроченные, и ещё не повторявшиеся карточки.
-  reviewDeck=cards.filter(c=>inCat(c)&&(!c.nextReview||Number(c.nextReview)<=now));
-  if(!reviewDeck.length)reviewDeck=cards.filter(inCat);
-  currentCardIndex=0;
-  $("dueCount").textContent=`${strictDueCount(category)} к повторению`; // строго due, не длина колоды
-  renderCard();
-}
-$("reviewCategory").onchange=buildDeck;
-function renderCard(){
-  $("flashBack").classList.add("hidden");$("answerActions").classList.add("hidden");$("showAnswerBtn").classList.remove("hidden");
-  if(!reviewDeck.length){$("flashFront").textContent="Карточек нет";$("flashPronunciation").textContent="";$("flashCategory").textContent="";return}
-  const c=reviewDeck[currentCardIndex];
-  $("flashFront").textContent=c.front;$("flashPronunciation").textContent=c.pronunciation||"";$("flashBack").textContent=c.back;$("flashCategory").textContent=c.category;
-}
-$("showAnswerBtn").onclick=()=>{$("flashBack").classList.remove("hidden");$("answerActions").classList.remove("hidden");$("showAnswerBtn").classList.add("hidden")};
-document.querySelectorAll("#answerActions button").forEach(b=>b.onclick=()=>{
-  if(!reviewDeck.length)return;const c=reviewDeck[currentCardIndex],s=b.dataset.score;
-  if(s==="again"){c.interval=1;c.mastery=Math.max(0,(c.mastery||0)-1)}
-  if(s==="hard")c.interval=Math.max(1,Math.round((c.interval||1)*1.5));
-  if(s==="easy"){c.interval=Math.max(2,Math.round((c.interval||1)*2.2));c.mastery=Math.min(5,(c.mastery||0)+1)}
-  c.nextReview=Date.now()+c.interval*86400000;state.sessions.push({date:todayStr(),type:"card"});reviewDeck.splice(currentCardIndex,1);save();
-  $("dueCount").textContent=`${strictDueCount($("reviewCategory").value)} к повторению`;renderCard();renderHome();renderProgress();
-});
-$("addCardBtn").onclick=()=>{
-  const f=$("cardFront").value.trim(),b=$("cardBack").value.trim();if(!f||!b)return alert("Заполни термин и ответ.");
-  state.cards.push({id:crypto.randomUUID(),category:$("cardCategory").value,front:f,pronunciation:$("cardPronunciation").value.trim(),back:b,interval:1,nextReview:0,mastery:0});
-  $("cardFront").value=$("cardPronunciation").value=$("cardBack").value="";save();buildDeck();renderHome();renderProgress();
+const defaults = {
+  cards: [],
+  completedLessons: [],
+  sessions: [],
+  quizHistory: []
 };
 
-let quizCategoryActive="all";
-function startQuiz(){
-  quizCategoryActive=$("quizCategory").value;
-  quizQuestions=quizBank.filter(q=>quizCategoryActive==="all"||q.category===quizCategoryActive).sort(()=>Math.random()-.5).slice(0,5);
-  quizIndex=0;quizScore=0;$("quizResult").classList.add("hidden");renderQuestion();
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
 }
-$("quizCategory").onchange=startQuiz;
-function renderQuestion(){
-  if(quizIndex>=quizQuestions.length){
-    const p=quizQuestions.length?Math.round(quizScore/quizQuestions.length*100):0;
-    state.quizHistory.unshift({date:new Date().toLocaleDateString("ru-RU"),score:p,category:quizCategoryActive});state.quizHistory=state.quizHistory.slice(0,10);
-    state.sessions.push({date:todayStr(),type:"quiz"});save();renderHome();renderProgress();
-    $("quizBox").innerHTML="<h3>Тест завершён</h3>";$("quizResult").innerHTML=`<h3>Результат: ${quizScore}/${quizQuestions.length} — ${p}%</h3><button id="againQuiz" class="gold-button">Пройти ещё раз</button>`;
-    $("quizResult").classList.remove("hidden");$("againQuiz").onclick=startQuiz;return;
-  }
-  const item=quizQuestions[quizIndex];$("quizBox").innerHTML=`<span class="section-label">Вопрос ${quizIndex+1} из ${quizQuestions.length}</span><h3>${item.q}</h3>`;
-  item.options.forEach((o,i)=>{const b=document.createElement("button");b.className="option";b.textContent=o;b.onclick=()=>{$("quizBox").querySelectorAll(".option").forEach(x=>x.disabled=true);if(i===item.answer){b.classList.add("correct");quizScore++}else{b.classList.add("wrong");$("quizBox").querySelectorAll(".option")[item.answer].classList.add("correct")}setTimeout(()=>{quizIndex++;renderQuestion()},650)};$("quizBox").appendChild(b)});
-}
-function renderProgress(){
-  const st=computeStats();
-  $("overallProgress").textContent=st.overallProgress+"%";
-  const ring=document.querySelector(".ring-progress");
-  if(ring)ring.style.setProperty("--progress",st.overallProgress); // кольцо рисуется из --progress
-  $("completedLessons").textContent=st.completedLessons;
-  $("dueCardsValue").textContent=st.dueCards;
-  $("avgScoreValue").textContent=st.averageTestScore+"%";
-  const hist=Array.isArray(state.quizHistory)?state.quizHistory:[];
-  $("historyList").innerHTML=hist.length?hist.map(h=>`<div class="history-item"><span>${h.date}</span><strong>${h.score}%</strong></div>`).join(""):"<p style='color:var(--muted)'>Тесты пока не пройдены.</p>";
-}
-$("exportBtn").onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`medbio-backup-${todayStr()}.json`;a.click();URL.revokeObjectURL(a.href)};
-$("importInput").onchange=async e=>{try{const data=JSON.parse(await e.target.files[0].text());if(!data||typeof data!=="object")throw 0;state=normalizeState(data);save();renderAll();alert("Данные восстановлены.")}catch{alert("Не удалось прочитать резервную копию.")}};
-$("resetBtn").onclick=()=>{if(confirm("Удалить весь прогресс?")){localStorage.removeItem(STORAGE_KEY);state=normalizeState(null);save();renderAll()}};
-function renderAll(){renderHome();renderLessons();buildDeck();renderProgress()}
-if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js");
 
-// --- Загрузка учебных данных из data/*.json (устойчиво к сбою: пустой массив вместо падения) ---
-async function fetchJSON(url){
-  try{const r=await fetch(url);if(!r.ok)throw new Error(url+" -> "+r.status);const d=await r.json();return Array.isArray(d)?d:[];}
-  catch(e){console.warn("MedBio: не удалось загрузить",url,e);return[];}
+function makeId() {
+  if (globalThis.crypto && typeof globalThis.crypto.randomUUID === "function") {
+    return globalThis.crypto.randomUUID();
+  }
+  return `card-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
-async function loadData(){
-  const [l,c,q,m]=await Promise.all([
-    fetchJSON("./data/lessons.json"),
-    fetchJSON("./data/flashcards.json"),
-    fetchJSON("./data/tests.json"),
-    fetchJSON("./data/modules.json")
-  ]);
-  lessons=l;seedCards=c;quizBank=q;modules=m;
+
+function plural(number, forms) {
+  const n = Math.abs(Number(number)) % 100;
+  const n1 = n % 10;
+
+  if (n > 10 && n < 20) return forms[2];
+  if (n1 > 1 && n1 < 5) return forms[1];
+  if (n1 === 1) return forms[0];
+  return forms[2];
 }
-(async()=>{ await loadData(); state=load(); renderAll(); })();
+
+function normalizeState(raw) {
+  const source = raw && typeof raw === "object" ? raw : {};
+  const numberOr = (value, fallback) =>
+    Number.isFinite(Number(value)) ? Number(value) : fallback;
+  const stringOr = (value, fallback = "") =>
+    typeof value === "string" ? value : fallback;
+
+  let cards = Array.isArray(source.cards) ? source.cards : null;
+  if (!cards || cards.length === 0) {
+    cards = clone(seedCards);
+  }
+
+  return {
+    ...clone(defaults),
+    ...source,
+    cards: cards
+      .filter((card) => card && typeof card === "object")
+      .map((card) => ({
+        id: stringOr(card.id) || makeId(),
+        category: stringOr(card.category, "Биология"),
+        front: stringOr(card.front),
+        pronunciation: stringOr(card.pronunciation),
+        back: stringOr(card.back),
+        interval: numberOr(card.interval, 1),
+        nextReview: numberOr(card.nextReview, 0),
+        mastery: numberOr(card.mastery, 0)
+      })),
+    completedLessons: Array.isArray(source.completedLessons)
+      ? source.completedLessons.filter((id) => typeof id === "string")
+      : [],
+    sessions: Array.isArray(source.sessions)
+      ? source.sessions.filter(
+          (item) =>
+            item &&
+            typeof item === "object" &&
+            typeof item.date === "string" &&
+            typeof item.type === "string"
+        )
+      : [],
+    quizHistory: Array.isArray(source.quizHistory)
+      ? source.quizHistory
+          .filter((item) => item && typeof item === "object")
+          .map((item) => ({
+            date: stringOr(item.date),
+            score: numberOr(item.score, 0),
+            category:
+              typeof item.category === "string" ? item.category : null
+          }))
+      : []
+  };
+}
+
+function loadState() {
+  try {
+    return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  } catch (error) {
+    console.warn("MedBio: повреждённое состояние заменено безопасным.", error);
+    return normalizeState(null);
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function todayStr() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function testSets() {
+  return ["all", ...new Set(quizBank.map((question) => question.category))];
+}
+
+function strictDueCount(category) {
+  const now = Date.now();
+
+  return (Array.isArray(state.cards) ? state.cards : []).filter(
+    (card) =>
+      (category === "all" || card.category === category) &&
+      Number(card.nextReview) > 0 &&
+      Number(card.nextReview) <= now
+  ).length;
+}
+
+function computeStats() {
+  const now = Date.now();
+  const cards = Array.isArray(state.cards) ? state.cards : [];
+  const completedIds = Array.isArray(state.completedLessons)
+    ? state.completedLessons
+    : [];
+  const history = Array.isArray(state.quizHistory) ? state.quizHistory : [];
+
+  const totalLessons = lessons.length;
+  const completedLessons = completedIds.filter((id) =>
+    lessons.some((lesson) => lesson.id === id)
+  ).length;
+  const lessonProgressPercent = totalLessons
+    ? Math.round((completedLessons / totalLessons) * 100)
+    : 0;
+
+  const sets = testSets();
+  const totalTests = quizBank.length ? sets.length : 0;
+  const completedTests = [
+    ...new Set(
+      history
+        .map((entry) => entry && entry.category)
+        .filter((category) => sets.includes(category))
+    )
+  ].length;
+
+  const scores = history
+    .map((entry) => Number(entry && entry.score))
+    .filter(Number.isFinite);
+  const averageTestScore = scores.length
+    ? Math.round(scores.reduce((sum, value) => sum + value, 0) / scores.length)
+    : 0;
+
+  const totalCards = cards.length;
+  const learnedCards = cards.filter(
+    (card) => Number(card.nextReview) > 0
+  ).length;
+  const dueCards = cards.filter(
+    (card) =>
+      Number(card.nextReview) > 0 && Number(card.nextReview) <= now
+  ).length;
+
+  const lessonPart = totalLessons ? completedLessons / totalLessons : 0;
+  const testPart = totalTests ? completedTests / totalTests : 0;
+  const cardPart = totalCards ? learnedCards / totalCards : 0;
+
+  const overallProgress = Math.round(
+    lessonPart * WEIGHTS.lessons +
+      testPart * WEIGHTS.tests +
+      cardPart * WEIGHTS.cards
+  );
+
+  return {
+    totalLessons,
+    completedLessons,
+    lessonProgressPercent,
+    totalTests,
+    completedTests,
+    averageTestScore,
+    totalCards,
+    learnedCards,
+    dueCards,
+    overallProgress
+  };
+}
+
+function todayActivity() {
+  const today = todayStr();
+  const todaySessions = (
+    Array.isArray(state.sessions) ? state.sessions : []
+  ).filter((session) => session && session.date === today);
+
+  const rawMinutes = todaySessions.reduce(
+    (sum, session) => sum + (MINUTES_PER[session.type] || 0),
+    0
+  );
+
+  return {
+    minutes: Math.min(DAILY_TARGET_MIN, rawMinutes),
+    percent: Math.min(
+      100,
+      Math.round((rawMinutes / DAILY_TARGET_MIN) * 100)
+    )
+  };
+}
+
+function activatePage(page) {
+  document.querySelectorAll(".page").forEach((element) => {
+    element.classList.remove("active");
+  });
+
+  const target = $(page);
+  if (target) target.classList.add("active");
+
+  document.querySelectorAll(".bottom-nav button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function goTo(page) {
+  activatePage(page);
+
+  if (page === "lessons") {
+    activeModuleId = null;
+    renderLessons();
+  }
+  if (page === "progress") renderProgress();
+  if (page === "cards") buildDeck();
+  if (page === "quiz") startQuiz();
+}
+
+function renderHome() {
+  const stats = computeStats();
+  const day = todayActivity();
+
+  $("homeCardsCount").textContent =
+    `${stats.totalCards} ` +
+    plural(stats.totalCards, ["карточка", "карточки", "карточек"]);
+  $("homeProgress").textContent = `${stats.overallProgress}%`;
+  $("quickLessonsCount").textContent =
+    `${stats.totalLessons} ` +
+    plural(stats.totalLessons, ["тема", "темы", "тем"]);
+  $("quickTestsCount").textContent =
+    `${stats.totalTests} ` +
+    plural(stats.totalTests, ["тест", "теста", "тестов"]);
+  $("heroProgressBar").style.width = `${stats.lessonProgressPercent}%`;
+  $("heroProgressValue").textContent = `${stats.lessonProgressPercent}%`;
+  $("dailyMinutes").textContent = String(day.minutes);
+  $("dailyBar").style.width = `${day.percent}%`;
+}
+
+function renderModules() {
+  const box = $("moduleList");
+  box.innerHTML = "";
+
+  const completed = Array.isArray(state.completedLessons)
+    ? state.completedLessons
+    : [];
+
+  [...modules]
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
+    .forEach((module) => {
+      const moduleLessons = lessons.filter(
+        (lesson) => lesson.moduleId === module.id
+      );
+      const total = moduleLessons.length;
+      const done = moduleLessons.filter((lesson) =>
+        completed.includes(lesson.id)
+      ).length;
+      const percent = total ? Math.round((done / total) * 100) : 0;
+
+      const meta = total
+        ? `${total} ${plural(total, [
+            "урок",
+            "урока",
+            "уроков"
+          ])} • завершено ${done} • ${percent}%`
+        : "Материалы готовятся";
+
+      const button = document.createElement("button");
+      button.className = "lesson-card glass-card";
+      button.innerHTML = `
+        <div class="lesson-thumb"></div>
+        <div>
+          <h3>${module.title}</h3>
+          <p>${module.description || ""}</p>
+          <p class="module-meta">${meta}</p>
+        </div>
+        <div class="lesson-arrow">›</div>
+      `;
+      button.onclick = () => openModule(module.id);
+      box.appendChild(button);
+    });
+}
+
+function openModule(id) {
+  activeModuleId = id;
+  renderLessons();
+}
+
+function backToModules() {
+  activeModuleId = null;
+  renderLessons();
+}
+
+function renderLessons() {
+  const showingModules = activeModuleId === null;
+
+  $("moduleList").classList.toggle("hidden", !showingModules);
+  $("lessonList").classList.toggle("hidden", showingModules);
+  $("modulesBack").classList.toggle("hidden", showingModules);
+
+  if (showingModules) {
+    $("lessonsHeading").textContent = "Модули";
+
+    if (!modules.length) {
+      $("moduleList").innerHTML =
+        '<p class="empty-note">Не удалось загрузить каталог модулей. Обнови страницу.</p>';
+      return;
+    }
+
+    renderModules();
+    return;
+  }
+
+  const module = modules.find((item) => item.id === activeModuleId);
+  $("lessonsHeading").textContent = module ? module.title : "Уроки";
+
+  const box = $("lessonList");
+  box.innerHTML = "";
+
+  const moduleLessons = lessons
+    .filter((lesson) => lesson.moduleId === activeModuleId)
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
+
+  if (!moduleLessons.length) {
+    box.innerHTML = '<p class="empty-note">Материалы готовятся</p>';
+    return;
+  }
+
+  moduleLessons.forEach((lesson) => {
+    const button = document.createElement("button");
+    button.className = "lesson-card glass-card";
+    const isCompleted = state.completedLessons.includes(lesson.id);
+
+    button.innerHTML = `
+      <div class="lesson-thumb"></div>
+      <div>
+        <h3>${lesson.title}</h3>
+        <p>
+          ${lesson.level || "Биология"} • ${lesson.duration || 0} минут
+          ${isCompleted ? " • завершён" : ""}
+        </p>
+      </div>
+      <div class="lesson-arrow">›</div>
+    `;
+    button.onclick = () => openLesson(lesson.id);
+    box.appendChild(button);
+  });
+}
+
+function openLesson(id) {
+  const lesson = lessons.find((item) => item.id === id);
+  if (!lesson) {
+    alert("Урок не найден.");
+    return;
+  }
+
+  activeLessonId = id;
+  $("lessonArticle").innerHTML = lesson.content || "";
+  goTo("lessonView");
+}
+
+function buildDeck() {
+  const category = $("reviewCategory").value;
+  const now = Date.now();
+  const cards = Array.isArray(state.cards) ? state.cards : [];
+  const inCategory = (card) =>
+    category === "all" || card.category === category;
+
+  reviewDeck = cards.filter(
+    (card) =>
+      inCategory(card) &&
+      (!card.nextReview || Number(card.nextReview) <= now)
+  );
+
+  if (!reviewDeck.length) {
+    reviewDeck = cards.filter(inCategory);
+  }
+
+  currentCardIndex = 0;
+  $("dueCount").textContent = `${strictDueCount(category)} к повторению`;
+  renderCard();
+}
+
+function renderCard() {
+  $("flashBack").classList.add("hidden");
+  $("answerActions").classList.add("hidden");
+  $("showAnswerBtn").classList.remove("hidden");
+
+  if (!reviewDeck.length) {
+    $("flashFront").textContent = "Карточек нет";
+    $("flashPronunciation").textContent = "";
+    $("flashCategory").textContent = "";
+    return;
+  }
+
+  const card = reviewDeck[currentCardIndex];
+  $("flashFront").textContent = card.front;
+  $("flashPronunciation").textContent = card.pronunciation || "";
+  $("flashBack").textContent = card.back;
+  $("flashCategory").textContent = card.category;
+}
+
+function startQuiz() {
+  quizCategoryActive = $("quizCategory").value;
+  quizQuestions = quizBank
+    .filter(
+      (question) =>
+        quizCategoryActive === "all" ||
+        question.category === quizCategoryActive
+    )
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5);
+
+  quizIndex = 0;
+  quizScore = 0;
+  $("quizResult").classList.add("hidden");
+
+  if (!quizQuestions.length) {
+    $("quizBox").innerHTML =
+      "<h3>Вопросы не загружены</h3><p>Обнови страницу или выбери другую тему.</p>";
+    return;
+  }
+
+  renderQuestion();
+}
+
+function renderQuestion() {
+  if (quizIndex >= quizQuestions.length) {
+    const percent = Math.round(
+      (quizScore / quizQuestions.length) * 100
+    );
+
+    state.quizHistory.unshift({
+      date: new Date().toLocaleDateString("ru-RU"),
+      score: percent,
+      category: quizCategoryActive
+    });
+    state.quizHistory = state.quizHistory.slice(0, 10);
+    state.sessions.push({ date: todayStr(), type: "quiz" });
+
+    saveState();
+    renderHome();
+    renderProgress();
+
+    $("quizBox").innerHTML = "<h3>Тест завершён</h3>";
+    $("quizResult").innerHTML = `
+      <h3>Результат: ${quizScore}/${quizQuestions.length} — ${percent}%</h3>
+      <button id="againQuiz" class="gold-button">Пройти ещё раз</button>
+    `;
+    $("quizResult").classList.remove("hidden");
+    $("againQuiz").onclick = startQuiz;
+    return;
+  }
+
+  const item = quizQuestions[quizIndex];
+  $("quizBox").innerHTML = `
+    <span class="section-label">
+      Вопрос ${quizIndex + 1} из ${quizQuestions.length}
+    </span>
+    <h3>${item.q}</h3>
+  `;
+
+  item.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.className = "option";
+    button.textContent = option;
+
+    button.onclick = () => {
+      const buttons = $("quizBox").querySelectorAll(".option");
+      buttons.forEach((itemButton) => {
+        itemButton.disabled = true;
+      });
+
+      if (index === item.answer) {
+        button.classList.add("correct");
+        quizScore += 1;
+      } else {
+        button.classList.add("wrong");
+        if (buttons[item.answer]) {
+          buttons[item.answer].classList.add("correct");
+        }
+      }
+
+      setTimeout(() => {
+        quizIndex += 1;
+        renderQuestion();
+      }, 650);
+    };
+
+    $("quizBox").appendChild(button);
+  });
+}
+
+function renderProgress() {
+  const stats = computeStats();
+
+  $("overallProgress").textContent = `${stats.overallProgress}%`;
+
+  const ring = document.querySelector(".ring-progress");
+  if (ring) {
+    ring.style.setProperty("--progress", stats.overallProgress);
+  }
+
+  $("completedLessons").textContent = String(stats.completedLessons);
+  $("dueCardsValue").textContent = String(stats.dueCards);
+  $("avgScoreValue").textContent = `${stats.averageTestScore}%`;
+
+  const history = Array.isArray(state.quizHistory)
+    ? state.quizHistory
+    : [];
+
+  $("historyList").innerHTML = history.length
+    ? history
+        .map(
+          (entry) => `
+            <div class="history-item">
+              <span>${entry.date}</span>
+              <strong>${entry.score}%</strong>
+            </div>
+          `
+        )
+        .join("")
+    : "<p style='color:var(--muted)'>Тесты пока не пройдены.</p>";
+}
+
+function renderAll() {
+  renderHome();
+  renderLessons();
+  buildDeck();
+  renderProgress();
+}
+
+async function fetchJSON(url) {
+  try {
+    const response = await fetch(url, { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`${url} → HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+      throw new Error(`${url} должен содержать массив`);
+    }
+
+    return data;
+  } catch (error) {
+    console.warn("MedBio: не удалось загрузить данные.", url, error);
+    return [];
+  }
+}
+
+async function loadData() {
+  const [loadedLessons, loadedCards, loadedTests, loadedModules] =
+    await Promise.all([
+      fetchJSON("./data/lessons.json"),
+      fetchJSON("./data/flashcards.json"),
+      fetchJSON("./data/tests.json"),
+      fetchJSON("./data/modules.json")
+    ]);
+
+  lessons = loadedLessons;
+  seedCards = loadedCards;
+  quizBank = loadedTests;
+  modules = loadedModules;
+}
+
+document.querySelectorAll("[data-page]").forEach((button) => {
+  button.onclick = () => goTo(button.dataset.page);
+});
+
+document.querySelectorAll("[data-go]").forEach((button) => {
+  button.onclick = () => goTo(button.dataset.go);
+});
+
+$("modulesBack").onclick = backToModules;
+
+$("backToLessons").onclick = () => {
+  activatePage("lessons");
+  renderLessons();
+};
+
+$("completeLessonBtn").onclick = () => {
+  if (
+    activeLessonId &&
+    !state.completedLessons.includes(activeLessonId)
+  ) {
+    state.completedLessons.push(activeLessonId);
+    state.sessions.push({ date: todayStr(), type: "lesson" });
+    saveState();
+    renderLessons();
+    renderHome();
+    renderProgress();
+  }
+
+  alert("Урок отмечен как завершённый.");
+};
+
+$("reviewCategory").onchange = buildDeck;
+
+$("showAnswerBtn").onclick = () => {
+  $("flashBack").classList.remove("hidden");
+  $("answerActions").classList.remove("hidden");
+  $("showAnswerBtn").classList.add("hidden");
+};
+
+document
+  .querySelectorAll("#answerActions button")
+  .forEach((button) => {
+    button.onclick = () => {
+      if (!reviewDeck.length) return;
+
+      const card = reviewDeck[currentCardIndex];
+      const score = button.dataset.score;
+
+      if (score === "again") {
+        card.interval = 1;
+        card.mastery = Math.max(0, Number(card.mastery || 0) - 1);
+      }
+
+      if (score === "hard") {
+        card.interval = Math.max(
+          1,
+          Math.round(Number(card.interval || 1) * 1.5)
+        );
+      }
+
+      if (score === "easy") {
+        card.interval = Math.max(
+          2,
+          Math.round(Number(card.interval || 1) * 2.2)
+        );
+        card.mastery = Math.min(
+          5,
+          Number(card.mastery || 0) + 1
+        );
+      }
+
+      card.nextReview = Date.now() + card.interval * 86400000;
+      state.sessions.push({ date: todayStr(), type: "card" });
+      reviewDeck.splice(currentCardIndex, 1);
+
+      saveState();
+      $("dueCount").textContent =
+        `${strictDueCount($("reviewCategory").value)} к повторению`;
+      renderCard();
+      renderHome();
+      renderProgress();
+    };
+  });
+
+$("addCardBtn").onclick = () => {
+  const front = $("cardFront").value.trim();
+  const back = $("cardBack").value.trim();
+
+  if (!front || !back) {
+    alert("Заполни термин и ответ.");
+    return;
+  }
+
+  state.cards.push({
+    id: makeId(),
+    category: $("cardCategory").value,
+    front,
+    pronunciation: $("cardPronunciation").value.trim(),
+    back,
+    interval: 1,
+    nextReview: 0,
+    mastery: 0
+  });
+
+  $("cardFront").value = "";
+  $("cardPronunciation").value = "";
+  $("cardBack").value = "";
+
+  saveState();
+  buildDeck();
+  renderHome();
+  renderProgress();
+};
+
+$("quizCategory").onchange = startQuiz;
+
+$("exportBtn").onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {
+    type: "application/json"
+  });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `medbio-backup-${todayStr()}.json`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+};
+
+$("importInput").onchange = async (event) => {
+  try {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const imported = JSON.parse(await file.text());
+    if (!imported || typeof imported !== "object") {
+      throw new Error("Некорректная резервная копия");
+    }
+
+    state = normalizeState(imported);
+    saveState();
+    renderAll();
+    alert("Данные восстановлены.");
+  } catch (error) {
+    console.warn(error);
+    alert("Не удалось прочитать резервную копию.");
+  }
+};
+
+$("resetBtn").onclick = () => {
+  if (!confirm("Удалить весь прогресс?")) return;
+
+  localStorage.removeItem(STORAGE_KEY);
+  state = normalizeState(null);
+  saveState();
+  renderAll();
+};
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch((error) => {
+    console.warn("MedBio: service worker не зарегистрирован.", error);
+  });
+}
+
+(async function init() {
+  await loadData();
+  state = loadState();
+  renderAll();
+})();
