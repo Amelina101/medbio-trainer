@@ -488,5 +488,245 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "gen-card-01",
+    "category": "Генетика",
+    "front": "Генотип и фенотип",
+    "pronunciation": "",
+    "back": "Генотип — набор аллелей; фенотип — наблюдаемые свойства, зависящие от генотипа и среды.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-02",
+    "category": "Scientific English",
+    "front": "Allele",
+    "pronunciation": "/əˈliːl/",
+    "back": "Аллель — вариант одного гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-03",
+    "category": "Генетика",
+    "front": "Расщепление Aa × Aa",
+    "pronunciation": "",
+    "back": "Генотипы 1:2:1; фенотипы 3:1 при полном доминировании.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-04",
+    "category": "Генетика",
+    "front": "Анализирующее скрещивание",
+    "pronunciation": "",
+    "back": "Скрещивание особи с доминантным фенотипом с гомозиготой aa.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-05",
+    "category": "Scientific English",
+    "front": "Testcross",
+    "pronunciation": "/ˈtestkrɒs/",
+    "back": "Анализирующее скрещивание.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-06",
+    "category": "Генетика",
+    "front": "Правило умножения вероятностей",
+    "pronunciation": "",
+    "back": "Для независимых событий вероятности перемножаются.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-07",
+    "category": "Генетика",
+    "front": "Неполное доминирование",
+    "pronunciation": "",
+    "back": "Гетерозигота имеет промежуточный фенотип.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-08",
+    "category": "Генетика",
+    "front": "Кодоминирование",
+    "pronunciation": "",
+    "back": "Оба аллеля проявляются одновременно, например IᴬIᴮ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-09",
+    "category": "Генетика",
+    "front": "Гаметы AaBb",
+    "pronunciation": "",
+    "back": "AB, Ab, aB, ab при независимом наследовании.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-10",
+    "category": "Scientific English",
+    "front": "Independent assortment",
+    "pronunciation": "/ˌɪndɪˈpendənt əˈsɔːtmənt/",
+    "back": "Независимое расхождение аллелей разных генов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-11",
+    "category": "Генетика",
+    "front": "Фаза цис и транс",
+    "pronunciation": "",
+    "back": "Цис: AB/ab; транс: Ab/aB.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-12",
+    "category": "Генетика",
+    "front": "Частота рекомбинации",
+    "pronunciation": "",
+    "back": "Рекомбинанты / всё потомство × 100%.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-13",
+    "category": "Scientific English",
+    "front": "Genetic linkage",
+    "pronunciation": "/dʒəˈnetɪk ˈlɪŋkɪdʒ/",
+    "back": "Генетическое сцепление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-14",
+    "category": "Генетика",
+    "front": "1 сантиморган",
+    "pronunciation": "",
+    "back": "Приблизительно 1% рекомбинации.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-15",
+    "category": "Генетика",
+    "front": "X-рецессивное наследование",
+    "pronunciation": "",
+    "back": "Чаще болеют мужчины; нет передачи отец → сын.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-16",
+    "category": "Scientific English",
+    "front": "Carrier",
+    "pronunciation": "/ˈkæriə/",
+    "back": "Носитель рецессивного аллеля.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-17",
+    "category": "Генетика",
+    "front": "Митохондриальное наследование",
+    "pronunciation": "",
+    "back": "Передача через мать; больной отец обычно не передаёт признак.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-18",
+    "category": "Генетика",
+    "front": "Эпистаз",
+    "pronunciation": "",
+    "back": "Аллели одного гена подавляют проявление другого гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-19",
+    "category": "Scientific English",
+    "front": "Pleiotropy",
+    "pronunciation": "/plaɪˈɒtrəpi/",
+    "back": "Плейотропия — влияние одного гена на несколько признаков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-20",
+    "category": "Генетика",
+    "front": "Комплементарность 9:7",
+    "pronunciation": "",
+    "back": "Для фенотипа нужны доминантные аллели двух разных генов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-21",
+    "category": "Генетика",
+    "front": "Харди—Вайнберг",
+    "pronunciation": "",
+    "back": "p + q = 1; p² + 2pq + q² = 1.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-22",
+    "category": "Scientific English",
+    "front": "Allele frequency",
+    "pronunciation": "/əˈliːl ˈfriːkwənsi/",
+    "back": "Частота аллеля в популяции.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-23",
+    "category": "Генетика",
+    "front": "Частота носителей",
+    "pronunciation": "",
+    "back": "Для рецессивного аллеля при равновесии — 2pq.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-24",
+    "category": "Генетика",
+    "front": "Нерасхождение",
+    "pronunciation": "",
+    "back": "Нарушение расхождения гомологов или сестринских хроматид, приводящее к анеуплоидии.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
