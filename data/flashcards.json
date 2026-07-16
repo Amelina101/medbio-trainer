@@ -728,5 +728,285 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "mol-card-01",
+    "category": "Молекулярная биология",
+    "front": "Антипараллельность DNA",
+    "pronunciation": "",
+    "back": "Одна цепь идёт 5′→3′, другая — 3′→5′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-02",
+    "category": "Scientific English",
+    "front": "Double helix",
+    "pronunciation": "/ˌdʌbəl ˈhiːlɪks/",
+    "back": "Двойная спираль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-03",
+    "category": "Молекулярная биология",
+    "front": "Правила Чаргаффа",
+    "pronunciation": "",
+    "back": "В двуцепочечной DNA A=T и G=C.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-04",
+    "category": "Молекулярная биология",
+    "front": "Нуклеосома",
+    "pronunciation": "",
+    "back": "DNA, намотанная на гистоновый октамер.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-05",
+    "category": "Молекулярная биология",
+    "front": "Направление синтеза DNA",
+    "pronunciation": "",
+    "back": "Всегда 5′→3′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-06",
+    "category": "Scientific English",
+    "front": "Replication fork",
+    "pronunciation": "/ˌreplɪˈkeɪʃən fɔːk/",
+    "back": "Репликационная вилка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-07",
+    "category": "Молекулярная биология",
+    "front": "Фрагменты Оказаки",
+    "pronunciation": "",
+    "back": "Короткие участки новой DNA на отстающей цепи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-08",
+    "category": "Молекулярная биология",
+    "front": "Функция теломеразы",
+    "pronunciation": "",
+    "back": "Удлиняет теломеры, используя собственную RNA-матрицу.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-09",
+    "category": "Молекулярная биология",
+    "front": "Матричная цепь DNA",
+    "pronunciation": "",
+    "back": "RNA-полимераза читает её 3′→5′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-10",
+    "category": "Scientific English",
+    "front": "Promoter",
+    "pronunciation": "/prəˈməʊtə/",
+    "back": "Промотор — участок начала транскрипции.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-11",
+    "category": "Молекулярная биология",
+    "front": "Процессинг pre-mRNA",
+    "pronunciation": "",
+    "back": "5′-кэп, поли-A-хвост и сплайсинг.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-12",
+    "category": "Молекулярная биология",
+    "front": "Альтернативный сплайсинг",
+    "pronunciation": "",
+    "back": "Получение разных mRNA из одного первичного транскрипта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-13",
+    "category": "Молекулярная биология",
+    "front": "Старт-кодон",
+    "pronunciation": "",
+    "back": "AUG, кодирует метионин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-14",
+    "category": "Scientific English",
+    "front": "Reading frame",
+    "pronunciation": "/ˈriːdɪŋ freɪm/",
+    "back": "Рамка считывания.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-15",
+    "category": "Молекулярная биология",
+    "front": "Участки рибосомы A, P, E",
+    "pronunciation": "",
+    "back": "A — вход tRNA, P — растущая цепь, E — выход.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-16",
+    "category": "Молекулярная биология",
+    "front": "Аминоацил-tRNA-синтетаза",
+    "pronunciation": "",
+    "back": "Присоединяет правильную аминокислоту к tRNA.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-17",
+    "category": "Молекулярная биология",
+    "front": "lac-оперон работает максимально когда…",
+    "pronunciation": "",
+    "back": "Есть лактоза и мало глюкозы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-18",
+    "category": "Scientific English",
+    "front": "Repressor",
+    "pronunciation": "/rɪˈpresə/",
+    "back": "Репрессор.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-19",
+    "category": "Молекулярная биология",
+    "front": "Триптофан в trp-опероне",
+    "pronunciation": "",
+    "back": "Корепрессор, активирующий репрессор.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-20",
+    "category": "Молекулярная биология",
+    "front": "Ацетилирование гистонов",
+    "pronunciation": "",
+    "back": "Обычно делает хроматин более доступным.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-21",
+    "category": "Scientific English",
+    "front": "Gene silencing",
+    "pronunciation": "/dʒiːn ˈsaɪlənsɪŋ/",
+    "back": "Подавление экспрессии гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-22",
+    "category": "Молекулярная биология",
+    "front": "Действие miRNA",
+    "pronunciation": "",
+    "back": "Подавление трансляции или деградация mRNA.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-23",
+    "category": "Молекулярная биология",
+    "front": "Нонсенс-мутация",
+    "pronunciation": "",
+    "back": "Замена, создающая преждевременный стоп-кодон.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-24",
+    "category": "Scientific English",
+    "front": "Frameshift mutation",
+    "pronunciation": "/ˈfreɪmʃɪft mjuːˈteɪʃən/",
+    "back": "Мутация со сдвигом рамки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-25",
+    "category": "Молекулярная биология",
+    "front": "Три стадии PCR",
+    "pronunciation": "",
+    "back": "Денатурация, отжиг, элонгация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-26",
+    "category": "Scientific English",
+    "front": "Annealing",
+    "pronunciation": "/əˈniːlɪŋ/",
+    "back": "Отжиг праймеров.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-27",
+    "category": "Молекулярная биология",
+    "front": "Почему DNA идёт к аноду?",
+    "pronunciation": "",
+    "back": "Фосфатный остов придаёт ей отрицательный заряд.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-28",
+    "category": "Молекулярная биология",
+    "front": "Отрицательный контроль PCR",
+    "pronunciation": "",
+    "back": "Показывает наличие или отсутствие загрязнения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
