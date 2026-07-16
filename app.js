@@ -572,7 +572,8 @@ const CATEGORY_LABELS = {
   genetics: "Генетика",
   anatomy: "Анатомия",
   physiology: "Физиология",
-  biochemistry: "Биохимия"
+  biochemistry: "Биохимия",
+  "molecular-biology": "Молекулярная биология"
 };
 
 function fillSelect(select, options, preferredValue) {
