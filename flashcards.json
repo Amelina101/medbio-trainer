@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c1",
+    "category": "Medical English",
+    "front": "Heart",
+    "pronunciation": "/hɑːrt/",
+    "back": "Сердце. Latin: cor, cordis n.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "c2",
+    "category": "Latin",
+    "front": "Cor, cordis n.",
+    "pronunciation": "/kor/",
+    "back": "Сердце. English: heart.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "c3",
+    "category": "Биология",
+    "front": "Что такое хлоропласт?",
+    "pronunciation": "",
+    "back": "Органоид клеток растений и водорослей, в котором происходит фотосинтез.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "c4",
+    "category": "Анатомия",
+    "front": "Aorta",
+    "pronunciation": "/eɪˈɔːrtə/",
+    "back": "Аорта — крупнейшая артерия организма.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "c5",
+    "category": "Medical English",
+    "front": "Lung",
+    "pronunciation": "/lʌŋ/",
+    "back": "Лёгкое. Latin: pulmo, pulmonis m.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  }
+]
