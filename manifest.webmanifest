@@ -1,11 +1,11 @@
 {
-  "name": "MedBio Trainer",
+  "name": "MedBio Trainer 0.2",
   "short_name": "MedBio",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f1f5f9",
+  "background_color": "#eef3f8",
   "theme_color": "#0f172a",
-  "description": "Учебное приложение по биологии, медицинскому английскому, латыни и анатомии",
   "icons": [
     {
       "src": "icon-192.svg",
