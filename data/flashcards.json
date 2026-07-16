@@ -48,5 +48,205 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "bc-water-01",
+    "category": "Биохимия",
+    "front": "Почему вода полярна?",
+    "pronunciation": "",
+    "back": "Кислород сильнее притягивает общие электроны, поэтому у O возникает δ−, а у H — δ+.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-water-02",
+    "category": "Scientific English",
+    "front": "Hydrogen bond",
+    "pronunciation": "/ˈhaɪdrədʒən bɒnd/",
+    "back": "Водородная связь — слабое взаимодействие между частично заряженными участками молекул.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-water-03",
+    "category": "Биохимия",
+    "front": "Что означает изменение pH на 1?",
+    "pronunciation": "",
+    "back": "Десятикратное изменение концентрации ионов H⁺.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-01",
+    "category": "Scientific English",
+    "front": "Carbohydrate",
+    "pronunciation": "/ˌkɑːbəʊˈhaɪdreɪt/",
+    "back": "Углевод.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-02",
+    "category": "Биохимия",
+    "front": "Запасной полисахарид животных",
+    "pronunciation": "",
+    "back": "Гликоген.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-03",
+    "category": "Биохимия",
+    "front": "Почему гликоген быстро мобилизуется?",
+    "pronunciation": "",
+    "back": "Он сильно разветвлён и имеет много концов цепей для одновременной работы ферментов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-01",
+    "category": "Scientific English",
+    "front": "Phospholipid bilayer",
+    "pronunciation": "/ˌfɒsfəˈlɪpɪd ˈbaɪleɪə/",
+    "back": "Фосфолипидный бислой.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-02",
+    "category": "Биохимия",
+    "front": "Что значит «амфипатическая молекула»?",
+    "pronunciation": "",
+    "back": "Она имеет гидрофильную и гидрофобную части.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-03",
+    "category": "Биохимия",
+    "front": "Как цис-двойная связь влияет на жирную кислоту?",
+    "pronunciation": "",
+    "back": "Создаёт изгиб, мешает плотной упаковке и повышает текучесть.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-01",
+    "category": "Биохимия",
+    "front": "Пептидная связь",
+    "pronunciation": "",
+    "back": "Ковалентная связь между карбоксильной группой одной аминокислоты и аминогруппой другой.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-02",
+    "category": "Scientific English",
+    "front": "Active site",
+    "pronunciation": "/ˈæktɪv saɪt/",
+    "back": "Активный центр фермента.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-03",
+    "category": "Биохимия",
+    "front": "Что делает фермент с энергией активации?",
+    "pronunciation": "",
+    "back": "Снижает её, не изменяя ΔG реакции и положение равновесия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-04",
+    "category": "Биохимия",
+    "front": "Что обычно сохраняется при денатурации белка?",
+    "pronunciation": "",
+    "back": "Первичная структура и пептидные связи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-01",
+    "category": "Scientific English",
+    "front": "Nucleotide",
+    "pronunciation": "/ˈnjuːkliətaɪd/",
+    "back": "Нуклеотид: основание + пентоза + фосфат.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-02",
+    "category": "Биохимия",
+    "front": "Чем нуклеозид отличается от нуклеотида?",
+    "pronunciation": "",
+    "back": "У нуклеозида нет фосфатной группы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-03",
+    "category": "Биохимия",
+    "front": "Связь между нуклеотидами одной цепи DNA",
+    "pronunciation": "",
+    "back": "Фосфодиэфирная связь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-04",
+    "category": "Биохимия",
+    "front": "Почему GC-богатая DNA плавится при более высокой температуре?",
+    "pronunciation": "",
+    "back": "Пары G–C образуют три водородные связи и сильнее стабилизируют двойную спираль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-atp-01",
+    "category": "Scientific English",
+    "front": "ATP hydrolysis",
+    "pronunciation": "/ˌeɪ tiː ˈpiː haɪˈdrɒləsɪs/",
+    "back": "Гидролиз ATP.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-atp-02",
+    "category": "Биохимия",
+    "front": "Главная роль ATP",
+    "pronunciation": "",
+    "back": "Кратковременный перенос энергии и сопряжение экзэргонических и эндэргонических процессов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-buffer-01",
+    "category": "Биохимия",
+    "front": "Что делает буфер?",
+    "pronunciation": "",
+    "back": "Снижает изменение pH, связывая избыток H⁺ или отдавая H⁺ при их недостатке.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
