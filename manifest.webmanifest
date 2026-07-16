@@ -1,11 +1,12 @@
 {
-  "name": "MedBio Trainer 0.2",
+  "name": "MedBio Trainer 0.3",
   "short_name": "MedBio",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#eef3f8",
-  "theme_color": "#0f172a",
+  "background_color": "#07110d",
+  "theme_color": "#07110d",
+  "description": "Личный тренажёр по биологии, анатомии, медицинскому английскому и латыни",
   "icons": [
     {
       "src": "icon-192.svg",
