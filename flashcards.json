@@ -48,5 +48,1245 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "bc-water-01",
+    "category": "Биохимия",
+    "front": "Почему вода полярна?",
+    "pronunciation": "",
+    "back": "Кислород сильнее притягивает общие электроны, поэтому у O возникает δ−, а у H — δ+.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-water-02",
+    "category": "Scientific English",
+    "front": "Hydrogen bond",
+    "pronunciation": "/ˈhaɪdrədʒən bɒnd/",
+    "back": "Водородная связь — слабое взаимодействие между частично заряженными участками молекул.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-water-03",
+    "category": "Биохимия",
+    "front": "Что означает изменение pH на 1?",
+    "pronunciation": "",
+    "back": "Десятикратное изменение концентрации ионов H⁺.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-01",
+    "category": "Scientific English",
+    "front": "Carbohydrate",
+    "pronunciation": "/ˌkɑːbəʊˈhaɪdreɪt/",
+    "back": "Углевод.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-02",
+    "category": "Биохимия",
+    "front": "Запасной полисахарид животных",
+    "pronunciation": "",
+    "back": "Гликоген.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-carb-03",
+    "category": "Биохимия",
+    "front": "Почему гликоген быстро мобилизуется?",
+    "pronunciation": "",
+    "back": "Он сильно разветвлён и имеет много концов цепей для одновременной работы ферментов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-01",
+    "category": "Scientific English",
+    "front": "Phospholipid bilayer",
+    "pronunciation": "/ˌfɒsfəˈlɪpɪd ˈbaɪleɪə/",
+    "back": "Фосфолипидный бислой.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-02",
+    "category": "Биохимия",
+    "front": "Что значит «амфипатическая молекула»?",
+    "pronunciation": "",
+    "back": "Она имеет гидрофильную и гидрофобную части.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-lipid-03",
+    "category": "Биохимия",
+    "front": "Как цис-двойная связь влияет на жирную кислоту?",
+    "pronunciation": "",
+    "back": "Создаёт изгиб, мешает плотной упаковке и повышает текучесть.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-01",
+    "category": "Биохимия",
+    "front": "Пептидная связь",
+    "pronunciation": "",
+    "back": "Ковалентная связь между карбоксильной группой одной аминокислоты и аминогруппой другой.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-02",
+    "category": "Scientific English",
+    "front": "Active site",
+    "pronunciation": "/ˈæktɪv saɪt/",
+    "back": "Активный центр фермента.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-03",
+    "category": "Биохимия",
+    "front": "Что делает фермент с энергией активации?",
+    "pronunciation": "",
+    "back": "Снижает её, не изменяя ΔG реакции и положение равновесия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-protein-04",
+    "category": "Биохимия",
+    "front": "Что обычно сохраняется при денатурации белка?",
+    "pronunciation": "",
+    "back": "Первичная структура и пептидные связи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-01",
+    "category": "Scientific English",
+    "front": "Nucleotide",
+    "pronunciation": "/ˈnjuːkliətaɪd/",
+    "back": "Нуклеотид: основание + пентоза + фосфат.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-02",
+    "category": "Биохимия",
+    "front": "Чем нуклеозид отличается от нуклеотида?",
+    "pronunciation": "",
+    "back": "У нуклеозида нет фосфатной группы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-03",
+    "category": "Биохимия",
+    "front": "Связь между нуклеотидами одной цепи DNA",
+    "pronunciation": "",
+    "back": "Фосфодиэфирная связь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-na-04",
+    "category": "Биохимия",
+    "front": "Почему GC-богатая DNA плавится при более высокой температуре?",
+    "pronunciation": "",
+    "back": "Пары G–C образуют три водородные связи и сильнее стабилизируют двойную спираль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-atp-01",
+    "category": "Scientific English",
+    "front": "ATP hydrolysis",
+    "pronunciation": "/ˌeɪ tiː ˈpiː haɪˈdrɒləsɪs/",
+    "back": "Гидролиз ATP.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-atp-02",
+    "category": "Биохимия",
+    "front": "Главная роль ATP",
+    "pronunciation": "",
+    "back": "Кратковременный перенос энергии и сопряжение экзэргонических и эндэргонических процессов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bc-buffer-01",
+    "category": "Биохимия",
+    "front": "Что делает буфер?",
+    "pronunciation": "",
+    "back": "Снижает изменение pH, связывая избыток H⁺ или отдавая H⁺ при их недостатке.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-01",
+    "category": "Цитология",
+    "front": "Клеточная теория",
+    "pronunciation": "",
+    "back": "Все организмы состоят из клеток; клетка — основная единица живого; новые клетки возникают из клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-02",
+    "category": "Scientific English",
+    "front": "Resolution",
+    "pronunciation": "/ˌrezəˈluːʃən/",
+    "back": "Разрешение микроскопа — минимальное расстояние между различимыми точками.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-03",
+    "category": "Цитология",
+    "front": "TEM и SEM",
+    "pronunciation": "",
+    "back": "TEM показывает внутреннее ультрастроение; SEM — поверхность объекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-04",
+    "category": "Цитология",
+    "front": "Рибосомы прокариот и эукариот",
+    "pronunciation": "",
+    "back": "Прокариоты — 70S; цитозоль эукариот — 80S.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-05",
+    "category": "Scientific English",
+    "front": "Fluid mosaic model",
+    "pronunciation": "/ˈfluːɪd məˈzeɪɪk ˈmɒdəl/",
+    "back": "Жидкостно-мозаичная модель мембраны.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-06",
+    "category": "Цитология",
+    "front": "Функция холестерина в мембране",
+    "pronunciation": "",
+    "back": "Буферизует текучесть: снижает избыточную текучесть при тепле и мешает застыванию при холоде.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-07",
+    "category": "Цитология",
+    "front": "Простая и облегчённая диффузия",
+    "pronunciation": "",
+    "back": "Обе идут по градиенту; облегчённая требует канала или переносчика.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-08",
+    "category": "Scientific English",
+    "front": "Tonicity",
+    "pronunciation": "/təʊˈnɪsɪti/",
+    "back": "Тоничность — влияние раствора на движение воды и объём клетки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-09",
+    "category": "Цитология",
+    "front": "Na⁺/K⁺-ATPase",
+    "pronunciation": "",
+    "back": "За цикл выводит 3 Na⁺ и вводит 2 K⁺ с затратой ATP.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-10",
+    "category": "Цитология",
+    "front": "Эухроматин",
+    "pronunciation": "",
+    "back": "Менее уплотнённый хроматин, обычно более транскрипционно активный.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-11",
+    "category": "Scientific English",
+    "front": "Nucleolus",
+    "pronunciation": "/njuːˈkliːələs/",
+    "back": "Ядрышко — место синтеза rRNA и сборки рибосомных субъединиц.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-12",
+    "category": "Цитология",
+    "front": "Свободные и связанные рибосомы",
+    "pronunciation": "",
+    "back": "Свободные синтезируют цитозольные белки; связанные с ER — секретируемые и мембранные.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-13",
+    "category": "Цитология",
+    "front": "Путь секретируемого белка",
+    "pronunciation": "",
+    "back": "Рибосома на ER → ER → пузырёк → Гольджи → секреторный пузырёк → экзоцитоз.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-14",
+    "category": "Scientific English",
+    "front": "Golgi apparatus",
+    "pronunciation": "/ˈɡɒldʒi ˌæpəˈreɪtəs/",
+    "back": "Аппарат Гольджи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-15",
+    "category": "Цитология",
+    "front": "Лизосома",
+    "pronunciation": "",
+    "back": "Органоид с кислыми гидролазами для внутриклеточного расщепления.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-16",
+    "category": "Цитология",
+    "front": "Пероксисома",
+    "pronunciation": "",
+    "back": "Окисляет жирные кислоты и обезвреживает H₂O₂ с помощью каталазы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-17",
+    "category": "Цитология",
+    "front": "Компоненты цитоскелета",
+    "pronunciation": "",
+    "back": "Актиновые филаменты, промежуточные филаменты, микротрубочки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-18",
+    "category": "Scientific English",
+    "front": "Microtubule",
+    "pronunciation": "/ˌmaɪkrəʊˈtjuːbjuːl/",
+    "back": "Микротрубочка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-19",
+    "category": "Цитология",
+    "front": "Кинезин, динеин и миозин",
+    "pronunciation": "",
+    "back": "Кинезин и динеин движутся по микротрубочкам; миозин — по актину.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-20",
+    "category": "Цитология",
+    "front": "Строение аксонемы реснички",
+    "pronunciation": "",
+    "back": "Обычно схема 9+2.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-21",
+    "category": "Цитология",
+    "front": "Фазы клеточного цикла",
+    "pronunciation": "",
+    "back": "G₁, S, G₂, M; возможен выход в G₀.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-22",
+    "category": "Scientific English",
+    "front": "Cell-cycle checkpoint",
+    "pronunciation": "/sel ˈsaɪkəl ˈtʃekpɔɪnt/",
+    "back": "Контрольная точка клеточного цикла.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-23",
+    "category": "Цитология",
+    "front": "Циклины и CDK",
+    "pronunciation": "",
+    "back": "Циклины активируют CDK и обеспечивают последовательность событий клеточного цикла.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-24",
+    "category": "Цитология",
+    "front": "Апоптоз и некроз",
+    "pronunciation": "",
+    "back": "Апоптоз программируем и обычно не вызывает воспаления; некроз связан с повреждением и выходом содержимого.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-01",
+    "category": "Генетика",
+    "front": "Генотип и фенотип",
+    "pronunciation": "",
+    "back": "Генотип — набор аллелей; фенотип — наблюдаемые свойства, зависящие от генотипа и среды.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-02",
+    "category": "Scientific English",
+    "front": "Allele",
+    "pronunciation": "/əˈliːl/",
+    "back": "Аллель — вариант одного гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-03",
+    "category": "Генетика",
+    "front": "Расщепление Aa × Aa",
+    "pronunciation": "",
+    "back": "Генотипы 1:2:1; фенотипы 3:1 при полном доминировании.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-04",
+    "category": "Генетика",
+    "front": "Анализирующее скрещивание",
+    "pronunciation": "",
+    "back": "Скрещивание особи с доминантным фенотипом с гомозиготой aa.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-05",
+    "category": "Scientific English",
+    "front": "Testcross",
+    "pronunciation": "/ˈtestkrɒs/",
+    "back": "Анализирующее скрещивание.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-06",
+    "category": "Генетика",
+    "front": "Правило умножения вероятностей",
+    "pronunciation": "",
+    "back": "Для независимых событий вероятности перемножаются.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-07",
+    "category": "Генетика",
+    "front": "Неполное доминирование",
+    "pronunciation": "",
+    "back": "Гетерозигота имеет промежуточный фенотип.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-08",
+    "category": "Генетика",
+    "front": "Кодоминирование",
+    "pronunciation": "",
+    "back": "Оба аллеля проявляются одновременно, например IᴬIᴮ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-09",
+    "category": "Генетика",
+    "front": "Гаметы AaBb",
+    "pronunciation": "",
+    "back": "AB, Ab, aB, ab при независимом наследовании.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-10",
+    "category": "Scientific English",
+    "front": "Independent assortment",
+    "pronunciation": "/ˌɪndɪˈpendənt əˈsɔːtmənt/",
+    "back": "Независимое расхождение аллелей разных генов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-11",
+    "category": "Генетика",
+    "front": "Фаза цис и транс",
+    "pronunciation": "",
+    "back": "Цис: AB/ab; транс: Ab/aB.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-12",
+    "category": "Генетика",
+    "front": "Частота рекомбинации",
+    "pronunciation": "",
+    "back": "Рекомбинанты / всё потомство × 100%.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-13",
+    "category": "Scientific English",
+    "front": "Genetic linkage",
+    "pronunciation": "/dʒəˈnetɪk ˈlɪŋkɪdʒ/",
+    "back": "Генетическое сцепление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-14",
+    "category": "Генетика",
+    "front": "1 сантиморган",
+    "pronunciation": "",
+    "back": "Приблизительно 1% рекомбинации.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-15",
+    "category": "Генетика",
+    "front": "X-рецессивное наследование",
+    "pronunciation": "",
+    "back": "Чаще болеют мужчины; нет передачи отец → сын.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-16",
+    "category": "Scientific English",
+    "front": "Carrier",
+    "pronunciation": "/ˈkæriə/",
+    "back": "Носитель рецессивного аллеля.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-17",
+    "category": "Генетика",
+    "front": "Митохондриальное наследование",
+    "pronunciation": "",
+    "back": "Передача через мать; больной отец обычно не передаёт признак.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-18",
+    "category": "Генетика",
+    "front": "Эпистаз",
+    "pronunciation": "",
+    "back": "Аллели одного гена подавляют проявление другого гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-19",
+    "category": "Scientific English",
+    "front": "Pleiotropy",
+    "pronunciation": "/plaɪˈɒtrəpi/",
+    "back": "Плейотропия — влияние одного гена на несколько признаков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-20",
+    "category": "Генетика",
+    "front": "Комплементарность 9:7",
+    "pronunciation": "",
+    "back": "Для фенотипа нужны доминантные аллели двух разных генов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-21",
+    "category": "Генетика",
+    "front": "Харди—Вайнберг",
+    "pronunciation": "",
+    "back": "p + q = 1; p² + 2pq + q² = 1.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-22",
+    "category": "Scientific English",
+    "front": "Allele frequency",
+    "pronunciation": "/əˈliːl ˈfriːkwənsi/",
+    "back": "Частота аллеля в популяции.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-23",
+    "category": "Генетика",
+    "front": "Частота носителей",
+    "pronunciation": "",
+    "back": "Для рецессивного аллеля при равновесии — 2pq.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "gen-card-24",
+    "category": "Генетика",
+    "front": "Нерасхождение",
+    "pronunciation": "",
+    "back": "Нарушение расхождения гомологов или сестринских хроматид, приводящее к анеуплоидии.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-01",
+    "category": "Молекулярная биология",
+    "front": "Антипараллельность DNA",
+    "pronunciation": "",
+    "back": "Одна цепь идёт 5′→3′, другая — 3′→5′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-02",
+    "category": "Scientific English",
+    "front": "Double helix",
+    "pronunciation": "/ˌdʌbəl ˈhiːlɪks/",
+    "back": "Двойная спираль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-03",
+    "category": "Молекулярная биология",
+    "front": "Правила Чаргаффа",
+    "pronunciation": "",
+    "back": "В двуцепочечной DNA A=T и G=C.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-04",
+    "category": "Молекулярная биология",
+    "front": "Нуклеосома",
+    "pronunciation": "",
+    "back": "DNA, намотанная на гистоновый октамер.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-05",
+    "category": "Молекулярная биология",
+    "front": "Направление синтеза DNA",
+    "pronunciation": "",
+    "back": "Всегда 5′→3′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-06",
+    "category": "Scientific English",
+    "front": "Replication fork",
+    "pronunciation": "/ˌreplɪˈkeɪʃən fɔːk/",
+    "back": "Репликационная вилка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-07",
+    "category": "Молекулярная биология",
+    "front": "Фрагменты Оказаки",
+    "pronunciation": "",
+    "back": "Короткие участки новой DNA на отстающей цепи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-08",
+    "category": "Молекулярная биология",
+    "front": "Функция теломеразы",
+    "pronunciation": "",
+    "back": "Удлиняет теломеры, используя собственную RNA-матрицу.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-09",
+    "category": "Молекулярная биология",
+    "front": "Матричная цепь DNA",
+    "pronunciation": "",
+    "back": "RNA-полимераза читает её 3′→5′.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-10",
+    "category": "Scientific English",
+    "front": "Promoter",
+    "pronunciation": "/prəˈməʊtə/",
+    "back": "Промотор — участок начала транскрипции.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-11",
+    "category": "Молекулярная биология",
+    "front": "Процессинг pre-mRNA",
+    "pronunciation": "",
+    "back": "5′-кэп, поли-A-хвост и сплайсинг.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-12",
+    "category": "Молекулярная биология",
+    "front": "Альтернативный сплайсинг",
+    "pronunciation": "",
+    "back": "Получение разных mRNA из одного первичного транскрипта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-13",
+    "category": "Молекулярная биология",
+    "front": "Старт-кодон",
+    "pronunciation": "",
+    "back": "AUG, кодирует метионин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-14",
+    "category": "Scientific English",
+    "front": "Reading frame",
+    "pronunciation": "/ˈriːdɪŋ freɪm/",
+    "back": "Рамка считывания.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-15",
+    "category": "Молекулярная биология",
+    "front": "Участки рибосомы A, P, E",
+    "pronunciation": "",
+    "back": "A — вход tRNA, P — растущая цепь, E — выход.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-16",
+    "category": "Молекулярная биология",
+    "front": "Аминоацил-tRNA-синтетаза",
+    "pronunciation": "",
+    "back": "Присоединяет правильную аминокислоту к tRNA.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-17",
+    "category": "Молекулярная биология",
+    "front": "lac-оперон работает максимально когда…",
+    "pronunciation": "",
+    "back": "Есть лактоза и мало глюкозы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-18",
+    "category": "Scientific English",
+    "front": "Repressor",
+    "pronunciation": "/rɪˈpresə/",
+    "back": "Репрессор.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-19",
+    "category": "Молекулярная биология",
+    "front": "Триптофан в trp-опероне",
+    "pronunciation": "",
+    "back": "Корепрессор, активирующий репрессор.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-20",
+    "category": "Молекулярная биология",
+    "front": "Ацетилирование гистонов",
+    "pronunciation": "",
+    "back": "Обычно делает хроматин более доступным.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-21",
+    "category": "Scientific English",
+    "front": "Gene silencing",
+    "pronunciation": "/dʒiːn ˈsaɪlənsɪŋ/",
+    "back": "Подавление экспрессии гена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-22",
+    "category": "Молекулярная биология",
+    "front": "Действие miRNA",
+    "pronunciation": "",
+    "back": "Подавление трансляции или деградация mRNA.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-23",
+    "category": "Молекулярная биология",
+    "front": "Нонсенс-мутация",
+    "pronunciation": "",
+    "back": "Замена, создающая преждевременный стоп-кодон.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-24",
+    "category": "Scientific English",
+    "front": "Frameshift mutation",
+    "pronunciation": "/ˈfreɪmʃɪft mjuːˈteɪʃən/",
+    "back": "Мутация со сдвигом рамки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-25",
+    "category": "Молекулярная биология",
+    "front": "Три стадии PCR",
+    "pronunciation": "",
+    "back": "Денатурация, отжиг, элонгация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-26",
+    "category": "Scientific English",
+    "front": "Annealing",
+    "pronunciation": "/əˈniːlɪŋ/",
+    "back": "Отжиг праймеров.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-27",
+    "category": "Молекулярная биология",
+    "front": "Почему DNA идёт к аноду?",
+    "pronunciation": "",
+    "back": "Фосфатный остов придаёт ей отрицательный заряд.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "mol-card-28",
+    "category": "Молекулярная биология",
+    "front": "Отрицательный контроль PCR",
+    "pronunciation": "",
+    "back": "Показывает наличие или отсутствие загрязнения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-01",
+    "category": "Ботаника",
+    "front": "Апикальная меристема",
+    "pronunciation": "",
+    "back": "Обеспечивает первичный рост корня и побега в длину.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-02",
+    "category": "Scientific English",
+    "front": "Meristem",
+    "pronunciation": "/ˈmerɪstem/",
+    "back": "Меристема — ткань делящихся клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-03",
+    "category": "Ботаника",
+    "front": "Колленхима и склеренхима",
+    "pronunciation": "",
+    "back": "Колленхима даёт гибкую опору; склеренхима — жёсткую.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-04",
+    "category": "Ботаника",
+    "front": "Поясок Каспари",
+    "pronunciation": "",
+    "back": "Субериновый барьер эндодермы, блокирующий апопласт.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-05",
+    "category": "Scientific English",
+    "front": "Root hair",
+    "pronunciation": "/ruːt heə/",
+    "back": "Корневой волосок.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-06",
+    "category": "Ботаника",
+    "front": "Микориза",
+    "pronunciation": "",
+    "back": "Симбиоз корня и гриба, увеличивающий поглощение воды и минеральных веществ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-07",
+    "category": "Ботаника",
+    "front": "Сосудистый камбий",
+    "pronunciation": "",
+    "back": "Образует вторичную ксилему внутрь и вторичную флоэму наружу.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-08",
+    "category": "Scientific English",
+    "front": "Annual ring",
+    "pronunciation": "/ˈænjuəl rɪŋ/",
+    "back": "Годичное кольцо.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-09",
+    "category": "Ботаника",
+    "front": "Палисадный мезофилл",
+    "pronunciation": "",
+    "back": "Слой листа с большим числом хлоропластов и интенсивным фотосинтезом.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-10",
+    "category": "Scientific English",
+    "front": "Guard cell",
+    "pronunciation": "/ɡɑːd sel/",
+    "back": "Замыкающая клетка устьица.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-11",
+    "category": "Ботаника",
+    "front": "Открывание устьиц",
+    "pronunciation": "",
+    "back": "Вход K⁺ снижает водный потенциал, вода входит, тургор растёт.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-12",
+    "category": "Ботаника",
+    "front": "Теория когезии-натяжения",
+    "pronunciation": "",
+    "back": "Транспирация создаёт отрицательное давление, поднимающее воду по ксилеме.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-13",
+    "category": "Scientific English",
+    "front": "Source and sink",
+    "pronunciation": "/sɔːs ænd sɪŋk/",
+    "back": "Источник и сток во флоэмном транспорте.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-14",
+    "category": "Ботаника",
+    "front": "Ситовидный элемент",
+    "pronunciation": "",
+    "back": "Живая проводящая клетка флоэмы, обычно без ядра.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-15",
+    "category": "Ботаника",
+    "front": "Rubisco",
+    "pronunciation": "",
+    "back": "Фермент фиксации CO₂ в цикле Кальвина.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-16",
+    "category": "Scientific English",
+    "front": "Photorespiration",
+    "pronunciation": "/ˌfəʊtəʊˌrespəˈreɪʃən/",
+    "back": "Фотореспирация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-17",
+    "category": "Ботаника",
+    "front": "C4-растения",
+    "pronunciation": "",
+    "back": "Пространственно разделяют первичную фиксацию CO₂ и цикл Кальвина.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-18",
+    "category": "Ботаника",
+    "front": "CAM-растения",
+    "pronunciation": "",
+    "back": "Открывают устьица ночью и запасают CO₂ в органических кислотах.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-19",
+    "category": "Ботаника",
+    "front": "Ауксин",
+    "pronunciation": "",
+    "back": "Усиливает растяжение клеток и участвует в тропизмах.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-20",
+    "category": "Scientific English",
+    "front": "Phototropism",
+    "pronunciation": "/ˌfəʊtəʊˈtrəʊpɪzəm/",
+    "back": "Фототропизм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-21",
+    "category": "Ботаника",
+    "front": "Абсцизовая кислота",
+    "pronunciation": "",
+    "back": "Закрывает устьица при засухе и поддерживает покой семян.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-22",
+    "category": "Ботаника",
+    "front": "Этилен",
+    "pronunciation": "",
+    "back": "Газообразный гормон созревания плодов и старения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-23",
+    "category": "Ботаника",
+    "front": "Чередование поколений",
+    "pronunciation": "",
+    "back": "Чередование диплоидного спорофита и гаплоидного гаметофита.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-24",
+    "category": "Scientific English",
+    "front": "Double fertilization",
+    "pronunciation": "/ˌdʌbəl ˌfɜːtɪlaɪˈzeɪʃən/",
+    "back": "Двойное оплодотворение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-25",
+    "category": "Ботаника",
+    "front": "Спора и гамета",
+    "pronunciation": "",
+    "back": "Спора прорастает без слияния; гамета участвует в оплодотворении.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-26",
+    "category": "Ботаника",
+    "front": "Эндосперм покрытосеменных",
+    "pronunciation": "",
+    "back": "Обычно триплоидная питательная ткань семени.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-27",
+    "category": "Ботаника",
+    "front": "Плазмодесмы",
+    "pronunciation": "",
+    "back": "Каналы, соединяющие цитоплазму соседних растительных клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-28",
+    "category": "Scientific English",
+    "front": "Transpiration",
+    "pronunciation": "/ˌtrænspɪˈreɪʃən/",
+    "back": "Испарение воды растением, преимущественно через устьица.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
