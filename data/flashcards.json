@@ -248,5 +248,245 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "cyt-card-01",
+    "category": "Цитология",
+    "front": "Клеточная теория",
+    "pronunciation": "",
+    "back": "Все организмы состоят из клеток; клетка — основная единица живого; новые клетки возникают из клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-02",
+    "category": "Scientific English",
+    "front": "Resolution",
+    "pronunciation": "/ˌrezəˈluːʃən/",
+    "back": "Разрешение микроскопа — минимальное расстояние между различимыми точками.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-03",
+    "category": "Цитология",
+    "front": "TEM и SEM",
+    "pronunciation": "",
+    "back": "TEM показывает внутреннее ультрастроение; SEM — поверхность объекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-04",
+    "category": "Цитология",
+    "front": "Рибосомы прокариот и эукариот",
+    "pronunciation": "",
+    "back": "Прокариоты — 70S; цитозоль эукариот — 80S.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-05",
+    "category": "Scientific English",
+    "front": "Fluid mosaic model",
+    "pronunciation": "/ˈfluːɪd məˈzeɪɪk ˈmɒdəl/",
+    "back": "Жидкостно-мозаичная модель мембраны.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-06",
+    "category": "Цитология",
+    "front": "Функция холестерина в мембране",
+    "pronunciation": "",
+    "back": "Буферизует текучесть: снижает избыточную текучесть при тепле и мешает застыванию при холоде.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-07",
+    "category": "Цитология",
+    "front": "Простая и облегчённая диффузия",
+    "pronunciation": "",
+    "back": "Обе идут по градиенту; облегчённая требует канала или переносчика.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-08",
+    "category": "Scientific English",
+    "front": "Tonicity",
+    "pronunciation": "/təʊˈnɪsɪti/",
+    "back": "Тоничность — влияние раствора на движение воды и объём клетки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-09",
+    "category": "Цитология",
+    "front": "Na⁺/K⁺-ATPase",
+    "pronunciation": "",
+    "back": "За цикл выводит 3 Na⁺ и вводит 2 K⁺ с затратой ATP.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-10",
+    "category": "Цитология",
+    "front": "Эухроматин",
+    "pronunciation": "",
+    "back": "Менее уплотнённый хроматин, обычно более транскрипционно активный.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-11",
+    "category": "Scientific English",
+    "front": "Nucleolus",
+    "pronunciation": "/njuːˈkliːələs/",
+    "back": "Ядрышко — место синтеза rRNA и сборки рибосомных субъединиц.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-12",
+    "category": "Цитология",
+    "front": "Свободные и связанные рибосомы",
+    "pronunciation": "",
+    "back": "Свободные синтезируют цитозольные белки; связанные с ER — секретируемые и мембранные.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-13",
+    "category": "Цитология",
+    "front": "Путь секретируемого белка",
+    "pronunciation": "",
+    "back": "Рибосома на ER → ER → пузырёк → Гольджи → секреторный пузырёк → экзоцитоз.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-14",
+    "category": "Scientific English",
+    "front": "Golgi apparatus",
+    "pronunciation": "/ˈɡɒldʒi ˌæpəˈreɪtəs/",
+    "back": "Аппарат Гольджи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-15",
+    "category": "Цитология",
+    "front": "Лизосома",
+    "pronunciation": "",
+    "back": "Органоид с кислыми гидролазами для внутриклеточного расщепления.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-16",
+    "category": "Цитология",
+    "front": "Пероксисома",
+    "pronunciation": "",
+    "back": "Окисляет жирные кислоты и обезвреживает H₂O₂ с помощью каталазы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-17",
+    "category": "Цитология",
+    "front": "Компоненты цитоскелета",
+    "pronunciation": "",
+    "back": "Актиновые филаменты, промежуточные филаменты, микротрубочки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-18",
+    "category": "Scientific English",
+    "front": "Microtubule",
+    "pronunciation": "/ˌmaɪkrəʊˈtjuːbjuːl/",
+    "back": "Микротрубочка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-19",
+    "category": "Цитология",
+    "front": "Кинезин, динеин и миозин",
+    "pronunciation": "",
+    "back": "Кинезин и динеин движутся по микротрубочкам; миозин — по актину.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-20",
+    "category": "Цитология",
+    "front": "Строение аксонемы реснички",
+    "pronunciation": "",
+    "back": "Обычно схема 9+2.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-21",
+    "category": "Цитология",
+    "front": "Фазы клеточного цикла",
+    "pronunciation": "",
+    "back": "G₁, S, G₂, M; возможен выход в G₀.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-22",
+    "category": "Scientific English",
+    "front": "Cell-cycle checkpoint",
+    "pronunciation": "/sel ˈsaɪkəl ˈtʃekpɔɪnt/",
+    "back": "Контрольная точка клеточного цикла.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-23",
+    "category": "Цитология",
+    "front": "Циклины и CDK",
+    "pronunciation": "",
+    "back": "Циклины активируют CDK и обеспечивают последовательность событий клеточного цикла.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "cyt-card-24",
+    "category": "Цитология",
+    "front": "Апоптоз и некроз",
+    "pronunciation": "",
+    "back": "Апоптоз программируем и обычно не вызывает воспаления; некроз связан с повреждением и выходом содержимого.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
