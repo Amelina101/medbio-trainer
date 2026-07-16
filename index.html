@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MedBio" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>MedBio Trainer</title>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>MedBio Trainer</h1>
+      <p>Биология • English • Latin • Анатомия</p>
+    </div>
+    <button id="installBtn" class="ghost hidden">Установить</button>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero card">
+        <h2>Занятие на сегодня</h2>
+        <div class="grid-3">
+          <div><strong>40 мин</strong><span>Теория</span></div>
+          <div><strong>15 мин</strong><span>Карточки</span></div>
+          <div><strong>15 мин</strong><span>Тест</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>План</h3>
+        <ol>
+          <li>Изучи один урок.</li>
+          <li>Повтори 10 карточек.</li>
+          <li>Выполни короткий тест.</li>
+          <li>Добавь новые термины.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="lessons" class="page">
+      <h2>Уроки</h2>
+      <div id="lessonList"></div>
+    </section>
+
+    <section id="cards" class="page">
+      <h2>Карточки</h2>
+      <div class="card">
+        <label>Категория</label>
+        <select id="cardCategory">
+          <option>Биология</option>
+          <option>Medical English</option>
+          <option>Latin</option>
+          <option>Анатомия</option>
+        </select>
+        <label>Вопрос / термин</label>
+        <input id="cardFront" placeholder="Например: Mitochondrion" />
+        <label>Ответ</label>
+        <textarea id="cardBack" placeholder="Перевод, объяснение, произношение"></textarea>
+        <button id="addCardBtn">Добавить карточку</button>
+      </div>
+
+      <div class="card flashcard" id="flashcard">
+        <div class="tag" id="flashCategory"></div>
+        <h3 id="flashFront">Карточек пока нет</h3>
+        <p id="flashBack" class="hidden"></p>
+        <button id="showAnswerBtn">Показать ответ</button>
+        <div class="answer-actions hidden" id="answerActions">
+          <button data-score="again" class="danger">Не знаю</button>
+          <button data-score="hard">Трудно</button>
+          <button data-score="easy" class="success">Знаю</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="atlas" class="page">
+      <h2>Анатомический атлас</h2>
+      <div class="card">
+        <p>Открывай 3D-анатомию и изучай структуры на русском, английском и латыни.</p>
+        <a class="button-link" target="_blank" href="https://human.biodigital.com/">BioDigital Human</a>
+        <a class="button-link" target="_blank" href="https://www.kenhub.com/">Kenhub</a>
+        <a class="button-link" target="_blank" href="https://anatomylearning.com/">Anatomy Learning</a>
+      </div>
+    </section>
+
+    <section id="quiz" class="page">
+      <h2>Тест</h2>
+      <div id="quizBox" class="card"></div>
+      <div id="quizResult" class="card hidden"></div>
+    </section>
+
+    <section id="progress" class="page">
+      <h2>Прогресс</h2>
+      <div class="grid-2">
+        <div class="metric card"><strong id="totalCards">0</strong><span>Карточек</span></div>
+        <div class="metric card"><strong id="knownCards">0</strong><span>Выучено</span></div>
+        <div class="metric card"><strong id="testsDone">0</strong><span>Тестов</span></div>
+        <div class="metric card"><strong id="bestScore">0%</strong><span>Лучший результат</span></div>
+      </div>
+      <button id="resetBtn" class="danger">Сбросить прогресс</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-page="home" class="active">Главная</button>
+    <button data-page="lessons">Уроки</button>
+    <button data-page="cards">Карточки</button>
+    <button data-page="atlas">Атлас</button>
+    <button data-page="quiz">Тест</button>
+    <button data-page="progress">Прогресс</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
