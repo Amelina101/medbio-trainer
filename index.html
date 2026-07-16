@@ -72,16 +72,11 @@
 
     <section id="lessons" class="page">
       <div class="page-heading">
-        <div><span class="section-label">Учебная база</span><h2>Уроки</h2></div>
-        <select id="lessonFilter">
-          <option value="all">Все</option>
-          <option value="cell">Биология</option>
-          <option value="anatomy">Анатомия</option>
-          <option value="genetics">Генетика</option>
-          <option value="physiology">Физиология</option>
-        </select>
+        <div><span class="section-label">Учебная база</span><h2 id="lessonsHeading">Модули</h2></div>
+        <button id="modulesBack" class="text-button hidden">← К модулям</button>
       </div>
-      <div id="lessonList" class="lesson-list"></div>
+      <div id="moduleList" class="lesson-list"></div>
+      <div id="lessonList" class="lesson-list hidden"></div>
     </section>
 
     <section id="lessonView" class="page">

@@ -2,7 +2,8 @@
 const STORAGE_KEY="medbio_v03";
 const $=id=>document.getElementById(id);
 function plural(n,forms){n=Math.abs(Number(n))%100;const n1=n%10;if(n>10&&n<20)return forms[2];if(n1>1&&n1<5)return forms[1];if(n1===1)return forms[0];return forms[2];}
-let lessons=[],seedCards=[],quizBank=[]; // учебные данные грузятся из data/*.json
+let lessons=[],seedCards=[],quizBank=[],modules=[]; // учебные данные грузятся из data/*.json
+let activeModuleId=null; // null = показываем каталог модулей
 const defaults={cards:[],completedLessons:[],sessions:[],quizHistory:[]};
 const DAILY_TARGET_MIN=30;                 // цель на день, минут
 const MINUTES_PER={lesson:15,quiz:5,card:2}; // оценка минут за одно действие
@@ -93,7 +94,8 @@ function todayActivity(){
     testToday:todays.some(s=>s.type==="quiz"),
     cardToday:todays.some(s=>s.type==="card")};
 }
-function goTo(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page==="progress")renderProgress();if(page==="cards")buildDeck();if(page==="quiz")startQuiz();scrollTo({top:0,behavior:"smooth"})}
+function activatePage(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));scrollTo({top:0,behavior:"smooth"})}
+function goTo(page){activatePage(page);if(page==="lessons"){activeModuleId=null;renderLessons()}if(page==="progress")renderProgress();if(page==="cards")buildDeck();if(page==="quiz")startQuiz()}
 document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>goTo(b.dataset.page));
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>goTo(b.dataset.go));
 
@@ -108,18 +110,43 @@ function renderHome(){
   $("dailyMinutes").textContent=day.minutes;
   $("dailyBar").style.width=day.percent+"%";
 }
+function renderModules(){
+  const box=$("moduleList");box.innerHTML="";
+  const done=Array.isArray(state&&state.completedLessons)?state.completedLessons:[];
+  [...modules].sort((a,b)=>(a.order||0)-(b.order||0)).forEach(m=>{
+    const inModule=lessons.filter(l=>l.moduleId===m.id);
+    const total=inModule.length,completed=inModule.filter(l=>done.includes(l.id)).length;
+    const percent=total?Math.round(completed/total*100):0;
+    const meta=total
+      ?`${total} ${plural(total,["урок","урока","уроков"])} • завершено ${completed} • ${percent}%`
+      :"Материалы готовятся";
+    const d=document.createElement("button");d.className="lesson-card glass-card";
+    d.innerHTML=`<div class="lesson-thumb"></div><div><h3>${m.title}</h3><p>${m.description}</p><p class="module-meta">${meta}</p></div><div class="lesson-arrow">›</div>`;
+    d.onclick=()=>openModule(m.id);box.appendChild(d);
+  });
+}
+function openModule(id){activeModuleId=id;renderLessons()}
+function backToModules(){activeModuleId=null;renderLessons()}
 function renderLessons(){
-  const filter=document.getElementById("lessonFilter").value;
-  const box=document.getElementById("lessonList");box.innerHTML="";
-  lessons.filter(l=>filter==="all"||l.category===filter).forEach(l=>{
+  const catalog=activeModuleId===null;
+  $("moduleList").classList.toggle("hidden",!catalog);
+  $("lessonList").classList.toggle("hidden",catalog);
+  $("modulesBack").classList.toggle("hidden",catalog);
+  if(catalog){$("lessonsHeading").textContent="Модули";renderModules();return}
+  const m=modules.find(x=>x.id===activeModuleId);
+  $("lessonsHeading").textContent=m?m.title:"Уроки";
+  const box=$("lessonList");box.innerHTML="";
+  const inModule=lessons.filter(l=>l.moduleId===activeModuleId).sort((a,b)=>(a.order||0)-(b.order||0));
+  if(!inModule.length){box.innerHTML=`<p class="empty-note">Материалы готовятся</p>`;return}
+  inModule.forEach(l=>{
     const d=document.createElement("button");d.className="lesson-card glass-card";
     d.innerHTML=`<div class="lesson-thumb"></div><div><h3>${l.title}</h3><p>${l.level} • ${l.duration} минут ${state.completedLessons.includes(l.id)?"• завершён":""}</p></div><div class="lesson-arrow">›</div>`;
     d.onclick=()=>openLesson(l.id);box.appendChild(d);
   });
 }
-$("lessonFilter").onchange=renderLessons;
+$("modulesBack").onclick=backToModules;
 function openLesson(id){activeLessonId=id;$("lessonArticle").innerHTML=lessons.find(l=>l.id===id).content;goTo("lessonView")}
-$("backToLessons").onclick=()=>goTo("lessons");
+$("backToLessons").onclick=()=>{activatePage("lessons");renderLessons()}; // возврат к урокам выбранного модуля
 $("completeLessonBtn").onclick=()=>{if(activeLessonId&&!state.completedLessons.includes(activeLessonId)){state.completedLessons.push(activeLessonId);state.sessions.push({date:todayStr(),type:"lesson"});save();renderLessons();renderHome();renderProgress()}alert("Урок отмечен как завершённый.")};
 
 function buildDeck(){
@@ -196,11 +223,12 @@ async function fetchJSON(url){
   catch(e){console.warn("MedBio: не удалось загрузить",url,e);return[];}
 }
 async function loadData(){
-  const [l,c,q]=await Promise.all([
+  const [l,c,q,m]=await Promise.all([
     fetchJSON("./data/lessons.json"),
     fetchJSON("./data/flashcards.json"),
-    fetchJSON("./data/tests.json")
+    fetchJSON("./data/tests.json"),
+    fetchJSON("./data/modules.json")
   ]);
-  lessons=l;seedCards=c;quizBank=q;
+  lessons=l;seedCards=c;quizBank=q;modules=m;
 }
 (async()=>{ await loadData(); state=load(); renderAll(); })();
