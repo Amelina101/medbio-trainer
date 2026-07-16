@@ -1,4 +1,4 @@
-# MedBio Trainer 0.3
+# MedBio Trainer 0.3.1
 
 Версия в тёмном ботаническом стиле.
 
@@ -13,3 +13,6 @@
 ## Обновление
 Загрузите 8 файлов в существующий репозиторий и подтвердите замену:
 index.html, styles.css, app.js, manifest.webmanifest, sw.js, icon-192.svg, icon-512.svg, README.md.
+
+
+Исправлено имя на главном экране: Амелина.
