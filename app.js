@@ -2,39 +2,18 @@
 const STORAGE_KEY="medbio_v03";
 const $=id=>document.getElementById(id);
 function plural(n,forms){n=Math.abs(Number(n))%100;const n1=n%10;if(n>10&&n<20)return forms[2];if(n1>1&&n1<5)return forms[1];if(n1===1)return forms[0];return forms[2];}
-const lessons=[
-{id:"cell-membrane",category:"cell",title:"Клеточная мембрана",level:"Биология",duration:20,content:`<h2>Клеточная мембрана</h2><p><b>Цель:</b> понять строение мембраны и механизмы транспорта веществ.</p><h3>Основные компоненты</h3><table><tr><th>Компонент</th><th>Функция</th></tr><tr><td>Фосфолипиды</td><td>Образуют бислой</td></tr><tr><td>Белки</td><td>Транспорт и рецепция</td></tr><tr><td>Холестерин</td><td>Регулирует текучесть</td></tr></table><p><b>Cell membrane</b> /sel ˈmem.breɪn/ — клеточная мембрана.</p>`},
-{id:"mitochondria",category:"cell",title:"Митохондрии",level:"Биология",duration:20,content:`<h2>Митохондрии</h2><p>Митохондрии участвуют в клеточном дыхании и синтезе ATP.</p><ul><li>наружная мембрана;</li><li>внутренняя мембрана;</li><li>кристы;</li><li>матрикс.</li></ul><p><b>Mitochondrion</b> /ˌmaɪ.təˈkɒn.dri.ən/ — митохондрия.</p>`},
-{id:"mitosis-meiosis",category:"genetics",title:"Митоз и мейоз",level:"Генетика",duration:30,content:`<h2>Митоз и мейоз</h2><p><b>Митоз</b> сохраняет число хромосом. <b>Мейоз</b> уменьшает его вдвое.</p><table><tr><th>Признак</th><th>Митоз</th><th>Мейоз</th></tr><tr><td>Делений</td><td>1</td><td>2</td></tr><tr><td>Клеток</td><td>2</td><td>4</td></tr><tr><td>Кроссинговер</td><td>Нет</td><td>Есть</td></tr></table>`},
-{id:"heart",category:"anatomy",title:"Сердце: камеры и клапаны",level:"Анатомия",duration:25,content:`<h2>Сердце</h2><p><b>Heart</b> /hɑːrt/ — сердце. <b>Cor, cordis n.</b></p><p>Сердце состоит из двух предсердий и двух желудочков.</p><ul><li>трёхстворчатый клапан;</li><li>митральный клапан;</li><li>клапан аорты;</li><li>клапан лёгочного ствола.</li></ul>`},
-{id:"blood-flow",category:"physiology",title:"Круги кровообращения",level:"Физиология",duration:25,content:`<h2>Круги кровообращения</h2><p>Большой круг начинается в левом желудочке и заканчивается в правом предсердии.</p><p>Малый круг начинается в правом желудочке и заканчивается в левом предсердии.</p>`}
-];
-const seedCards=[
-{id:"c1",category:"Medical English",front:"Heart",pronunciation:"/hɑːrt/",back:"Сердце. Latin: cor, cordis n.",interval:1,nextReview:0,mastery:0},
-{id:"c2",category:"Latin",front:"Cor, cordis n.",pronunciation:"/kor/",back:"Сердце. English: heart.",interval:1,nextReview:0,mastery:0},
-{id:"c3",category:"Биология",front:"Что такое хлоропласт?",pronunciation:"",back:"Органоид клеток растений и водорослей, в котором происходит фотосинтез.",interval:1,nextReview:0,mastery:0},
-{id:"c4",category:"Анатомия",front:"Aorta",pronunciation:"/eɪˈɔːrtə/",back:"Аорта — крупнейшая артерия организма.",interval:1,nextReview:0,mastery:0},
-{id:"c5",category:"Medical English",front:"Lung",pronunciation:"/lʌŋ/",back:"Лёгкое. Latin: pulmo, pulmonis m.",interval:1,nextReview:0,mastery:0}
-];
-const quizBank=[
-{category:"cell",q:"Что образует основу клеточной мембраны?",options:["ДНК","Фосфолипидный бислой","Гликоген","Целлюлоза"],answer:1},
-{category:"cell",q:"Где происходит основной синтез ATP?",options:["Ядро","Митохондрии","Лизосомы","Рибосомы"],answer:1},
-{category:"genetics",q:"Когда происходит кроссинговер?",options:["Профаза I мейоза","Телофаза митоза","Интерфаза","Метафаза митоза"],answer:0},
-{category:"anatomy",q:"Как по-латыни «сердце»?",options:["Pulmo","Ren","Cor","Hepar"],answer:2},
-{category:"anatomy",q:"Сколько камер у сердца человека?",options:["2","3","4","5"],answer:2},
-{category:"anatomy",q:"Из какого желудочка начинается большой круг?",options:["Правого","Левого","Из обоих","Ни из одного"],answer:1}
-];
-const defaults={cards:seedCards,completedLessons:[],sessions:[],quizHistory:[]};
+let lessons=[],seedCards=[],quizBank=[]; // учебные данные грузятся из data/*.json
+const defaults={cards:[],completedLessons:[],sessions:[],quizHistory:[]};
 const DAILY_TARGET_MIN=30;                 // цель на день, минут
 const MINUTES_PER={lesson:15,quiz:5,card:2}; // оценка минут за одно действие
 const WEIGHTS={lessons:40,tests:35,cards:25}; // вклад в общий прогресс, %
-let state=load(),reviewDeck=[],currentCardIndex=0,activeLessonId=null,quizQuestions=[],quizIndex=0,quizScore=0;
+let state=null,reviewDeck=[],currentCardIndex=0,activeLessonId=null,quizQuestions=[],quizIndex=0,quizScore=0;
 
 // Приводит любое (в т.ч. старое или повреждённое) состояние к актуальной схеме,
 // не теряя пользовательских данных. Совместимо со STORAGE_KEY medbio_v03.
 function normalizeState(raw){
+  if(!raw||typeof raw!=="object")raw={};
   const base=structuredClone(defaults);
-  if(!raw||typeof raw!=="object")return base;
   const num=(v,d)=>Number.isFinite(+v)?+v:d;
   const str=(v,d="")=>typeof v==="string"?v:d;
   let cards=Array.isArray(raw.cards)?raw.cards:null;
@@ -210,4 +189,18 @@ $("importInput").onchange=async e=>{try{const data=JSON.parse(await e.target.fil
 $("resetBtn").onclick=()=>{if(confirm("Удалить весь прогресс?")){localStorage.removeItem(STORAGE_KEY);state=normalizeState(null);save();renderAll()}};
 function renderAll(){renderHome();renderLessons();buildDeck();renderProgress()}
 if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js");
-renderAll();
+
+// --- Загрузка учебных данных из data/*.json (устойчиво к сбою: пустой массив вместо падения) ---
+async function fetchJSON(url){
+  try{const r=await fetch(url);if(!r.ok)throw new Error(url+" -> "+r.status);const d=await r.json();return Array.isArray(d)?d:[];}
+  catch(e){console.warn("MedBio: не удалось загрузить",url,e);return[];}
+}
+async function loadData(){
+  const [l,c,q]=await Promise.all([
+    fetchJSON("./data/lessons.json"),
+    fetchJSON("./data/flashcards.json"),
+    fetchJSON("./data/tests.json")
+  ]);
+  lessons=l;seedCards=c;quizBank=q;
+}
+(async()=>{ await loadData(); state=load(); renderAll(); })();
