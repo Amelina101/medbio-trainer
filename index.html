@@ -35,8 +35,8 @@
           <span class="section-label">Продолжить обучение</span>
           <h2>Клетка — структурная и функциональная единица жизни</h2>
           <p>Биология • 10 класс</p>
-          <div class="progress-line"><span style="width:63%"></span></div>
-          <div class="progress-caption"><span>Прогресс</span><strong>63%</strong></div>
+          <div class="progress-line"><span id="heroProgressBar" style="width:0%"></span></div>
+          <div class="progress-caption"><span>Прогресс</span><strong id="heroProgressValue">0%</strong></div>
           <button data-go="lessons" class="gold-button">Продолжить урок</button>
         </div>
         <div class="cell-orb" aria-hidden="true">
@@ -54,19 +54,19 @@
       </div>
 
       <div class="quick-grid">
-        <button class="quick-card glass-card" data-go="lessons"><span>◫</span><strong>Уроки</strong><small>24 темы</small></button>
-        <button class="quick-card glass-card" data-go="cards"><span>▣</span><strong>Карточки</strong><small id="homeCardsCount">5 карточек</small></button>
-        <button class="quick-card glass-card" data-go="quiz"><span>✦</span><strong>Тест</strong><small>8 тестов</small></button>
+        <button class="quick-card glass-card" data-go="lessons"><span>◫</span><strong>Уроки</strong><small id="quickLessonsCount">0 тем</small></button>
+        <button class="quick-card glass-card" data-go="cards"><span>▣</span><strong>Карточки</strong><small id="homeCardsCount">0 карточек</small></button>
+        <button class="quick-card glass-card" data-go="quiz"><span>✦</span><strong>Тест</strong><small id="quickTestsCount">0 тестов</small></button>
         <button class="quick-card glass-card" data-go="progress"><span>⌁</span><strong>Прогресс</strong><small id="homeProgress">0%</small></button>
       </div>
 
       <div class="daily-goal glass-card">
         <div>
           <span class="section-label">Ежедневная цель</span>
-          <h3><strong id="dailyMinutes">15</strong><small>/30 минут</small></h3>
+          <h3><strong id="dailyMinutes">0</strong><small>/30 минут</small></h3>
         </div>
         <div class="lotus-symbol">❀</div>
-        <div class="progress-line full"><span id="dailyBar" style="width:50%"></span></div>
+        <div class="progress-line full"><span id="dailyBar" style="width:0%"></span></div>
       </div>
     </section>
 
@@ -157,8 +157,8 @@
       <div class="progress-overview glass-card">
         <div class="ring-progress"><span id="overallProgress">0%</span></div>
         <div class="progress-stat"><strong id="completedLessons">0</strong><small>Тем изучено</small></div>
-        <div class="progress-stat"><strong id="totalCards">0</strong><small>Карточек</small></div>
-        <div class="progress-stat"><strong id="bestScore">0%</strong><small>Лучший тест</small></div>
+        <div class="progress-stat"><strong id="dueCardsValue">0</strong><small>К повторению</small></div>
+        <div class="progress-stat"><strong id="avgScoreValue">0%</strong><small>Средний балл</small></div>
       </div>
       <div class="glass-card">
         <h3>Последние результаты</h3>

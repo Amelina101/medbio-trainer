@@ -136,7 +136,7 @@ textarea{min-height:120px;resize:vertical}
 .option{display:block;width:100%;padding:14px 16px;margin:10px 0;border-radius:14px;border:1px solid var(--line);background:rgba(8,15,11,.60);color:var(--text);text-align:left}
 .option.correct{background:rgba(86,110,58,.70)}.option.wrong{background:rgba(118,61,55,.72)}
 .progress-overview{padding:26px;display:grid;grid-template-columns:1.2fr repeat(3,1fr);align-items:center;gap:18px}
-.ring-progress{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-soft) 0 82%,rgba(255,255,255,.07) 82% 100%);position:relative}
+.ring-progress{--progress:0;width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold-soft) 0 calc(var(--progress) * 1%),rgba(255,255,255,.07) calc(var(--progress) * 1%) 100%);position:relative}
 .ring-progress:before{content:"";position:absolute;inset:12px;border-radius:50%;background:#0b1712}
 .ring-progress span{position:relative;font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--gold)}
 .progress-stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold)}
