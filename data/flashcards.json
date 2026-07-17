@@ -1008,5 +1008,285 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "bot-card-01",
+    "category": "Ботаника",
+    "front": "Апикальная меристема",
+    "pronunciation": "",
+    "back": "Обеспечивает первичный рост корня и побега в длину.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-02",
+    "category": "Scientific English",
+    "front": "Meristem",
+    "pronunciation": "/ˈmerɪstem/",
+    "back": "Меристема — ткань делящихся клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-03",
+    "category": "Ботаника",
+    "front": "Колленхима и склеренхима",
+    "pronunciation": "",
+    "back": "Колленхима даёт гибкую опору; склеренхима — жёсткую.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-04",
+    "category": "Ботаника",
+    "front": "Поясок Каспари",
+    "pronunciation": "",
+    "back": "Субериновый барьер эндодермы, блокирующий апопласт.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-05",
+    "category": "Scientific English",
+    "front": "Root hair",
+    "pronunciation": "/ruːt heə/",
+    "back": "Корневой волосок.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-06",
+    "category": "Ботаника",
+    "front": "Микориза",
+    "pronunciation": "",
+    "back": "Симбиоз корня и гриба, увеличивающий поглощение воды и минеральных веществ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-07",
+    "category": "Ботаника",
+    "front": "Сосудистый камбий",
+    "pronunciation": "",
+    "back": "Образует вторичную ксилему внутрь и вторичную флоэму наружу.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-08",
+    "category": "Scientific English",
+    "front": "Annual ring",
+    "pronunciation": "/ˈænjuəl rɪŋ/",
+    "back": "Годичное кольцо.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-09",
+    "category": "Ботаника",
+    "front": "Палисадный мезофилл",
+    "pronunciation": "",
+    "back": "Слой листа с большим числом хлоропластов и интенсивным фотосинтезом.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-10",
+    "category": "Scientific English",
+    "front": "Guard cell",
+    "pronunciation": "/ɡɑːd sel/",
+    "back": "Замыкающая клетка устьица.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-11",
+    "category": "Ботаника",
+    "front": "Открывание устьиц",
+    "pronunciation": "",
+    "back": "Вход K⁺ снижает водный потенциал, вода входит, тургор растёт.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-12",
+    "category": "Ботаника",
+    "front": "Теория когезии-натяжения",
+    "pronunciation": "",
+    "back": "Транспирация создаёт отрицательное давление, поднимающее воду по ксилеме.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-13",
+    "category": "Scientific English",
+    "front": "Source and sink",
+    "pronunciation": "/sɔːs ænd sɪŋk/",
+    "back": "Источник и сток во флоэмном транспорте.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-14",
+    "category": "Ботаника",
+    "front": "Ситовидный элемент",
+    "pronunciation": "",
+    "back": "Живая проводящая клетка флоэмы, обычно без ядра.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-15",
+    "category": "Ботаника",
+    "front": "Rubisco",
+    "pronunciation": "",
+    "back": "Фермент фиксации CO₂ в цикле Кальвина.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-16",
+    "category": "Scientific English",
+    "front": "Photorespiration",
+    "pronunciation": "/ˌfəʊtəʊˌrespəˈreɪʃən/",
+    "back": "Фотореспирация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-17",
+    "category": "Ботаника",
+    "front": "C4-растения",
+    "pronunciation": "",
+    "back": "Пространственно разделяют первичную фиксацию CO₂ и цикл Кальвина.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-18",
+    "category": "Ботаника",
+    "front": "CAM-растения",
+    "pronunciation": "",
+    "back": "Открывают устьица ночью и запасают CO₂ в органических кислотах.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-19",
+    "category": "Ботаника",
+    "front": "Ауксин",
+    "pronunciation": "",
+    "back": "Усиливает растяжение клеток и участвует в тропизмах.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-20",
+    "category": "Scientific English",
+    "front": "Phototropism",
+    "pronunciation": "/ˌfəʊtəʊˈtrəʊpɪzəm/",
+    "back": "Фототропизм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-21",
+    "category": "Ботаника",
+    "front": "Абсцизовая кислота",
+    "pronunciation": "",
+    "back": "Закрывает устьица при засухе и поддерживает покой семян.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-22",
+    "category": "Ботаника",
+    "front": "Этилен",
+    "pronunciation": "",
+    "back": "Газообразный гормон созревания плодов и старения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-23",
+    "category": "Ботаника",
+    "front": "Чередование поколений",
+    "pronunciation": "",
+    "back": "Чередование диплоидного спорофита и гаплоидного гаметофита.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-24",
+    "category": "Scientific English",
+    "front": "Double fertilization",
+    "pronunciation": "/ˌdʌbəl ˌfɜːtɪlaɪˈzeɪʃən/",
+    "back": "Двойное оплодотворение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-25",
+    "category": "Ботаника",
+    "front": "Спора и гамета",
+    "pronunciation": "",
+    "back": "Спора прорастает без слияния; гамета участвует в оплодотворении.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-26",
+    "category": "Ботаника",
+    "front": "Эндосперм покрытосеменных",
+    "pronunciation": "",
+    "back": "Обычно триплоидная питательная ткань семени.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-27",
+    "category": "Ботаника",
+    "front": "Плазмодесмы",
+    "pronunciation": "",
+    "back": "Каналы, соединяющие цитоплазму соседних растительных клеток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "bot-card-28",
+    "category": "Scientific English",
+    "front": "Transpiration",
+    "pronunciation": "/ˌtrænspɪˈreɪʃən/",
+    "back": "Испарение воды растением, преимущественно через устьица.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
