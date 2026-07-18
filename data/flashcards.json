@@ -1288,5 +1288,365 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "zoo-card-01",
+    "category": "Зоология",
+    "front": "Четыре ткани животных",
+    "pronunciation": "",
+    "back": "Эпителиальная, соединительная, мышечная, нервная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-02",
+    "category": "Зоология",
+    "front": "Cnidocyte",
+    "pronunciation": "",
+    "back": "Стрекательная клетка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-03",
+    "category": "Зоология",
+    "front": "Признаки членистоногих",
+    "pronunciation": "",
+    "back": "Экзоскелет и членистые конечности.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-04",
+    "category": "Зоология",
+    "front": "Molting",
+    "pronunciation": "",
+    "back": "Линька.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-05",
+    "category": "Зоология",
+    "front": "Радула",
+    "pronunciation": "",
+    "back": "Пищевой орган большинства моллюсков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-06",
+    "category": "Зоология",
+    "front": "Признаки хордовых",
+    "pronunciation": "",
+    "back": "Хорда, нервная трубка, глоточные щели, хвост.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-07",
+    "category": "Зоология",
+    "front": "Countercurrent exchange",
+    "pronunciation": "",
+    "back": "Противоточный обмен.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-08",
+    "category": "Зоология",
+    "front": "Амниотическое яйцо",
+    "pronunciation": "",
+    "back": "Яйцо с зародышевыми оболочками.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-09",
+    "category": "Зоология",
+    "front": "Air sac",
+    "pronunciation": "",
+    "back": "Воздушный мешок птиц.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-10",
+    "category": "Зоология",
+    "front": "Placenta",
+    "pronunciation": "",
+    "back": "Плацента.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-11",
+    "category": "Зоология",
+    "front": "Definitive host",
+    "pronunciation": "",
+    "back": "Окончательный хозяин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-12",
+    "category": "Зоология",
+    "front": "Эндотермия",
+    "pronunciation": "",
+    "back": "Поддержание температуры за счёт метаболизма.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-01",
+    "category": "Анатомия",
+    "front": "Medial",
+    "pronunciation": "",
+    "back": "Ближе к средней линии.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-02",
+    "category": "Анатомия",
+    "front": "Sagittal plane",
+    "pronunciation": "",
+    "back": "Сагиттальная плоскость.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-03",
+    "category": "Анатомия",
+    "front": "Осевой скелет",
+    "pronunciation": "",
+    "back": "Череп, позвоночник, грудная клетка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-04",
+    "category": "Анатомия",
+    "front": "Ligament",
+    "pronunciation": "",
+    "back": "Связка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-05",
+    "category": "Анатомия",
+    "front": "Саркомер",
+    "pronunciation": "",
+    "back": "Единица миофибриллы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-06",
+    "category": "Анатомия",
+    "front": "Tendon",
+    "pronunciation": "",
+    "back": "Сухожилие.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-07",
+    "category": "Анатомия",
+    "front": "Клапаны сердца",
+    "pronunciation": "",
+    "back": "Трёхстворчатый, митральный, аортальный, лёгочный.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-08",
+    "category": "Анатомия",
+    "front": "Alveolus",
+    "pronunciation": "",
+    "back": "Альвеола.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-09",
+    "category": "Анатомия",
+    "front": "Duodenum",
+    "pronunciation": "",
+    "back": "Двенадцатиперстная кишка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-10",
+    "category": "Анатомия",
+    "front": "Renal pelvis",
+    "pronunciation": "",
+    "back": "Почечная лоханка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-11",
+    "category": "Анатомия",
+    "front": "Cerebellum",
+    "pronunciation": "",
+    "back": "Мозжечок.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-12",
+    "category": "Анатомия",
+    "front": "Retina",
+    "pronunciation": "",
+    "back": "Сетчатка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-01",
+    "category": "Физиология",
+    "front": "Homeostasis",
+    "pronunciation": "",
+    "back": "Гомеостаз.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-02",
+    "category": "Физиология",
+    "front": "Negative feedback",
+    "pronunciation": "",
+    "back": "Отрицательная обратная связь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-03",
+    "category": "Физиология",
+    "front": "Action potential",
+    "pronunciation": "",
+    "back": "Потенциал действия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-04",
+    "category": "Физиология",
+    "front": "Synaptic cleft",
+    "pronunciation": "",
+    "back": "Синаптическая щель.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-05",
+    "category": "Физиология",
+    "front": "Роль Ca²⁺ в мышце",
+    "pronunciation": "",
+    "back": "Связывает тропонин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-06",
+    "category": "Физиология",
+    "front": "Vascular resistance",
+    "pronunciation": "",
+    "back": "Сосудистое сопротивление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-07",
+    "category": "Физиология",
+    "front": "Bohr effect",
+    "pronunciation": "",
+    "back": "Низкий pH облегчает отдачу O₂.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-08",
+    "category": "Физиология",
+    "front": "Chylomicron",
+    "pronunciation": "",
+    "back": "Хиломикрон.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-09",
+    "category": "Физиология",
+    "front": "Процессы нефрона",
+    "pronunciation": "",
+    "back": "Фильтрация, реабсорбция, секреция.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-10",
+    "category": "Физиология",
+    "front": "ADH",
+    "pronunciation": "",
+    "back": "Повышает реабсорбцию воды.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-11",
+    "category": "Физиология",
+    "front": "Инсулин",
+    "pronunciation": "",
+    "back": "Снижает глюкозу крови.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-12",
+    "category": "Физиология",
+    "front": "Cortisol",
+    "pronunciation": "",
+    "back": "Кортизол.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
