@@ -2008,5 +2008,405 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "lat-card-01",
+    "category": "Medical Latin",
+    "front": "Cor, cordis n.",
+    "pronunciation": "",
+    "back": "Сердце.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-02",
+    "category": "Medical Latin",
+    "front": "Pulmo, pulmonis m.",
+    "pronunciation": "",
+    "back": "Лёгкое.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-03",
+    "category": "Medical Latin",
+    "front": "Vena, ae f.",
+    "pronunciation": "",
+    "back": "Вена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-04",
+    "category": "Medical Latin",
+    "front": "Arteria profunda",
+    "pronunciation": "",
+    "back": "Глубокая артерия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-05",
+    "category": "Medical Latin",
+    "front": "Caput femoris",
+    "pronunciation": "",
+    "back": "Головка бедренной кости.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-06",
+    "category": "Medical Latin",
+    "front": "Hyper-",
+    "pronunciation": "",
+    "back": "Избыток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-07",
+    "category": "Medical Latin",
+    "front": "Hypo-",
+    "pronunciation": "",
+    "back": "Недостаток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-08",
+    "category": "Medical Latin",
+    "front": "-itis",
+    "pronunciation": "",
+    "back": "Воспаление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-09",
+    "category": "Medical Latin",
+    "front": "-ectomy",
+    "pronunciation": "",
+    "back": "Удаление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-10",
+    "category": "Medical Latin",
+    "front": "Unguentum",
+    "pronunciation": "",
+    "back": "Мазь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-01",
+    "category": "ВсОШ",
+    "front": "Independent variable",
+    "pronunciation": "",
+    "back": "Независимая переменная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-02",
+    "category": "ВсОШ",
+    "front": "Dependent variable",
+    "pronunciation": "",
+    "back": "Зависимая переменная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-03",
+    "category": "ВсОШ",
+    "front": "Positive control",
+    "pronunciation": "",
+    "back": "Положительный контроль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-04",
+    "category": "ВсОШ",
+    "front": "Negative control",
+    "pronunciation": "",
+    "back": "Отрицательный контроль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-05",
+    "category": "ВсОШ",
+    "front": "Biological replicate",
+    "pronunciation": "",
+    "back": "Биологическая повторность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-06",
+    "category": "ВсОШ",
+    "front": "Effect size",
+    "pronunciation": "",
+    "back": "Размер эффекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-07",
+    "category": "ВсОШ",
+    "front": "Error bar",
+    "pronunciation": "",
+    "back": "Планка погрешности.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-08",
+    "category": "ВсОШ",
+    "front": "Diagnostic feature",
+    "pronunciation": "",
+    "back": "Диагностический признак.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-09",
+    "category": "ВсОШ",
+    "front": "Identification key",
+    "pronunciation": "",
+    "back": "Определительный ключ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-10",
+    "category": "ВсОШ",
+    "front": "Scale bar",
+    "pronunciation": "",
+    "back": "Масштабная линейка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-01",
+    "category": "Пироговская олимпиада",
+    "front": "Cell injury",
+    "pronunciation": "",
+    "back": "Клеточное повреждение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-02",
+    "category": "Пироговская олимпиада",
+    "front": "Mosaicism",
+    "pronunciation": "",
+    "back": "Мозаицизм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-03",
+    "category": "Пироговская олимпиада",
+    "front": "Penetrance",
+    "pronunciation": "",
+    "back": "Пенетрантность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-04",
+    "category": "Пироговская олимпиада",
+    "front": "Collateral circulation",
+    "pronunciation": "",
+    "back": "Коллатеральное кровообращение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-05",
+    "category": "Пироговская олимпиада",
+    "front": "Compensation",
+    "pronunciation": "",
+    "back": "Компенсация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-06",
+    "category": "Пироговская олимпиада",
+    "front": "Innate immunity",
+    "pronunciation": "",
+    "back": "Врождённый иммунитет.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-07",
+    "category": "Пироговская олимпиада",
+    "front": "Antibody",
+    "pronunciation": "",
+    "back": "Антитело.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-08",
+    "category": "Пироговская олимпиада",
+    "front": "Antibiotic resistance",
+    "pronunciation": "",
+    "back": "Антибиотикорезистентность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-09",
+    "category": "Пироговская олимпиада",
+    "front": "Biomarker",
+    "pronunciation": "",
+    "back": "Биомаркер.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-10",
+    "category": "Пироговская олимпиада",
+    "front": "Clinical case",
+    "pronunciation": "",
+    "back": "Клинический случай.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-01",
+    "category": "Сеченовская олимпиада",
+    "front": "Integrated approach",
+    "pronunciation": "",
+    "back": "Интегративный подход.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-02",
+    "category": "Сеченовская олимпиада",
+    "front": "Molecular diagnostics",
+    "pronunciation": "",
+    "back": "Молекулярная диагностика.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-03",
+    "category": "Сеченовская олимпиада",
+    "front": "Genetic variant",
+    "pronunciation": "",
+    "back": "Генетический вариант.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-04",
+    "category": "Сеченовская олимпиада",
+    "front": "Synaptic plasticity",
+    "pronunciation": "",
+    "back": "Синаптическая пластичность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-05",
+    "category": "Сеченовская олимпиада",
+    "front": "Cardiac output",
+    "pronunciation": "",
+    "back": "Сердечный выброс.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-06",
+    "category": "Сеченовская олимпиада",
+    "front": "Stroke volume",
+    "pronunciation": "",
+    "back": "Ударный объём.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-07",
+    "category": "Сеченовская олимпиада",
+    "front": "Baroreflex",
+    "pronunciation": "",
+    "back": "Барорефлекс.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-08",
+    "category": "Сеченовская олимпиада",
+    "front": "Alveolar ventilation",
+    "pronunciation": "",
+    "back": "Альвеолярная вентиляция.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-09",
+    "category": "Сеченовская олимпиада",
+    "front": "Absolute risk",
+    "pronunciation": "",
+    "back": "Абсолютный риск.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-10",
+    "category": "Сеченовская олимпиада",
+    "front": "Bias",
+    "pronunciation": "",
+    "back": "Систематическая ошибка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
