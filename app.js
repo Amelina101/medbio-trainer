@@ -23,6 +23,7 @@ let quizIndex = 0;
 let quizScore = 0;
 let lessonSearchQuery = "";
 let quizAnswerLocked = false;
+let weeklyControlActive = false;
 
 const defaults = {
   cards: [],
@@ -34,7 +35,11 @@ const defaults = {
     length: 10,
     mistakesOnly: false
   },
-  lastLessonId: null
+  lastLessonId: null,
+  weeklyControl: {
+    lastDate: null,
+    bestScore: 0
+  }
 };
 
 function clone(value) {
@@ -132,7 +137,19 @@ function normalizeState(raw) {
     lastLessonId:
       typeof source.lastLessonId === "string"
         ? source.lastLessonId
-        : null
+        : null,
+    weeklyControl: {
+      lastDate:
+        source.weeklyControl &&
+        typeof source.weeklyControl.lastDate === "string"
+          ? source.weeklyControl.lastDate
+          : null,
+      bestScore:
+        source.weeklyControl &&
+        Number.isFinite(Number(source.weeklyControl.bestScore))
+          ? Number(source.weeklyControl.bestScore)
+          : 0
+    }
   };
 }
 
@@ -321,6 +338,8 @@ function renderHome() {
       : "Продолжить урок";
     heroButton.onclick = () => openLesson(continueLesson.id);
   }
+
+  renderDailyStudyPlan();
 }
 
 function renderModules() {
@@ -549,7 +568,9 @@ function renderCard() {
 }
 
 function startQuiz() {
-  quizCategoryActive = $("quizCategory").value;
+  quizCategoryActive = weeklyControlActive
+    ? "all"
+    : $("quizCategory").value;
   quizAnswerLocked = false;
 
   const selectedLength = Number(
@@ -557,12 +578,16 @@ function startQuiz() {
       state.quizSettings.length ||
       10
   );
-  const mistakesOnly = Boolean(
-    $("mistakesOnly") && $("mistakesOnly").checked
-  );
+  const mistakesOnly = weeklyControlActive
+    ? false
+    : Boolean($("mistakesOnly") && $("mistakesOnly").checked);
+
+  const quizLength = weeklyControlActive
+    ? 20
+    : ([5, 10, 20].includes(selectedLength) ? selectedLength : 10);
 
   state.quizSettings = {
-    length: [5, 10, 20].includes(selectedLength) ? selectedLength : 10,
+    length: quizLength,
     mistakesOnly
   };
   saveState();
@@ -582,7 +607,7 @@ function startQuiz() {
     .map((question) => ({ question, random: Math.random() }))
     .sort((a, b) => a.random - b.random)
     .map((item) => item.question)
-    .slice(0, state.quizSettings.length);
+    .slice(0, quizLength);
 
   quizIndex = 0;
   quizScore = 0;
@@ -614,17 +639,34 @@ function renderQuestion() {
       score: percent,
       category: quizCategoryActive
     });
-    state.quizHistory = state.quizHistory.slice(0, 20);
-    state.sessions.push({ date: todayStr(), type: "quiz" });
+    state.quizHistory = state.quizHistory.slice(0, 30);
+    state.sessions.push({
+      date: todayStr(),
+      type: weeklyControlActive ? "weekly" : "quiz"
+    });
+
+    if (weeklyControlActive) {
+      state.weeklyControl.lastDate = todayStr();
+      state.weeklyControl.bestScore = Math.max(
+        Number(state.weeklyControl.bestScore || 0),
+        percent
+      );
+    }
+
+    const completedWeeklyControl = weeklyControlActive;
+    weeklyControlActive = false;
 
     saveState();
     renderHome();
     renderProgress();
     updateMistakeCounter();
 
-    $("quizBox").innerHTML = "<h3>Тест завершён</h3>";
+    $("quizBox").innerHTML = completedWeeklyControl
+      ? "<h3>Еженедельная контрольная завершена</h3>"
+      : "<h3>Тест завершён</h3>";
     $("quizResult").innerHTML = `
-      <h3>Результат: ${quizScore}/${quizQuestions.length} — ${percent}%</h3>
+      <h3>${completedWeeklyControl ? "Контрольная" : "Результат"}:
+        ${quizScore}/${quizQuestions.length} — ${percent}%</h3>
       <p>Ошибок в персональной коллекции: ${state.quizMistakes.length}</p>
       <div class="quiz-result-actions">
         <button id="againQuiz" class="gold-button">Пройти ещё раз</button>
@@ -952,6 +994,106 @@ function injectSmartLearningStyles() {
       flex-wrap: wrap;
       gap: 10px;
     }
+    .study-plan-panel {
+      margin: 20px 0;
+      padding: 22px;
+    }
+    .study-plan-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .study-plan-header h3 {
+      margin: 0 0 4px;
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 32px;
+    }
+    .study-plan-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .study-streak {
+      min-width: 84px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      text-align: center;
+      color: var(--gold);
+      background: rgba(9,17,12,.7);
+    }
+    .study-streak strong {
+      display: block;
+      font-size: 23px;
+    }
+    .study-plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 12px;
+    }
+    .study-task {
+      display: flex;
+      min-height: 174px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(9,17,12,.55);
+    }
+    .study-task.done {
+      border-color: rgba(176,151,93,.55);
+      background: rgba(72,91,45,.22);
+    }
+    .study-task-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .study-task h4 {
+      margin: 4px 0 6px;
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 23px;
+      line-height: 1.05;
+    }
+    .study-task p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .weekly-control-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: linear-gradient(135deg,rgba(176,151,93,.16),rgba(9,17,12,.6));
+    }
+    .weekly-control-card h4 {
+      margin: 0 0 5px;
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 24px;
+    }
+    .weekly-control-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .weak-focus {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .weak-focus strong {
+      color: var(--gold);
+    }
     .module-progress-panel {
       margin-top: 18px;
       padding: 24px;
@@ -987,6 +1129,17 @@ function injectSmartLearningStyles() {
       .mistake-toggle {
         flex: 1;
       }
+      .study-plan-grid {
+        grid-template-columns: 1fr;
+      }
+      .study-plan-header,
+      .weekly-control-card {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .study-streak {
+        width: fit-content;
+      }
       .module-progress-item {
         grid-template-columns: 1fr auto;
       }
@@ -1003,7 +1156,30 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • SMART V1";
+  if (brand) brand.textContent = "MEDBIO TRAINER • STUDY PLAN V2";
+
+  if (!$("dailyStudyPlan")) {
+    const homeHero = document.querySelector("#home .hero");
+    const plan = document.createElement("section");
+    plan.id = "dailyStudyPlan";
+    plan.className = "glass-card study-plan-panel";
+    plan.innerHTML = `
+      <div class="study-plan-header">
+        <div>
+          <h3>План на сегодня</h3>
+          <p id="studyPlanSubtitle">Персональный маршрут обучения</p>
+        </div>
+        <div class="study-streak">
+          <strong id="studyStreakValue">0</strong>
+          <span>дней подряд</span>
+        </div>
+      </div>
+      <div id="studyPlanGrid" class="study-plan-grid"></div>
+      <div id="weeklyControlCard" class="weekly-control-card"></div>
+      <div id="weakFocus" class="weak-focus"></div>
+    `;
+    if (homeHero) homeHero.after(plan);
+  }
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
@@ -1059,8 +1235,14 @@ function ensureSmartLearningUi() {
     $("quizLength").value = String(state.quizSettings.length);
     $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
 
-    $("quizLength").onchange = startQuiz;
-    $("mistakesOnly").onchange = startQuiz;
+    $("quizLength").onchange = () => {
+      weeklyControlActive = false;
+      startQuiz();
+    };
+    $("mistakesOnly").onchange = () => {
+      weeklyControlActive = false;
+      startQuiz();
+    };
   }
 
   if (!$("moduleProgressPanel")) {
@@ -1164,6 +1346,258 @@ function renderModuleProgress() {
       `;
     })
     .join("");
+}
+
+
+function daysBetween(dateA, dateB) {
+  const a = new Date(`${dateA}T00:00:00`);
+  const b = new Date(`${dateB}T00:00:00`);
+  if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return Infinity;
+  return Math.floor((b - a) / 86400000);
+}
+
+function studyStreak() {
+  const dates = new Set(
+    (Array.isArray(state.sessions) ? state.sessions : [])
+      .map((item) => item && item.date)
+      .filter(Boolean)
+  );
+
+  let cursor = new Date();
+  if (!dates.has(todayStr())) cursor.setDate(cursor.getDate() - 1);
+
+  let streak = 0;
+  while (true) {
+    const year = cursor.getFullYear();
+    const month = String(cursor.getMonth() + 1).padStart(2, "0");
+    const day = String(cursor.getDate()).padStart(2, "0");
+    const key = `${year}-${month}-${day}`;
+
+    if (!dates.has(key)) break;
+    streak += 1;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return streak;
+}
+
+function todaySessionCount(type) {
+  return (Array.isArray(state.sessions) ? state.sessions : []).filter(
+    (item) => item && item.date === todayStr() && item.type === type
+  ).length;
+}
+
+function recommendedFocus() {
+  const mistakeQuestions = quizBank.filter((question) =>
+    state.quizMistakes.includes(question.id)
+  );
+
+  if (mistakeQuestions.length) {
+    const counts = {};
+    mistakeQuestions.forEach((question) => {
+      counts[question.category] = (counts[question.category] || 0) + 1;
+    });
+    const category = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])[0][0];
+
+    const moduleAliases = {
+      cell: "cytology"
+    };
+    const moduleId = moduleAliases[category] || category;
+    const relatedModule = modules.find((module) => module.id === moduleId);
+
+    return {
+      module: relatedModule,
+      reason: `${counts[category]} ${
+        plural(counts[category], ["ошибка", "ошибки", "ошибок"])
+      } в тестах`
+    };
+  }
+
+  const ranked = modules
+    .map((module) => {
+      const moduleLessons = lessons.filter(
+        (lesson) => lesson.moduleId === module.id
+      );
+      const completed = moduleLessons.filter((lesson) =>
+        state.completedLessons.includes(lesson.id)
+      ).length;
+      return {
+        module,
+        percent: moduleLessons.length
+          ? completed / moduleLessons.length
+          : 1
+      };
+    })
+    .filter((item) => item.percent < 1)
+    .sort((a, b) => a.percent - b.percent);
+
+  return {
+    module: ranked.length ? ranked[0].module : modules[0],
+    reason: "самый низкий процент завершения"
+  };
+}
+
+function startRecommendedQuiz() {
+  weeklyControlActive = false;
+  const focus = recommendedFocus();
+  const aliases = { cytology: "cell" };
+  const candidate = focus.module
+    ? (aliases[focus.module.id] || focus.module.id)
+    : "all";
+  const category = testSets().includes(candidate) ? candidate : "all";
+
+  $("quizCategory").value = category;
+  $("quizLength").value = "5";
+  $("mistakesOnly").checked = state.quizMistakes.length > 0;
+
+  activatePage("quiz");
+  startQuiz();
+}
+
+function startWeeklyControl() {
+  weeklyControlActive = true;
+  $("quizCategory").value = "all";
+  $("quizLength").value = "20";
+  $("mistakesOnly").checked = false;
+
+  activatePage("quiz");
+  startQuiz();
+}
+
+function renderDailyStudyPlan() {
+  const grid = $("studyPlanGrid");
+  if (!grid || !state) return;
+
+  const focus = recommendedFocus();
+  const focusModule = focus.module;
+  const focusLessons = focusModule
+    ? lessons
+        .filter((lesson) => lesson.moduleId === focusModule.id)
+        .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
+    : lessons;
+
+  const recommendedLesson =
+    focusLessons.find(
+      (lesson) => !state.completedLessons.includes(lesson.id)
+    ) ||
+    lessons.find(
+      (lesson) => !state.completedLessons.includes(lesson.id)
+    ) ||
+    lessons[0];
+
+  const dueCards = strictDueCount("all");
+  const lessonDone = todaySessionCount("lesson") > 0;
+  const cardsDone = todaySessionCount("card") >= 10;
+  const quizDone =
+    todaySessionCount("quiz") > 0 ||
+    todaySessionCount("weekly") > 0;
+
+  const tasks = [
+    {
+      done: lessonDone,
+      label: "1. Теория",
+      title: recommendedLesson
+        ? recommendedLesson.title
+        : "Все уроки завершены",
+      text: recommendedLesson && focusModule
+        ? `${focusModule.title} • ${recommendedLesson.duration || 30} минут`
+        : "Повтори завершённые темы",
+      button: lessonDone ? "Выполнено ✓" : "Открыть урок",
+      handler: () => recommendedLesson
+        ? openLesson(recommendedLesson.id)
+        : goTo("lessons")
+    },
+    {
+      done: cardsDone,
+      label: "2. Повторение",
+      title: "10 карточек",
+      text: dueCards
+        ? `${dueCards} ${
+            plural(dueCards, ["карточка", "карточки", "карточек"])
+          } ожидают повторения`
+        : "Закрепи термины активным воспроизведением",
+      button: cardsDone ? "Выполнено ✓" : "Повторить",
+      handler: () => goTo("cards")
+    },
+    {
+      done: quizDone,
+      label: "3. Проверка",
+      title: state.quizMistakes.length
+        ? "Повторить ошибки"
+        : "Мини-тест на 5 вопросов",
+      text: state.quizMistakes.length
+        ? `${state.quizMistakes.length} ${
+            plural(state.quizMistakes.length, ["ошибка", "ошибки", "ошибок"])
+          } в личной коллекции`
+        : "Проверь понимание сегодняшней темы",
+      button: quizDone ? "Выполнено ✓" : "Начать тест",
+      handler: startRecommendedQuiz
+    }
+  ];
+
+  grid.innerHTML = "";
+  tasks.forEach((task) => {
+    const article = document.createElement("article");
+    article.className = `study-task ${task.done ? "done" : ""}`;
+    article.innerHTML = `
+      <div>
+        <div class="study-task-label">${task.label}</div>
+        <h4>${task.title}</h4>
+        <p>${task.text}</p>
+      </div>
+      <button class="${task.done ? "soft-button" : "gold-button"}">
+        ${task.button}
+      </button>
+    `;
+    article.querySelector("button").onclick = task.handler;
+    grid.appendChild(article);
+  });
+
+  const completedTasks = [lessonDone, cardsDone, quizDone].filter(Boolean).length;
+  $("studyPlanSubtitle").textContent =
+    completedTasks === 3
+      ? "План выполнен — отличный результат"
+      : `Выполнено ${completedTasks} из 3 задач`;
+  $("studyStreakValue").textContent = String(studyStreak());
+
+  const lastWeekly = state.weeklyControl.lastDate;
+  const daysSinceWeekly = lastWeekly
+    ? daysBetween(lastWeekly, todayStr())
+    : Infinity;
+  const weeklyDue = daysSinceWeekly >= 7;
+  const weeklyDoneToday = todaySessionCount("weekly") > 0;
+  const remainingDays = Number.isFinite(daysSinceWeekly)
+    ? Math.max(0, 7 - daysSinceWeekly)
+    : 0;
+
+  $("weeklyControlCard").innerHTML = `
+    <div>
+      <h4>Еженедельная контрольная</h4>
+      <p>
+        20 смешанных вопросов • лучший результат:
+        ${Number(state.weeklyControl.bestScore || 0)}%
+        ${
+          weeklyDoneToday
+            ? " • выполнена сегодня ✓"
+            : weeklyDue
+              ? " • пора пройти"
+              : ` • следующая через ${remainingDays} ${
+                  plural(remainingDays, ["день", "дня", "дней"])
+                }`
+        }
+      </p>
+    </div>
+    <button id="weeklyControlBtn"
+      class="${weeklyDoneToday ? "soft-button" : "gold-button"}">
+      ${weeklyDoneToday ? "Пройти ещё раз" : "Начать контрольную"}
+    </button>
+  `;
+  $("weeklyControlBtn").onclick = startWeeklyControl;
+
+  $("weakFocus").innerHTML = focusModule
+    ? `Рекомендуемый фокус: <strong>${focusModule.title}</strong> —
+       ${focus.reason}.`
+    : "";
 }
 
 function renderAll() {
@@ -1287,6 +1721,7 @@ document
       renderCard();
       renderHome();
       renderProgress();
+      renderDailyStudyPlan();
     };
   });
 
