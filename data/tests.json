@@ -1988,5 +1988,509 @@
     "answer": 0,
     "level": "B",
     "explanation": "Проверь определение и связь строения с функцией."
+  },
+  {
+    "id": "evo-test-01",
+    "category": "evolution",
+    "q": "Гомологичные органы сходны из-за…",
+    "options": [
+      "общего происхождения",
+      "одинаковой среды только",
+      "случайной ошибки",
+      "отсутствия генов"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-02",
+    "category": "evolution",
+    "q": "Fitness означает…",
+    "options": [
+      "репродуктивный вклад",
+      "размер тела",
+      "долголетие всегда",
+      "физическую силу"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-03",
+    "category": "evolution",
+    "q": "Движущий отбор…",
+    "options": [
+      "смещает среднее",
+      "сохраняет только среднее",
+      "не меняет популяцию",
+      "создаёт мутации"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-04",
+    "category": "evolution",
+    "q": "Дрейф особенно силён в…",
+    "options": [
+      "малых популяциях",
+      "очень больших популяциях",
+      "только экосистемах",
+      "клетках"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-05",
+    "category": "evolution",
+    "q": "Поток генов обычно…",
+    "options": [
+      "снижает различия популяций",
+      "всегда создаёт новый вид",
+      "останавливает мутации",
+      "повышает изоляцию"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-06",
+    "category": "evolution",
+    "q": "Аллопатрическое видообразование начинается с…",
+    "options": [
+      "географической изоляции",
+      "полного отсутствия изменчивости",
+      "клонирования",
+      "митоза"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-07",
+    "category": "evolution",
+    "q": "Постзиготический барьер — это…",
+    "options": [
+      "стерильность гибрида",
+      "разные брачные сигналы",
+      "разное время размножения",
+      "механическая несовместимость"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-08",
+    "category": "evolution",
+    "q": "Адаптивная радиация связана с…",
+    "options": [
+      "освоением разных ниш",
+      "утратой всех видов",
+      "отсутствием отбора",
+      "только дрейфом"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-09",
+    "category": "evolution",
+    "q": "Конвергенция создаёт…",
+    "options": [
+      "аналогичные признаки",
+      "только гомологии",
+      "одинаковые геномы",
+      "общего предка"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-10",
+    "category": "evolution",
+    "q": "Hox-гены регулируют…",
+    "options": [
+      "план тела",
+      "только дыхание",
+      "состав крови",
+      "фотосинтез"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-11",
+    "category": "evolution",
+    "q": "Современный шимпанзе для человека — это…",
+    "options": [
+      "родственный вид, не предок",
+      "прямой предок",
+      "потомок человека",
+      "тот же вид"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "evo-test-12",
+    "category": "evolution",
+    "q": "Новые аллели создаются прежде всего…",
+    "options": [
+      "мутациями",
+      "отбором",
+      "миграцией",
+      "конкуренцией"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-01",
+    "category": "ecology",
+    "q": "Лимитирующий фактор…",
+    "options": [
+      "сильнее всего ограничивает процесс",
+      "всегда температура",
+      "не влияет на вид",
+      "существует только в лаборатории"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-02",
+    "category": "ecology",
+    "q": "Логистический рост замедляется около…",
+    "options": [
+      "K",
+      "нуля pH",
+      "частоты мутаций",
+      "трофического уровня"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-03",
+    "category": "ecology",
+    "q": "Мутуализм обозначается…",
+    "options": [
+      "+/+",
+      "+/−",
+      "−/−",
+      "+/0"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-04",
+    "category": "ecology",
+    "q": "Ключевой вид…",
+    "options": [
+      "имеет непропорционально большое влияние",
+      "всегда самый многочисленный",
+      "всегда продуцент",
+      "не взаимодействует"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-05",
+    "category": "ecology",
+    "q": "Первичная сукцессия начинается…",
+    "options": [
+      "без сформированной почвы",
+      "после пожара при сохранённой почве",
+      "только в море",
+      "с климакса"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-06",
+    "category": "ecology",
+    "q": "NPP равна…",
+    "options": [
+      "GPP минус дыхание",
+      "GPP плюс дыхание",
+      "только дыханию",
+      "биомассе хищников"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-07",
+    "category": "ecology",
+    "q": "Вверх по пищевой цепи энергия…",
+    "options": [
+      "уменьшается",
+      "увеличивается",
+      "не меняется",
+      "исчезает только у растений"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-08",
+    "category": "ecology",
+    "q": "Азотфиксация использует…",
+    "options": [
+      "атмосферный N₂",
+      "только нитраты",
+      "CO₂",
+      "кислород как углерод"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-09",
+    "category": "ecology",
+    "q": "Эвтрофикация часто вызвана…",
+    "options": [
+      "избытком N и P",
+      "нехваткой света только",
+      "снижением солей",
+      "дрейфом генов"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-10",
+    "category": "ecology",
+    "q": "Экологический коридор поддерживает…",
+    "options": [
+      "миграцию и поток генов",
+      "изоляцию",
+      "вымирание",
+      "эвтрофикацию"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-11",
+    "category": "ecology",
+    "q": "Для неподвижных растений подходит…",
+    "options": [
+      "квадрат",
+      "радиотелеметрия",
+      "эхолокация",
+      "секвенирование"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eco-test-12",
+    "category": "ecology",
+    "q": "Корреляция…",
+    "options": [
+      "не доказывает причинность",
+      "всегда доказывает причинность",
+      "не описывает связь",
+      "равна эксперименту"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-01",
+    "category": "scientific-english",
+    "q": "The gene ___ a protein.",
+    "options": [
+      "encodes",
+      "breathes",
+      "flows",
+      "digests"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-02",
+    "category": "scientific-english",
+    "q": "The protein ___ to the receptor.",
+    "options": [
+      "binds",
+      "grows up",
+      "counts",
+      "evaporates"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-03",
+    "category": "scientific-english",
+    "q": "Proximal means…",
+    "options": [
+      "closer to the point of origin",
+      "farther from the origin",
+      "toward the skin only",
+      "behind the body"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-04",
+    "category": "scientific-english",
+    "q": "The Methods section explains…",
+    "options": [
+      "how the study was performed",
+      "only the final opinion",
+      "the title",
+      "the references only"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-05",
+    "category": "scientific-english",
+    "q": "A limitation is…",
+    "options": [
+      "a weakness or constraint",
+      "a guaranteed result",
+      "a reagent",
+      "a species"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-06",
+    "category": "scientific-english",
+    "q": "The values remained stable means they…",
+    "options": [
+      "changed very little",
+      "increased sharply",
+      "fell to zero",
+      "fluctuated greatly"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-07",
+    "category": "scientific-english",
+    "q": "The independent variable is…",
+    "options": [
+      "manipulated by the researcher",
+      "always the measured outcome",
+      "the conclusion",
+      "the sample size"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-08",
+    "category": "scientific-english",
+    "q": "The dependent variable is…",
+    "options": [
+      "measured as an outcome",
+      "always controlled",
+      "the literature review",
+      "the hypothesis only"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-09",
+    "category": "scientific-english",
+    "q": "Statistically significant means…",
+    "options": [
+      "unlikely under the null model",
+      "always biologically important",
+      "certainly causal",
+      "free from bias"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-10",
+    "category": "scientific-english",
+    "q": "An abstract should include…",
+    "options": [
+      "aim, methods, results, conclusion",
+      "only references",
+      "only methods",
+      "only discussion"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-11",
+    "category": "scientific-english",
+    "q": "Nephritis refers to…",
+    "options": [
+      "kidney inflammation",
+      "heart enlargement",
+      "nerve study",
+      "bone tumor"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
+  },
+  {
+    "id": "eng-test-12",
+    "category": "scientific-english",
+    "q": "The conclusion should…",
+    "options": [
+      "be supported by results",
+      "be broader than all evidence",
+      "ignore limitations",
+      "introduce new data"
+    ],
+    "answer": 0,
+    "level": "B",
+    "explanation": "Проверь определение и причинно-следственную связь."
   }
 ]

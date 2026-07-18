@@ -1648,5 +1648,365 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "evo-card-01",
+    "category": "Эволюция",
+    "front": "Homology",
+    "pronunciation": "",
+    "back": "Гомология — сходство вследствие общего происхождения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-02",
+    "category": "Эволюция",
+    "front": "Clade",
+    "pronunciation": "",
+    "back": "Клада включает предка и всех потомков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-03",
+    "category": "Эволюция",
+    "front": "Fitness",
+    "pronunciation": "",
+    "back": "Вклад генотипа или фенотипа в следующее поколение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-04",
+    "category": "Эволюция",
+    "front": "Genetic drift",
+    "pronunciation": "",
+    "back": "Случайное изменение частот аллелей.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-05",
+    "category": "Эволюция",
+    "front": "Founder effect",
+    "pronunciation": "",
+    "back": "Эффект основателя.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-06",
+    "category": "Эволюция",
+    "front": "Gene flow",
+    "pronunciation": "",
+    "back": "Перенос аллелей между популяциями.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-07",
+    "category": "Эволюция",
+    "front": "Speciation",
+    "pronunciation": "",
+    "back": "Образование новых видов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-08",
+    "category": "Эволюция",
+    "front": "Prezygotic barrier",
+    "pronunciation": "",
+    "back": "Барьер до образования зиготы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-09",
+    "category": "Эволюция",
+    "front": "Adaptive radiation",
+    "pronunciation": "",
+    "back": "Быстрое расхождение линии на множество форм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-10",
+    "category": "Эволюция",
+    "front": "Convergent evolution",
+    "pronunciation": "",
+    "back": "Независимое возникновение сходных признаков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-11",
+    "category": "Эволюция",
+    "front": "Hox gene",
+    "pronunciation": "",
+    "back": "Регуляторный ген плана тела.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-12",
+    "category": "Эволюция",
+    "front": "Bipedalism",
+    "pronunciation": "",
+    "back": "Прямохождение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-01",
+    "category": "Экология",
+    "front": "Carrying capacity",
+    "pronunciation": "",
+    "back": "Ёмкость среды K.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-02",
+    "category": "Экология",
+    "front": "Density-dependent factor",
+    "pronunciation": "",
+    "back": "Фактор, действие которого растёт с плотностью.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-03",
+    "category": "Экология",
+    "front": "Mutualism",
+    "pronunciation": "",
+    "back": "Взаимодействие +/+",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-04",
+    "category": "Экология",
+    "front": "Keystone species",
+    "pronunciation": "",
+    "back": "Ключевой вид.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-05",
+    "category": "Экология",
+    "front": "Primary succession",
+    "pronunciation": "",
+    "back": "Сукцессия на субстрате без почвы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-06",
+    "category": "Экология",
+    "front": "Net primary productivity",
+    "pronunciation": "",
+    "back": "GPP минус дыхание продуцентов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-07",
+    "category": "Экология",
+    "front": "Trophic level",
+    "pronunciation": "",
+    "back": "Трофический уровень.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-08",
+    "category": "Экология",
+    "front": "Nitrogen fixation",
+    "pronunciation": "",
+    "back": "Преобразование N₂ в доступные соединения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-09",
+    "category": "Экология",
+    "front": "Eutrophication",
+    "pronunciation": "",
+    "back": "Обогащение водоёма биогенными элементами.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-10",
+    "category": "Экология",
+    "front": "Habitat fragmentation",
+    "pronunciation": "",
+    "back": "Фрагментация местообитаний.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-11",
+    "category": "Экология",
+    "front": "Transect",
+    "pronunciation": "",
+    "back": "Трансекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-12",
+    "category": "Экология",
+    "front": "Mark–recapture",
+    "pronunciation": "",
+    "back": "Мечение и повторный отлов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-01",
+    "category": "Scientific English",
+    "front": "to encode",
+    "pronunciation": "",
+    "back": "кодировать",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-02",
+    "category": "Scientific English",
+    "front": "to bind",
+    "pronunciation": "",
+    "back": "связываться",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-03",
+    "category": "Scientific English",
+    "front": "to undergo",
+    "pronunciation": "",
+    "back": "подвергаться",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-04",
+    "category": "Scientific English",
+    "front": "anterior",
+    "pronunciation": "",
+    "back": "передний",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-05",
+    "category": "Scientific English",
+    "front": "proximal",
+    "pronunciation": "",
+    "back": "проксимальный",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-06",
+    "category": "Scientific English",
+    "front": "research question",
+    "pronunciation": "",
+    "back": "исследовательский вопрос",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-07",
+    "category": "Scientific English",
+    "front": "limitation",
+    "pronunciation": "",
+    "back": "ограничение исследования",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-08",
+    "category": "Scientific English",
+    "front": "to remain stable",
+    "pronunciation": "",
+    "back": "оставаться стабильным",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-09",
+    "category": "Scientific English",
+    "front": "control group",
+    "pronunciation": "",
+    "back": "контрольная группа",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-10",
+    "category": "Scientific English",
+    "front": "sample size",
+    "pronunciation": "",
+    "back": "объём выборки",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-11",
+    "category": "Scientific English",
+    "front": "statistical significance",
+    "pronunciation": "",
+    "back": "статистическая значимость",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-12",
+    "category": "Scientific English",
+    "front": "to suggest",
+    "pronunciation": "",
+    "back": "указывать, предполагать",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
