@@ -578,7 +578,11 @@ const CATEGORY_LABELS = {
   zoology: "Зоология",
   evolution: "Эволюция",
   ecology: "Экология",
-  "scientific-english": "Scientific English"
+  "scientific-english": "Scientific English",
+  "medical-latin": "Medical Latin",
+  vsoh: "ВсОШ",
+  pirogov: "Пироговская олимпиада",
+  sechenov: "Сеченовская олимпиада"
 };
 
 function fillSelect(select, options, preferredValue) {

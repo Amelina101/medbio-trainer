@@ -1,4 +1,4 @@
-const CACHE = "medbio-v13";
+const CACHE = "medbio-v14";
 
 const ASSETS = [
   "./",
