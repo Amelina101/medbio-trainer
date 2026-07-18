@@ -575,7 +575,10 @@ const CATEGORY_LABELS = {
   biochemistry: "Биохимия",
   "molecular-biology": "Молекулярная биология",
   botany: "Ботаника",
-  zoology: "Зоология"
+  zoology: "Зоология",
+  evolution: "Эволюция",
+  ecology: "Экология",
+  "scientific-english": "Scientific English"
 };
 
 function fillSelect(select, options, preferredValue) {
