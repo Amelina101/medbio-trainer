@@ -21,12 +21,20 @@ let quizCategoryActive = "all";
 let quizQuestions = [];
 let quizIndex = 0;
 let quizScore = 0;
+let lessonSearchQuery = "";
+let quizAnswerLocked = false;
 
 const defaults = {
   cards: [],
   completedLessons: [],
   sessions: [],
-  quizHistory: []
+  quizHistory: [],
+  quizMistakes: [],
+  quizSettings: {
+    length: 10,
+    mistakesOnly: false
+  },
+  lastLessonId: null
 };
 
 function clone(value) {
@@ -107,7 +115,24 @@ function normalizeState(raw) {
             category:
               typeof item.category === "string" ? item.category : null
           }))
-      : []
+      : [],
+    quizMistakes: Array.isArray(source.quizMistakes)
+      ? [...new Set(source.quizMistakes.filter((id) => typeof id === "string"))]
+      : [],
+    quizSettings: {
+      length: [5, 10, 20].includes(
+        numberOr(source.quizSettings && source.quizSettings.length, 10)
+      )
+        ? numberOr(source.quizSettings && source.quizSettings.length, 10)
+        : 10,
+      mistakesOnly: Boolean(
+        source.quizSettings && source.quizSettings.mistakesOnly
+      )
+    },
+    lastLessonId:
+      typeof source.lastLessonId === "string"
+        ? source.lastLessonId
+        : null
   };
 }
 
@@ -278,6 +303,24 @@ function renderHome() {
   $("heroProgressValue").textContent = `${stats.lessonProgressPercent}%`;
   $("dailyMinutes").textContent = String(day.minutes);
   $("dailyBar").style.width = `${day.percent}%`;
+
+  const continueLesson =
+    lessons.find((lesson) => lesson.id === state.lastLessonId) ||
+    lessons.find(
+      (lesson) => !state.completedLessons.includes(lesson.id)
+    ) ||
+    lessons[0];
+
+  const heroTitle = document.querySelector("#home .hero-copy h2");
+  const heroButton = document.querySelector("#home .hero-copy .gold-button");
+
+  if (continueLesson && heroTitle && heroButton) {
+    heroTitle.textContent = continueLesson.title;
+    heroButton.textContent = state.completedLessons.includes(continueLesson.id)
+      ? "Открыть урок"
+      : "Продолжить урок";
+    heroButton.onclick = () => openLesson(continueLesson.id);
+  }
 }
 
 function renderModules() {
@@ -287,45 +330,78 @@ function renderModules() {
   const completed = Array.isArray(state.completedLessons)
     ? state.completedLessons
     : [];
+  const query = lessonSearchQuery.trim().toLocaleLowerCase("ru");
 
-  [...modules]
+  const visibleModules = [...modules]
     .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
-    .forEach((module) => {
-      const moduleLessons = lessons.filter(
-        (lesson) => lesson.moduleId === module.id
-      );
-      const total = moduleLessons.length;
-      const done = moduleLessons.filter((lesson) =>
-        completed.includes(lesson.id)
-      ).length;
-      const percent = total ? Math.round((done / total) * 100) : 0;
+    .filter((module) => {
+      if (!query) return true;
 
-      const meta = total
-        ? `${total} ${plural(total, [
-            "урок",
-            "урока",
-            "уроков"
-          ])} • завершено ${done} • ${percent}%`
-        : "Материалы готовятся";
+      const ownText = `${module.title || ""} ${module.description || ""}`
+        .toLocaleLowerCase("ru");
+      const lessonMatch = lessons.some((lesson) => {
+        if (lesson.moduleId !== module.id) return false;
+        const lessonText = [
+          lesson.title,
+          lesson.level,
+          ...(Array.isArray(lesson.tags) ? lesson.tags : [])
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLocaleLowerCase("ru");
+        return lessonText.includes(query);
+      });
 
-      const button = document.createElement("button");
-      button.className = "lesson-card glass-card";
-      button.innerHTML = `
-        <div class="lesson-thumb"></div>
-        <div>
-          <h3>${module.title}</h3>
-          <p>${module.description || ""}</p>
-          <p class="module-meta">${meta}</p>
-        </div>
-        <div class="lesson-arrow">›</div>
-      `;
-      button.onclick = () => openModule(module.id);
-      box.appendChild(button);
+      return ownText.includes(query) || lessonMatch;
     });
+
+  visibleModules.forEach((module) => {
+    const moduleLessons = lessons.filter(
+      (lesson) => lesson.moduleId === module.id
+    );
+    const total = moduleLessons.length;
+    const done = moduleLessons.filter((lesson) =>
+      completed.includes(lesson.id)
+    ).length;
+    const percent = total ? Math.round((done / total) * 100) : 0;
+
+    const meta = total
+      ? `${total} ${plural(total, [
+          "урок",
+          "урока",
+          "уроков"
+        ])} • завершено ${done} • ${percent}%`
+      : "Материалы готовятся";
+
+    const button = document.createElement("button");
+    button.className = "lesson-card glass-card";
+    button.innerHTML = `
+      <div class="lesson-thumb"></div>
+      <div>
+        <h3>${module.title}</h3>
+        <p>${module.description || ""}</p>
+        <p class="module-meta">${meta}</p>
+        <div class="mini-progress">
+          <span style="width:${percent}%"></span>
+        </div>
+      </div>
+      <div class="lesson-arrow">›</div>
+    `;
+    button.onclick = () => openModule(module.id);
+    box.appendChild(button);
+  });
+
+  if (!visibleModules.length) {
+    box.innerHTML =
+      '<p class="empty-note">По этому запросу ничего не найдено.</p>';
+  }
 }
 
 function openModule(id) {
   activeModuleId = id;
+  lessonSearchQuery = "";
+  const input = $("lessonSearch");
+  if (input) input.value = "";
   renderLessons();
 }
 
@@ -340,6 +416,13 @@ function renderLessons() {
   $("moduleList").classList.toggle("hidden", !showingModules);
   $("lessonList").classList.toggle("hidden", showingModules);
   $("modulesBack").classList.toggle("hidden", showingModules);
+
+  const search = $("lessonSearch");
+  if (search) {
+    search.placeholder = showingModules
+      ? "Поиск по 15 модулям и всем урокам"
+      : "Поиск внутри выбранного модуля";
+  }
 
   if (showingModules) {
     $("lessonsHeading").textContent = "Модули";
@@ -360,12 +443,27 @@ function renderLessons() {
   const box = $("lessonList");
   box.innerHTML = "";
 
+  const query = lessonSearchQuery.trim().toLocaleLowerCase("ru");
   const moduleLessons = lessons
     .filter((lesson) => lesson.moduleId === activeModuleId)
+    .filter((lesson) => {
+      if (!query) return true;
+      const text = [
+        lesson.title,
+        lesson.level,
+        lesson.difficulty,
+        ...(Array.isArray(lesson.tags) ? lesson.tags : [])
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLocaleLowerCase("ru");
+      return text.includes(query);
+    })
     .sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
 
   if (!moduleLessons.length) {
-    box.innerHTML = '<p class="empty-note">Материалы готовятся</p>';
+    box.innerHTML =
+      '<p class="empty-note">По этому запросу уроков не найдено.</p>';
     return;
   }
 
@@ -380,7 +478,10 @@ function renderLessons() {
         <h3>${lesson.title}</h3>
         <p>
           ${lesson.level || "Биология"} • ${lesson.duration || 0} минут
-          ${isCompleted ? " • завершён" : ""}
+          ${isCompleted ? " • завершён ✓" : ""}
+        </p>
+        <p class="module-meta">
+          ${lesson.difficulty === "hard" ? "Повышенная сложность" : "Базовая тема"}
         </p>
       </div>
       <div class="lesson-arrow">›</div>
@@ -398,8 +499,12 @@ function openLesson(id) {
   }
 
   activeLessonId = id;
+  state.lastLessonId = id;
+  saveState();
+
   $("lessonArticle").innerHTML = lesson.content || "";
   goTo("lessonView");
+  updateLessonView();
 }
 
 function buildDeck() {
@@ -445,22 +550,51 @@ function renderCard() {
 
 function startQuiz() {
   quizCategoryActive = $("quizCategory").value;
-  quizQuestions = quizBank
-    .filter(
-      (question) =>
-        quizCategoryActive === "all" ||
-        question.category === quizCategoryActive
-    )
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 5);
+  quizAnswerLocked = false;
+
+  const selectedLength = Number(
+    ($("quizLength") && $("quizLength").value) ||
+      state.quizSettings.length ||
+      10
+  );
+  const mistakesOnly = Boolean(
+    $("mistakesOnly") && $("mistakesOnly").checked
+  );
+
+  state.quizSettings = {
+    length: [5, 10, 20].includes(selectedLength) ? selectedLength : 10,
+    mistakesOnly
+  };
+  saveState();
+
+  let pool = quizBank.filter(
+    (question) =>
+      quizCategoryActive === "all" ||
+      question.category === quizCategoryActive
+  );
+
+  if (mistakesOnly) {
+    const mistakeIds = new Set(state.quizMistakes);
+    pool = pool.filter((question) => mistakeIds.has(question.id));
+  }
+
+  quizQuestions = pool
+    .map((question) => ({ question, random: Math.random() }))
+    .sort((a, b) => a.random - b.random)
+    .map((item) => item.question)
+    .slice(0, state.quizSettings.length);
 
   quizIndex = 0;
   quizScore = 0;
   $("quizResult").classList.add("hidden");
+  updateMistakeCounter();
 
   if (!quizQuestions.length) {
-    $("quizBox").innerHTML =
-      "<h3>Вопросы не загружены</h3><p>Обнови страницу или выбери другую тему.</p>";
+    $("quizBox").innerHTML = mistakesOnly
+      ? `<h3>Ошибок для повторения нет</h3>
+         <p>Пройди обычный тест или выбери другую тему.</p>`
+      : `<h3>Вопросы не загружены</h3>
+         <p>Обнови страницу или выбери другую тему.</p>`;
     return;
   }
 
@@ -468,6 +602,8 @@ function startQuiz() {
 }
 
 function renderQuestion() {
+  quizAnswerLocked = false;
+
   if (quizIndex >= quizQuestions.length) {
     const percent = Math.round(
       (quizScore / quizQuestions.length) * 100
@@ -478,28 +614,48 @@ function renderQuestion() {
       score: percent,
       category: quizCategoryActive
     });
-    state.quizHistory = state.quizHistory.slice(0, 10);
+    state.quizHistory = state.quizHistory.slice(0, 20);
     state.sessions.push({ date: todayStr(), type: "quiz" });
 
     saveState();
     renderHome();
     renderProgress();
+    updateMistakeCounter();
 
     $("quizBox").innerHTML = "<h3>Тест завершён</h3>";
     $("quizResult").innerHTML = `
       <h3>Результат: ${quizScore}/${quizQuestions.length} — ${percent}%</h3>
-      <button id="againQuiz" class="gold-button">Пройти ещё раз</button>
+      <p>Ошибок в персональной коллекции: ${state.quizMistakes.length}</p>
+      <div class="quiz-result-actions">
+        <button id="againQuiz" class="gold-button">Пройти ещё раз</button>
+        ${
+          state.quizMistakes.length
+            ? '<button id="reviewMistakesBtn" class="soft-button">Повторить ошибки</button>'
+            : ""
+        }
+      </div>
     `;
     $("quizResult").classList.remove("hidden");
     $("againQuiz").onclick = startQuiz;
+
+    const reviewButton = $("reviewMistakesBtn");
+    if (reviewButton) {
+      reviewButton.onclick = () => {
+        $("mistakesOnly").checked = true;
+        startQuiz();
+      };
+    }
     return;
   }
 
   const item = quizQuestions[quizIndex];
   $("quizBox").innerHTML = `
-    <span class="section-label">
-      Вопрос ${quizIndex + 1} из ${quizQuestions.length}
-    </span>
+    <div class="quiz-topline">
+      <span class="section-label">
+        Вопрос ${quizIndex + 1} из ${quizQuestions.length}
+      </span>
+      <span>${quizScore} правильных</span>
+    </div>
     <h3>${item.q}</h3>
   `;
 
@@ -509,25 +665,56 @@ function renderQuestion() {
     button.textContent = option;
 
     button.onclick = () => {
+      if (quizAnswerLocked) return;
+      quizAnswerLocked = true;
+
       const buttons = $("quizBox").querySelectorAll(".option");
       buttons.forEach((itemButton) => {
         itemButton.disabled = true;
       });
 
-      if (index === item.answer) {
+      const isCorrect = index === item.answer;
+
+      if (isCorrect) {
         button.classList.add("correct");
         quizScore += 1;
+        state.quizMistakes = state.quizMistakes.filter(
+          (id) => id !== item.id
+        );
       } else {
         button.classList.add("wrong");
         if (buttons[item.answer]) {
           buttons[item.answer].classList.add("correct");
         }
+        if (item.id && !state.quizMistakes.includes(item.id)) {
+          state.quizMistakes.push(item.id);
+        }
       }
 
-      setTimeout(() => {
+      saveState();
+      updateMistakeCounter();
+
+      const feedback = document.createElement("div");
+      feedback.className = `quiz-feedback ${
+        isCorrect ? "is-correct" : "is-wrong"
+      }`;
+      feedback.innerHTML = `
+        <strong>${isCorrect ? "Верно" : "Нужно повторить"}</strong>
+        <p>${item.explanation || "Разбери определение и причинно-следственную связь."}</p>
+        <button id="nextQuestionBtn" class="gold-button">
+          ${
+            quizIndex + 1 < quizQuestions.length
+              ? "Следующий вопрос"
+              : "Показать результат"
+          }
+        </button>
+      `;
+      $("quizBox").appendChild(feedback);
+
+      $("nextQuestionBtn").onclick = () => {
         quizIndex += 1;
         renderQuestion();
-      }, 650);
+      };
     };
 
     $("quizBox").appendChild(button);
@@ -551,6 +738,8 @@ function renderProgress() {
   const history = Array.isArray(state.quizHistory)
     ? state.quizHistory
     : [];
+
+  renderModuleProgress();
 
   $("historyList").innerHTML = history.length
     ? history
@@ -654,6 +843,326 @@ function syncDataSelectors() {
   );
 }
 
+
+function injectSmartLearningStyles() {
+  if ($("smartLearningStyles")) return;
+
+  const style = document.createElement("style");
+  style.id = "smartLearningStyles";
+  style.textContent = `
+    .learning-search {
+      margin: 0 0 18px;
+      position: relative;
+    }
+    .learning-search input {
+      width: 100%;
+      padding-left: 44px;
+    }
+    .learning-search::before {
+      content: "⌕";
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 21px;
+      z-index: 1;
+    }
+    .mini-progress {
+      width: 100%;
+      height: 5px;
+      margin-top: 10px;
+      border-radius: 99px;
+      overflow: hidden;
+      background: rgba(255,255,255,.07);
+    }
+    .mini-progress span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg,var(--gold-soft),var(--gold));
+    }
+    .lesson-navigation {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .quiz-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+    }
+    .quiz-controls select {
+      min-width: 112px;
+    }
+    .mistake-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(9,17,12,.76);
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .mistake-toggle input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+    .mistake-count {
+      color: var(--gold);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .quiz-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .quiz-feedback {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      line-height: 1.55;
+    }
+    .quiz-feedback.is-correct {
+      background: rgba(72,91,45,.35);
+    }
+    .quiz-feedback.is-wrong {
+      background: rgba(107,61,55,.35);
+    }
+    .quiz-feedback strong {
+      color: var(--gold);
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 25px;
+    }
+    .quiz-feedback p {
+      color: #d9ddcf;
+    }
+    .quiz-result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .module-progress-panel {
+      margin-top: 18px;
+      padding: 24px;
+    }
+    .module-progress-panel h3 {
+      margin-top: 0;
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 30px;
+    }
+    .module-progress-list {
+      display: grid;
+      gap: 14px;
+    }
+    .module-progress-item {
+      display: grid;
+      grid-template-columns: minmax(150px,1fr) minmax(120px,2fr) auto;
+      align-items: center;
+      gap: 14px;
+    }
+    .module-progress-item strong {
+      font-size: 14px;
+    }
+    .module-progress-item small {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    @media(max-width:760px) {
+      .quiz-controls {
+        width: 100%;
+        justify-content: stretch;
+      }
+      .quiz-controls select,
+      .mistake-toggle {
+        flex: 1;
+      }
+      .module-progress-item {
+        grid-template-columns: 1fr auto;
+      }
+      .module-progress-item .mini-progress {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function ensureSmartLearningUi() {
+  injectSmartLearningStyles();
+
+  if (!$("lessonSearch")) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "learning-search";
+    wrapper.innerHTML = `
+      <input id="lessonSearch" type="search"
+        placeholder="Поиск по 15 модулям и всем урокам"
+        autocomplete="off">
+    `;
+    $("moduleList").before(wrapper);
+
+    $("lessonSearch").addEventListener("input", (event) => {
+      lessonSearchQuery = event.target.value || "";
+      renderLessons();
+    });
+  }
+
+  if (!$("lessonNavigation")) {
+    const navigation = document.createElement("div");
+    navigation.id = "lessonNavigation";
+    navigation.className = "lesson-navigation";
+    navigation.innerHTML = `
+      <button id="previousLessonBtn" class="soft-button">
+        ← Предыдущий
+      </button>
+      <button id="nextLessonBtn" class="gold-button">
+        Следующий →
+      </button>
+    `;
+    $("completeLessonBtn").after(navigation);
+  }
+
+  if (!$("quizLength")) {
+    const heading = document.querySelector("#quiz .page-heading");
+    const category = $("quizCategory");
+    const controls = document.createElement("div");
+    controls.className = "quiz-controls";
+    controls.innerHTML = `
+      <select id="quizLength" aria-label="Количество вопросов">
+        <option value="5">5 вопросов</option>
+        <option value="10">10 вопросов</option>
+        <option value="20">20 вопросов</option>
+      </select>
+      <label class="mistake-toggle">
+        <input id="mistakesOnly" type="checkbox">
+        Только ошибки
+      </label>
+      <span id="mistakeCount" class="mistake-count"></span>
+    `;
+    controls.prepend(category);
+    heading.appendChild(controls);
+
+    $("quizLength").value = String(state.quizSettings.length);
+    $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
+
+    $("quizLength").onchange = startQuiz;
+    $("mistakesOnly").onchange = startQuiz;
+  }
+
+  if (!$("moduleProgressPanel")) {
+    const panel = document.createElement("div");
+    panel.id = "moduleProgressPanel";
+    panel.className = "glass-card module-progress-panel";
+    panel.innerHTML = `
+      <h3>Прогресс по модулям</h3>
+      <div id="moduleProgressList" class="module-progress-list"></div>
+    `;
+    document.querySelector("#progress .progress-overview").after(panel);
+  }
+
+  const searchButton = document.querySelector(
+    '.header-actions .icon-button[aria-label="Поиск"]'
+  );
+  if (searchButton) {
+    searchButton.onclick = () => {
+      activatePage("lessons");
+      activeModuleId = null;
+      renderLessons();
+      setTimeout(() => $("lessonSearch") && $("lessonSearch").focus(), 0);
+    };
+  }
+}
+
+function updateLessonView() {
+  const lesson = lessons.find((item) => item.id === activeLessonId);
+  if (!lesson) return;
+
+  const moduleLessons = lessons
+    .filter((item) => item.moduleId === lesson.moduleId)
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
+  const index = moduleLessons.findIndex((item) => item.id === lesson.id);
+
+  const completeButton = $("completeLessonBtn");
+  const completed = state.completedLessons.includes(lesson.id);
+  completeButton.textContent = completed
+    ? "Урок завершён ✓"
+    : "Отметить урок завершённым";
+  completeButton.disabled = completed;
+  completeButton.classList.toggle("soft-button", completed);
+  completeButton.classList.toggle("gold-button", !completed);
+
+  const previousButton = $("previousLessonBtn");
+  const nextButton = $("nextLessonBtn");
+  const previous = moduleLessons[index - 1];
+  const next = moduleLessons[index + 1];
+
+  previousButton.disabled = !previous;
+  previousButton.textContent = previous
+    ? "← Предыдущий урок"
+    : "← Это первый урок";
+  previousButton.onclick = previous
+    ? () => openLesson(previous.id)
+    : null;
+
+  nextButton.disabled = !next;
+  nextButton.textContent = next
+    ? "Следующий урок →"
+    : "Модуль завершён ✓";
+  nextButton.onclick = next
+    ? () => openLesson(next.id)
+    : null;
+}
+
+function updateMistakeCounter() {
+  const counter = $("mistakeCount");
+  if (!counter || !state) return;
+  counter.textContent = `${state.quizMistakes.length} ${
+    plural(state.quizMistakes.length, ["ошибка", "ошибки", "ошибок"])
+  }`;
+}
+
+function renderModuleProgress() {
+  const box = $("moduleProgressList");
+  if (!box || !state) return;
+
+  box.innerHTML = [...modules]
+    .sort((a, b) => Number(a.order || 0) - Number(b.order || 0))
+    .map((module) => {
+      const moduleLessons = lessons.filter(
+        (lesson) => lesson.moduleId === module.id
+      );
+      const total = moduleLessons.length;
+      const completed = moduleLessons.filter((lesson) =>
+        state.completedLessons.includes(lesson.id)
+      ).length;
+      const percent = total
+        ? Math.round((completed / total) * 100)
+        : 0;
+
+      return `
+        <div class="module-progress-item">
+          <strong>${module.title}</strong>
+          <div class="mini-progress">
+            <span style="width:${percent}%"></span>
+          </div>
+          <small>${completed}/${total} • ${percent}%</small>
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function renderAll() {
   renderHome();
   renderLessons();
@@ -711,19 +1220,18 @@ $("backToLessons").onclick = () => {
 };
 
 $("completeLessonBtn").onclick = () => {
-  if (
-    activeLessonId &&
-    !state.completedLessons.includes(activeLessonId)
-  ) {
+  if (!activeLessonId) return;
+
+  if (!state.completedLessons.includes(activeLessonId)) {
     state.completedLessons.push(activeLessonId);
     state.sessions.push({ date: todayStr(), type: "lesson" });
     saveState();
     renderLessons();
     renderHome();
     renderProgress();
+    updateLessonView();
+    alert("Урок завершён. Прогресс сохранён.");
   }
-
-  alert("Урок отмечен как завершённый.");
 };
 
 $("reviewCategory").onchange = buildDeck;
@@ -834,6 +1342,9 @@ $("importInput").onchange = async (event) => {
 
     state = normalizeState(imported);
     saveState();
+    $("quizLength").value = String(state.quizSettings.length);
+    $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
+    updateMistakeCounter();
     renderAll();
     alert("Данные восстановлены.");
   } catch (error) {
@@ -848,6 +1359,9 @@ $("resetBtn").onclick = () => {
   localStorage.removeItem(STORAGE_KEY);
   state = normalizeState(null);
   saveState();
+  $("quizLength").value = String(state.quizSettings.length);
+  $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
+  updateMistakeCounter();
   renderAll();
 };
 
@@ -860,7 +1374,11 @@ if ("serviceWorker" in navigator) {
 (async function init() {
   await loadData();
   state = loadState();
+  ensureSmartLearningUi();
   syncDataSelectors();
+  $("quizLength").value = String(state.quizSettings.length);
+  $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
+  updateMistakeCounter();
   saveState();
   renderAll();
 })();
