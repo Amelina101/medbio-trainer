@@ -1002,6 +1002,9 @@ function injectSmartLearningStyles() {
 function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
+  const brand = document.querySelector(".brand-kicker");
+  if (brand) brand.textContent = "MEDBIO TRAINER • SMART V1";
+
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
     wrapper.className = "learning-search";
