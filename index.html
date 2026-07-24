@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icon-192.svg">
   <link rel="stylesheet" href="styles.css">
-  <title>MedBio Trainer 0.3.1</title>
+  <title>MedBio Trainer 0.3.2</title>
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -36,7 +36,10 @@
           <h2>Клетка — структурная и функциональная единица жизни</h2>
           <p>Биология • 10 класс</p>
           <div class="progress-line"><span id="heroProgressBar" style="width:0%"></span></div>
-          <div class="progress-caption"><span>Прогресс</span><strong id="heroProgressValue">0%</strong></div>
+          <div class="progress-caption">
+            <span>Прогресс</span>
+            <strong id="heroProgressValue">0%</strong>
+          </div>
           <button data-go="lessons" class="gold-button">Продолжить урок</button>
         </div>
         <div class="cell-orb" aria-hidden="true">
@@ -46,6 +49,39 @@
         </div>
       </div>
 
+      <section id="dailyStudyPlan" class="glass-card study-plan-panel">
+        <div class="study-plan-header">
+          <div>
+            <span class="section-label">Персональный маршрут</span>
+            <h3>План на сегодня</h3>
+            <p id="studyPlanSubtitle">Загрузка учебного плана…</p>
+          </div>
+          <div class="study-streak">
+            <strong id="studyStreakValue">0</strong>
+            <span>дней подряд</span>
+          </div>
+        </div>
+
+        <div id="studyPlanGrid" class="study-plan-grid">
+          <article class="study-task">
+            <div>
+              <div class="study-task-label">1. Теория</div>
+              <h4>Подбираем урок</h4>
+              <p>Анализируем текущий прогресс.</p>
+            </div>
+          </article>
+        </div>
+
+        <div id="weeklyControlCard" class="weekly-control-card">
+          <div>
+            <h4>Еженедельная контрольная</h4>
+            <p>20 смешанных вопросов по всем модулям.</p>
+          </div>
+        </div>
+
+        <div id="weakFocus" class="weak-focus"></div>
+      </section>
+
       <div class="section-title-row">
         <div>
           <span class="section-label">Быстрый доступ</span>
@@ -54,10 +90,18 @@
       </div>
 
       <div class="quick-grid">
-        <button class="quick-card glass-card" data-go="lessons"><span>◫</span><strong>Уроки</strong><small id="quickLessonsCount">0 тем</small></button>
-        <button class="quick-card glass-card" data-go="cards"><span>▣</span><strong>Карточки</strong><small id="homeCardsCount">0 карточек</small></button>
-        <button class="quick-card glass-card" data-go="quiz"><span>✦</span><strong>Тест</strong><small id="quickTestsCount">0 тестов</small></button>
-        <button class="quick-card glass-card" data-go="progress"><span>⌁</span><strong>Прогресс</strong><small id="homeProgress">0%</small></button>
+        <button class="quick-card glass-card" data-go="lessons">
+          <span>◫</span><strong>Уроки</strong><small id="quickLessonsCount">0 тем</small>
+        </button>
+        <button class="quick-card glass-card" data-go="cards">
+          <span>▣</span><strong>Карточки</strong><small id="homeCardsCount">0 карточек</small>
+        </button>
+        <button class="quick-card glass-card" data-go="quiz">
+          <span>✦</span><strong>Тест</strong><small id="quickTestsCount">0 тестов</small>
+        </button>
+        <button class="quick-card glass-card" data-go="progress">
+          <span>⌁</span><strong>Прогресс</strong><small id="homeProgress">0%</small>
+        </button>
       </div>
 
       <div class="daily-goal glass-card">
@@ -72,7 +116,10 @@
 
     <section id="lessons" class="page">
       <div class="page-heading">
-        <div><span class="section-label">Учебная база</span><h2 id="lessonsHeading">Модули</h2></div>
+        <div>
+          <span class="section-label">Учебная база</span>
+          <h2 id="lessonsHeading">Модули</h2>
+        </div>
         <button id="modulesBack" class="text-button hidden">← К модулям</button>
       </div>
       <div id="moduleList" class="lesson-list"></div>
@@ -87,7 +134,10 @@
 
     <section id="cards" class="page">
       <div class="page-heading">
-        <div><span class="section-label">Интервальное повторение</span><h2>Карточки</h2></div>
+        <div>
+          <span class="section-label">Интервальное повторение</span>
+          <h2>Карточки</h2>
+        </div>
         <select id="reviewCategory">
           <option value="all">Все</option>
           <option value="Биология">Биология</option>
@@ -135,7 +185,10 @@
 
     <section id="quiz" class="page">
       <div class="page-heading">
-        <div><span class="section-label">Проверка знаний</span><h2>Тест</h2></div>
+        <div>
+          <span class="section-label">Проверка знаний</span>
+          <h2>Тест</h2>
+        </div>
         <select id="quizCategory">
           <option value="all">Смешанный</option>
           <option value="cell">Клетка</option>
@@ -148,7 +201,12 @@
     </section>
 
     <section id="progress" class="page">
-      <div class="page-heading"><div><span class="section-label">Статистика</span><h2>Прогресс</h2></div></div>
+      <div class="page-heading">
+        <div>
+          <span class="section-label">Статистика</span>
+          <h2>Прогресс</h2>
+        </div>
+      </div>
       <div class="progress-overview glass-card">
         <div class="ring-progress"><span id="overallProgress">0%</span></div>
         <div class="progress-stat"><strong id="completedLessons">0</strong><small>Тем изучено</small></div>
@@ -162,7 +220,12 @@
     </section>
 
     <section id="backup" class="page">
-      <div class="page-heading"><div><span class="section-label">Настройки</span><h2>Ещё</h2></div></div>
+      <div class="page-heading">
+        <div>
+          <span class="section-label">Настройки</span>
+          <h2>Ещё</h2>
+        </div>
+      </div>
       <div class="menu-list glass-card">
         <button data-go="cards"><span>▣</span><div><strong>Medical English</strong><small>Термины и произношение</small></div><b>›</b></button>
         <button data-go="cards"><span>◈</span><div><strong>Latin</strong><small>Анатомическая латынь</small></div><b>›</b></button>

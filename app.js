@@ -1156,30 +1156,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • STUDY PLAN V2";
-
-  if (!$("dailyStudyPlan")) {
-    const homeHero = document.querySelector("#home .hero");
-    const plan = document.createElement("section");
-    plan.id = "dailyStudyPlan";
-    plan.className = "glass-card study-plan-panel";
-    plan.innerHTML = `
-      <div class="study-plan-header">
-        <div>
-          <h3>План на сегодня</h3>
-          <p id="studyPlanSubtitle">Персональный маршрут обучения</p>
-        </div>
-        <div class="study-streak">
-          <strong id="studyStreakValue">0</strong>
-          <span>дней подряд</span>
-        </div>
-      </div>
-      <div id="studyPlanGrid" class="study-plan-grid"></div>
-      <div id="weeklyControlCard" class="weekly-control-card"></div>
-      <div id="weakFocus" class="weak-focus"></div>
-    `;
-    if (homeHero) homeHero.after(plan);
-  }
+  if (brand) brand.textContent = "MEDBIO TRAINER • STUDY PLAN V3";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
