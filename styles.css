@@ -234,3 +234,29 @@ textarea{min-height:120px;resize:vertical}
 @media (max-width: 620px) {
   .lesson-workspace-bar { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Olympiad Center V7 */
+.training-summary {
+  display:flex; justify-content:space-between; align-items:center; gap:24px; padding:24px; margin-bottom:18px;
+}
+.training-summary h3 { margin:4px 0 8px; font-family:'Cormorant Garamond',serif; font-size:32px; }
+.training-summary p { margin:0; color:var(--muted); max-width:680px; line-height:1.55; }
+.training-summary-stats { display:flex; gap:10px; flex-wrap:wrap; }
+.training-summary-stats div { min-width:88px; padding:12px; border:1px solid var(--line); border-radius:15px; text-align:center; background:rgba(9,17,12,.65); }
+.training-summary-stats strong { display:block; color:var(--gold); font-size:20px; }
+.training-summary-stats small { color:var(--muted); }
+.training-track-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.training-track-card { display:flex; min-height:280px; flex-direction:column; justify-content:space-between; gap:20px; padding:22px; }
+.training-track-card h3 { margin:5px 0 8px; font-family:'Cormorant Garamond',serif; font-size:29px; }
+.training-track-card p { color:var(--muted); line-height:1.5; }
+.training-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.training-meta span { padding:6px 9px; border:1px solid var(--line); border-radius:99px; color:var(--muted); font-size:12px; }
+.training-actions { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.training-actions button { width:100%; }
+@media(max-width:760px) {
+  .training-summary { align-items:stretch; flex-direction:column; }
+  .training-summary-stats { display:grid; grid-template-columns:repeat(3,1fr); }
+  .training-track-grid { grid-template-columns:1fr; }
+  .training-actions { grid-template-columns:1fr; }
+}

@@ -314,6 +314,7 @@ function goTo(page) {
   if (page === "progress") renderProgress();
   if (page === "cards") buildDeck();
   if (page === "quiz") startQuiz();
+  if (page === "training") renderTrainingCenter();
 }
 
 function renderHome() {
@@ -1276,7 +1277,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • STUDY PLAN V3";
+  if (brand) brand.textContent = "MEDBIO TRAINER • OLYMPIAD CENTER V7";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
@@ -1703,6 +1704,120 @@ function renderAll() {
   renderLessons();
   buildDeck();
   renderProgress();
+}
+
+
+const TRAINING_TRACKS = [
+  { id: "vsoh", title: "ВсОШ", cardCategory: "ВсОШ", description: "Системные задания высокого уровня: анализ, эксперимент и межпредметные связи." },
+  { id: "pirogov", title: "Пироговская олимпиада", cardCategory: "Пироговская олимпиада", description: "Биология человека, медицина, физиология и клиническое мышление." },
+  { id: "sechenov", title: "Сеченовская олимпиада", cardCategory: "Сеченовская олимпиада", description: "Анатомия, молекулярная биология и задачи медицинского профиля." },
+  { id: "scientific-english", title: "Medical & Scientific English", cardCategory: "Scientific English", description: "Терминология, чтение научных текстов и профессиональная лексика." }
+];
+
+function trainingTrackStats(track) {
+  const trackLessons = lessons.filter((lesson) => lesson.moduleId === track.id);
+  const completed = trackLessons.filter((lesson) =>
+    state.completedLessons.includes(lesson.id)
+  ).length;
+  const questions = quizBank.filter((question) => question.category === track.id);
+  const cards = state.cards.filter((card) =>
+    card.category === track.cardCategory ||
+    (track.id === "scientific-english" && card.category === "Medical English")
+  );
+  return {
+    lessons: trackLessons.length,
+    completed,
+    questions: questions.length,
+    cards: cards.length,
+    percent: trackLessons.length ? Math.round(completed / trackLessons.length * 100) : 0
+  };
+}
+
+function openTrainingLessons(moduleId) {
+  activeModuleId = moduleId;
+  lessonSearchQuery = "";
+  activatePage("lessons");
+  const search = $("lessonSearch");
+  if (search) search.value = "";
+  renderLessons();
+}
+
+function startTrainingQuiz(category) {
+  weeklyControlActive = false;
+  activatePage("quiz");
+  syncDataSelectors();
+  $("quizCategory").value = category;
+  quizCategoryActive = category;
+  startQuiz();
+}
+
+function startTrainingCards(category) {
+  activatePage("cards");
+  syncDataSelectors();
+  const select = $("reviewCategory");
+  const hasCategory = [...select.options].some((option) => option.value === category);
+  select.value = hasCategory ? category : "all";
+  buildDeck();
+}
+
+function renderTrainingCenter() {
+  const summary = $("trainingSummary");
+  const grid = $("trainingTracks");
+  if (!summary || !grid || !state) return;
+
+  const totals = TRAINING_TRACKS.reduce((acc, track) => {
+    const stats = trainingTrackStats(track);
+    acc.lessons += stats.lessons;
+    acc.completed += stats.completed;
+    acc.questions += stats.questions;
+    acc.cards += stats.cards;
+    return acc;
+  }, { lessons: 0, completed: 0, questions: 0, cards: 0 });
+
+  summary.innerHTML = `
+    <div>
+      <span class="section-label">Текущая база</span>
+      <h3>Подготовка к олимпиадам и медицинскому английскому</h3>
+      <p>Выбери направление, изучи теорию, повтори карточки и сразу закрепи материал тестом.</p>
+    </div>
+    <div class="training-summary-stats">
+      <div><strong>${totals.completed}/${totals.lessons}</strong><small>уроков</small></div>
+      <div><strong>${totals.cards}</strong><small>карточек</small></div>
+      <div><strong>${totals.questions}</strong><small>вопросов</small></div>
+    </div>`;
+
+  grid.innerHTML = TRAINING_TRACKS.map((track) => {
+    const stats = trainingTrackStats(track);
+    return `
+      <article class="glass-card training-track-card">
+        <div>
+          <span class="section-label">${stats.percent}% пройдено</span>
+          <h3>${track.title}</h3>
+          <p>${track.description}</p>
+          <div class="mini-progress"><span style="width:${stats.percent}%"></span></div>
+          <div class="training-meta">
+            <span>${stats.lessons} уроков</span>
+            <span>${stats.cards} карточек</span>
+            <span>${stats.questions} вопросов</span>
+          </div>
+        </div>
+        <div class="training-actions">
+          <button class="gold-button" data-training-lessons="${track.id}">Уроки</button>
+          <button class="soft-button" data-training-cards="${track.cardCategory}">Карточки</button>
+          <button class="green-button" data-training-quiz="${track.id}">Тест</button>
+        </div>
+      </article>`;
+  }).join("");
+
+  grid.querySelectorAll("[data-training-lessons]").forEach((button) => {
+    button.onclick = () => openTrainingLessons(button.dataset.trainingLessons);
+  });
+  grid.querySelectorAll("[data-training-cards]").forEach((button) => {
+    button.onclick = () => startTrainingCards(button.dataset.trainingCards);
+  });
+  grid.querySelectorAll("[data-training-quiz]").forEach((button) => {
+    button.onclick = () => startTrainingQuiz(button.dataset.trainingQuiz);
+  });
 }
 
 async function fetchJSON(url) {
