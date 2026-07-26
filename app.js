@@ -1277,7 +1277,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • OLYMPIAD CENTER V7";
+  if (brand) brand.textContent = "MEDBIO TRAINER • OLYMPIAD CONTENT V8";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");

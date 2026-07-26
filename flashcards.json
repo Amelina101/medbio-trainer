@@ -1288,5 +1288,1445 @@
     "interval": 1,
     "nextReview": 0,
     "mastery": 0
+  },
+  {
+    "id": "zoo-card-01",
+    "category": "Зоология",
+    "front": "Четыре ткани животных",
+    "pronunciation": "",
+    "back": "Эпителиальная, соединительная, мышечная, нервная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-02",
+    "category": "Зоология",
+    "front": "Cnidocyte",
+    "pronunciation": "",
+    "back": "Стрекательная клетка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-03",
+    "category": "Зоология",
+    "front": "Признаки членистоногих",
+    "pronunciation": "",
+    "back": "Экзоскелет и членистые конечности.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-04",
+    "category": "Зоология",
+    "front": "Molting",
+    "pronunciation": "",
+    "back": "Линька.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-05",
+    "category": "Зоология",
+    "front": "Радула",
+    "pronunciation": "",
+    "back": "Пищевой орган большинства моллюсков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-06",
+    "category": "Зоология",
+    "front": "Признаки хордовых",
+    "pronunciation": "",
+    "back": "Хорда, нервная трубка, глоточные щели, хвост.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-07",
+    "category": "Зоология",
+    "front": "Countercurrent exchange",
+    "pronunciation": "",
+    "back": "Противоточный обмен.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-08",
+    "category": "Зоология",
+    "front": "Амниотическое яйцо",
+    "pronunciation": "",
+    "back": "Яйцо с зародышевыми оболочками.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-09",
+    "category": "Зоология",
+    "front": "Air sac",
+    "pronunciation": "",
+    "back": "Воздушный мешок птиц.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-10",
+    "category": "Зоология",
+    "front": "Placenta",
+    "pronunciation": "",
+    "back": "Плацента.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-11",
+    "category": "Зоология",
+    "front": "Definitive host",
+    "pronunciation": "",
+    "back": "Окончательный хозяин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "zoo-card-12",
+    "category": "Зоология",
+    "front": "Эндотермия",
+    "pronunciation": "",
+    "back": "Поддержание температуры за счёт метаболизма.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-01",
+    "category": "Анатомия",
+    "front": "Medial",
+    "pronunciation": "",
+    "back": "Ближе к средней линии.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-02",
+    "category": "Анатомия",
+    "front": "Sagittal plane",
+    "pronunciation": "",
+    "back": "Сагиттальная плоскость.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-03",
+    "category": "Анатомия",
+    "front": "Осевой скелет",
+    "pronunciation": "",
+    "back": "Череп, позвоночник, грудная клетка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-04",
+    "category": "Анатомия",
+    "front": "Ligament",
+    "pronunciation": "",
+    "back": "Связка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-05",
+    "category": "Анатомия",
+    "front": "Саркомер",
+    "pronunciation": "",
+    "back": "Единица миофибриллы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-06",
+    "category": "Анатомия",
+    "front": "Tendon",
+    "pronunciation": "",
+    "back": "Сухожилие.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-07",
+    "category": "Анатомия",
+    "front": "Клапаны сердца",
+    "pronunciation": "",
+    "back": "Трёхстворчатый, митральный, аортальный, лёгочный.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-08",
+    "category": "Анатомия",
+    "front": "Alveolus",
+    "pronunciation": "",
+    "back": "Альвеола.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-09",
+    "category": "Анатомия",
+    "front": "Duodenum",
+    "pronunciation": "",
+    "back": "Двенадцатиперстная кишка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-10",
+    "category": "Анатомия",
+    "front": "Renal pelvis",
+    "pronunciation": "",
+    "back": "Почечная лоханка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-11",
+    "category": "Анатомия",
+    "front": "Cerebellum",
+    "pronunciation": "",
+    "back": "Мозжечок.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "anat-card-12",
+    "category": "Анатомия",
+    "front": "Retina",
+    "pronunciation": "",
+    "back": "Сетчатка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-01",
+    "category": "Физиология",
+    "front": "Homeostasis",
+    "pronunciation": "",
+    "back": "Гомеостаз.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-02",
+    "category": "Физиология",
+    "front": "Negative feedback",
+    "pronunciation": "",
+    "back": "Отрицательная обратная связь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-03",
+    "category": "Физиология",
+    "front": "Action potential",
+    "pronunciation": "",
+    "back": "Потенциал действия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-04",
+    "category": "Физиология",
+    "front": "Synaptic cleft",
+    "pronunciation": "",
+    "back": "Синаптическая щель.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-05",
+    "category": "Физиология",
+    "front": "Роль Ca²⁺ в мышце",
+    "pronunciation": "",
+    "back": "Связывает тропонин.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-06",
+    "category": "Физиология",
+    "front": "Vascular resistance",
+    "pronunciation": "",
+    "back": "Сосудистое сопротивление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-07",
+    "category": "Физиология",
+    "front": "Bohr effect",
+    "pronunciation": "",
+    "back": "Низкий pH облегчает отдачу O₂.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-08",
+    "category": "Физиология",
+    "front": "Chylomicron",
+    "pronunciation": "",
+    "back": "Хиломикрон.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-09",
+    "category": "Физиология",
+    "front": "Процессы нефрона",
+    "pronunciation": "",
+    "back": "Фильтрация, реабсорбция, секреция.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-10",
+    "category": "Физиология",
+    "front": "ADH",
+    "pronunciation": "",
+    "back": "Повышает реабсорбцию воды.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-11",
+    "category": "Физиология",
+    "front": "Инсулин",
+    "pronunciation": "",
+    "back": "Снижает глюкозу крови.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "phys-card-12",
+    "category": "Физиология",
+    "front": "Cortisol",
+    "pronunciation": "",
+    "back": "Кортизол.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-01",
+    "category": "Эволюция",
+    "front": "Homology",
+    "pronunciation": "",
+    "back": "Гомология — сходство вследствие общего происхождения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-02",
+    "category": "Эволюция",
+    "front": "Clade",
+    "pronunciation": "",
+    "back": "Клада включает предка и всех потомков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-03",
+    "category": "Эволюция",
+    "front": "Fitness",
+    "pronunciation": "",
+    "back": "Вклад генотипа или фенотипа в следующее поколение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-04",
+    "category": "Эволюция",
+    "front": "Genetic drift",
+    "pronunciation": "",
+    "back": "Случайное изменение частот аллелей.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-05",
+    "category": "Эволюция",
+    "front": "Founder effect",
+    "pronunciation": "",
+    "back": "Эффект основателя.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-06",
+    "category": "Эволюция",
+    "front": "Gene flow",
+    "pronunciation": "",
+    "back": "Перенос аллелей между популяциями.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-07",
+    "category": "Эволюция",
+    "front": "Speciation",
+    "pronunciation": "",
+    "back": "Образование новых видов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-08",
+    "category": "Эволюция",
+    "front": "Prezygotic barrier",
+    "pronunciation": "",
+    "back": "Барьер до образования зиготы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-09",
+    "category": "Эволюция",
+    "front": "Adaptive radiation",
+    "pronunciation": "",
+    "back": "Быстрое расхождение линии на множество форм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-10",
+    "category": "Эволюция",
+    "front": "Convergent evolution",
+    "pronunciation": "",
+    "back": "Независимое возникновение сходных признаков.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-11",
+    "category": "Эволюция",
+    "front": "Hox gene",
+    "pronunciation": "",
+    "back": "Регуляторный ген плана тела.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "evo-card-12",
+    "category": "Эволюция",
+    "front": "Bipedalism",
+    "pronunciation": "",
+    "back": "Прямохождение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-01",
+    "category": "Экология",
+    "front": "Carrying capacity",
+    "pronunciation": "",
+    "back": "Ёмкость среды K.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-02",
+    "category": "Экология",
+    "front": "Density-dependent factor",
+    "pronunciation": "",
+    "back": "Фактор, действие которого растёт с плотностью.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-03",
+    "category": "Экология",
+    "front": "Mutualism",
+    "pronunciation": "",
+    "back": "Взаимодействие +/+",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-04",
+    "category": "Экология",
+    "front": "Keystone species",
+    "pronunciation": "",
+    "back": "Ключевой вид.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-05",
+    "category": "Экология",
+    "front": "Primary succession",
+    "pronunciation": "",
+    "back": "Сукцессия на субстрате без почвы.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-06",
+    "category": "Экология",
+    "front": "Net primary productivity",
+    "pronunciation": "",
+    "back": "GPP минус дыхание продуцентов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-07",
+    "category": "Экология",
+    "front": "Trophic level",
+    "pronunciation": "",
+    "back": "Трофический уровень.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-08",
+    "category": "Экология",
+    "front": "Nitrogen fixation",
+    "pronunciation": "",
+    "back": "Преобразование N₂ в доступные соединения.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-09",
+    "category": "Экология",
+    "front": "Eutrophication",
+    "pronunciation": "",
+    "back": "Обогащение водоёма биогенными элементами.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-10",
+    "category": "Экология",
+    "front": "Habitat fragmentation",
+    "pronunciation": "",
+    "back": "Фрагментация местообитаний.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-11",
+    "category": "Экология",
+    "front": "Transect",
+    "pronunciation": "",
+    "back": "Трансекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eco-card-12",
+    "category": "Экология",
+    "front": "Mark–recapture",
+    "pronunciation": "",
+    "back": "Мечение и повторный отлов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-01",
+    "category": "Scientific English",
+    "front": "to encode",
+    "pronunciation": "",
+    "back": "кодировать",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-02",
+    "category": "Scientific English",
+    "front": "to bind",
+    "pronunciation": "",
+    "back": "связываться",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-03",
+    "category": "Scientific English",
+    "front": "to undergo",
+    "pronunciation": "",
+    "back": "подвергаться",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-04",
+    "category": "Scientific English",
+    "front": "anterior",
+    "pronunciation": "",
+    "back": "передний",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-05",
+    "category": "Scientific English",
+    "front": "proximal",
+    "pronunciation": "",
+    "back": "проксимальный",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-06",
+    "category": "Scientific English",
+    "front": "research question",
+    "pronunciation": "",
+    "back": "исследовательский вопрос",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-07",
+    "category": "Scientific English",
+    "front": "limitation",
+    "pronunciation": "",
+    "back": "ограничение исследования",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-08",
+    "category": "Scientific English",
+    "front": "to remain stable",
+    "pronunciation": "",
+    "back": "оставаться стабильным",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-09",
+    "category": "Scientific English",
+    "front": "control group",
+    "pronunciation": "",
+    "back": "контрольная группа",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-10",
+    "category": "Scientific English",
+    "front": "sample size",
+    "pronunciation": "",
+    "back": "объём выборки",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-11",
+    "category": "Scientific English",
+    "front": "statistical significance",
+    "pronunciation": "",
+    "back": "статистическая значимость",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "eng-card-12",
+    "category": "Scientific English",
+    "front": "to suggest",
+    "pronunciation": "",
+    "back": "указывать, предполагать",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-01",
+    "category": "Medical Latin",
+    "front": "Cor, cordis n.",
+    "pronunciation": "",
+    "back": "Сердце.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-02",
+    "category": "Medical Latin",
+    "front": "Pulmo, pulmonis m.",
+    "pronunciation": "",
+    "back": "Лёгкое.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-03",
+    "category": "Medical Latin",
+    "front": "Vena, ae f.",
+    "pronunciation": "",
+    "back": "Вена.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-04",
+    "category": "Medical Latin",
+    "front": "Arteria profunda",
+    "pronunciation": "",
+    "back": "Глубокая артерия.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-05",
+    "category": "Medical Latin",
+    "front": "Caput femoris",
+    "pronunciation": "",
+    "back": "Головка бедренной кости.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-06",
+    "category": "Medical Latin",
+    "front": "Hyper-",
+    "pronunciation": "",
+    "back": "Избыток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-07",
+    "category": "Medical Latin",
+    "front": "Hypo-",
+    "pronunciation": "",
+    "back": "Недостаток.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-08",
+    "category": "Medical Latin",
+    "front": "-itis",
+    "pronunciation": "",
+    "back": "Воспаление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-09",
+    "category": "Medical Latin",
+    "front": "-ectomy",
+    "pronunciation": "",
+    "back": "Удаление.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "lat-card-10",
+    "category": "Medical Latin",
+    "front": "Unguentum",
+    "pronunciation": "",
+    "back": "Мазь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-01",
+    "category": "ВсОШ",
+    "front": "Independent variable",
+    "pronunciation": "",
+    "back": "Независимая переменная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-02",
+    "category": "ВсОШ",
+    "front": "Dependent variable",
+    "pronunciation": "",
+    "back": "Зависимая переменная.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-03",
+    "category": "ВсОШ",
+    "front": "Positive control",
+    "pronunciation": "",
+    "back": "Положительный контроль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-04",
+    "category": "ВсОШ",
+    "front": "Negative control",
+    "pronunciation": "",
+    "back": "Отрицательный контроль.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-05",
+    "category": "ВсОШ",
+    "front": "Biological replicate",
+    "pronunciation": "",
+    "back": "Биологическая повторность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-06",
+    "category": "ВсОШ",
+    "front": "Effect size",
+    "pronunciation": "",
+    "back": "Размер эффекта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-07",
+    "category": "ВсОШ",
+    "front": "Error bar",
+    "pronunciation": "",
+    "back": "Планка погрешности.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-08",
+    "category": "ВсОШ",
+    "front": "Diagnostic feature",
+    "pronunciation": "",
+    "back": "Диагностический признак.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-09",
+    "category": "ВсОШ",
+    "front": "Identification key",
+    "pronunciation": "",
+    "back": "Определительный ключ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "vsoh-card-10",
+    "category": "ВсОШ",
+    "front": "Scale bar",
+    "pronunciation": "",
+    "back": "Масштабная линейка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-01",
+    "category": "Пироговская олимпиада",
+    "front": "Cell injury",
+    "pronunciation": "",
+    "back": "Клеточное повреждение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-02",
+    "category": "Пироговская олимпиада",
+    "front": "Mosaicism",
+    "pronunciation": "",
+    "back": "Мозаицизм.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-03",
+    "category": "Пироговская олимпиада",
+    "front": "Penetrance",
+    "pronunciation": "",
+    "back": "Пенетрантность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-04",
+    "category": "Пироговская олимпиада",
+    "front": "Collateral circulation",
+    "pronunciation": "",
+    "back": "Коллатеральное кровообращение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-05",
+    "category": "Пироговская олимпиада",
+    "front": "Compensation",
+    "pronunciation": "",
+    "back": "Компенсация.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-06",
+    "category": "Пироговская олимпиада",
+    "front": "Innate immunity",
+    "pronunciation": "",
+    "back": "Врождённый иммунитет.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-07",
+    "category": "Пироговская олимпиада",
+    "front": "Antibody",
+    "pronunciation": "",
+    "back": "Антитело.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-08",
+    "category": "Пироговская олимпиада",
+    "front": "Antibiotic resistance",
+    "pronunciation": "",
+    "back": "Антибиотикорезистентность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-09",
+    "category": "Пироговская олимпиада",
+    "front": "Biomarker",
+    "pronunciation": "",
+    "back": "Биомаркер.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "pir-card-10",
+    "category": "Пироговская олимпиада",
+    "front": "Clinical case",
+    "pronunciation": "",
+    "back": "Клинический случай.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-01",
+    "category": "Сеченовская олимпиада",
+    "front": "Integrated approach",
+    "pronunciation": "",
+    "back": "Интегративный подход.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-02",
+    "category": "Сеченовская олимпиада",
+    "front": "Molecular diagnostics",
+    "pronunciation": "",
+    "back": "Молекулярная диагностика.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-03",
+    "category": "Сеченовская олимпиада",
+    "front": "Genetic variant",
+    "pronunciation": "",
+    "back": "Генетический вариант.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-04",
+    "category": "Сеченовская олимпиада",
+    "front": "Synaptic plasticity",
+    "pronunciation": "",
+    "back": "Синаптическая пластичность.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-05",
+    "category": "Сеченовская олимпиада",
+    "front": "Cardiac output",
+    "pronunciation": "",
+    "back": "Сердечный выброс.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-06",
+    "category": "Сеченовская олимпиада",
+    "front": "Stroke volume",
+    "pronunciation": "",
+    "back": "Ударный объём.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-07",
+    "category": "Сеченовская олимпиада",
+    "front": "Baroreflex",
+    "pronunciation": "",
+    "back": "Барорефлекс.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-08",
+    "category": "Сеченовская олимпиада",
+    "front": "Alveolar ventilation",
+    "pronunciation": "",
+    "back": "Альвеолярная вентиляция.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-09",
+    "category": "Сеченовская олимпиада",
+    "front": "Absolute risk",
+    "pronunciation": "",
+    "back": "Абсолютный риск.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "sech-card-10",
+    "category": "Сеченовская олимпиада",
+    "front": "Bias",
+    "pronunciation": "",
+    "back": "Систематическая ошибка.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-1",
+    "category": "ВсОШ",
+    "front": "Independent variable",
+    "pronunciation": "",
+    "back": "Независимая переменная — фактор, который изменяет исследователь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-2",
+    "category": "ВсОШ",
+    "front": "Dependent variable",
+    "pronunciation": "",
+    "back": "Зависимая переменная — измеряемый результат.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-3",
+    "category": "ВсОШ",
+    "front": "Control group",
+    "pronunciation": "",
+    "back": "Контрольная группа не получает исследуемое воздействие.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-4",
+    "category": "ВсОШ",
+    "front": "Confounding factor",
+    "pronunciation": "",
+    "back": "Смешивающий фактор, искажающий причинный вывод.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-5",
+    "category": "ВсОШ",
+    "front": "Carrying capacity",
+    "pronunciation": "",
+    "back": "Ёмкость среды — максимальная устойчивая численность популяции.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-6",
+    "category": "ВсОШ",
+    "front": "Electrochemical gradient",
+    "pronunciation": "",
+    "back": "Сумма химического и электрического градиентов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-7",
+    "category": "ВсОШ",
+    "front": "Facilitated diffusion",
+    "pronunciation": "",
+    "back": "Облегчённая диффузия через белки по градиенту без АТФ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-всош-8",
+    "category": "ВсОШ",
+    "front": "Sampling bias",
+    "pronunciation": "",
+    "back": "Систематическое смещение из-за нерепрезентативной выборки.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-1",
+    "category": "Пироговская олимпиада",
+    "front": "Homeostasis",
+    "pronunciation": "",
+    "back": "Поддержание относительного постоянства внутренней среды.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-2",
+    "category": "Пироговская олимпиада",
+    "front": "Set point",
+    "pronunciation": "",
+    "back": "Установочная точка регулируемой величины.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-3",
+    "category": "Пироговская олимпиада",
+    "front": "Negative feedback",
+    "pronunciation": "",
+    "back": "Ответ, уменьшающий исходное отклонение.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-4",
+    "category": "Пироговская олимпиада",
+    "front": "Bohr effect",
+    "pronunciation": "",
+    "back": "Снижение сродства гемоглобина к O₂ при росте CO₂ и снижении pH.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-5",
+    "category": "Пироговская олимпиада",
+    "front": "Glomerular filtration",
+    "pronunciation": "",
+    "back": "Переход плазмы без клеток и крупных белков в капсулу нефрона.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-6",
+    "category": "Пироговская олимпиада",
+    "front": "Tubular reabsorption",
+    "pronunciation": "",
+    "back": "Возврат веществ из канальца в кровь.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-7",
+    "category": "Пироговская олимпиада",
+    "front": "ADH",
+    "pronunciation": "",
+    "back": "Гормон, повышающий реабсорбцию воды в собирательных трубках.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-пироговская-олимпи-8",
+    "category": "Пироговская олимпиада",
+    "front": "Tissue hypoxia",
+    "pronunciation": "",
+    "back": "Недостаточное снабжение ткани кислородом.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-1",
+    "category": "Сеченовская олимпиада",
+    "front": "Sagittal plane",
+    "pronunciation": "",
+    "back": "Плоскость, разделяющая тело на правую и левую части.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-2",
+    "category": "Сеченовская олимпиада",
+    "front": "Promoter",
+    "pronunciation": "",
+    "back": "Участок ДНК, где начинается сборка транскрипционного комплекса.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-3",
+    "category": "Сеченовская олимпиада",
+    "front": "Alternative splicing",
+    "pronunciation": "",
+    "back": "Получение разных зрелых мРНК из одного первичного транскрипта.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-4",
+    "category": "Сеченовская олимпиада",
+    "front": "MHC I",
+    "pronunciation": "",
+    "back": "Презентует внутриклеточные пептиды CD8+ T-клеткам.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-5",
+    "category": "Сеченовская олимпиада",
+    "front": "MHC II",
+    "pronunciation": "",
+    "back": "Презентует внеклеточные антигены CD4+ T-клеткам.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-6",
+    "category": "Сеченовская олимпиада",
+    "front": "Clonal selection",
+    "pronunciation": "",
+    "back": "Размножение лимфоцитов, распознавших антиген.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-7",
+    "category": "Сеченовская олимпиада",
+    "front": "Epigenetic regulation",
+    "pronunciation": "",
+    "back": "Изменение активности генов без изменения последовательности ДНК.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-сеченовская-олимпи-8",
+    "category": "Сеченовская олимпиада",
+    "front": "Memory cell",
+    "pronunciation": "",
+    "back": "Долгоживущая клетка, ускоряющая повторный иммунный ответ.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-1",
+    "category": "Scientific English",
+    "front": "Abstract",
+    "pronunciation": "",
+    "back": "Краткое структурированное содержание научной статьи.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-2",
+    "category": "Scientific English",
+    "front": "Methods",
+    "pronunciation": "",
+    "back": "Раздел с дизайном, материалами и процедурами исследования.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-3",
+    "category": "Scientific English",
+    "front": "Findings",
+    "pronunciation": "",
+    "back": "Основные результаты исследования.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-4",
+    "category": "Scientific English",
+    "front": "Limitation",
+    "pronunciation": "",
+    "back": "Ограничение, влияющее на интерпретацию результатов.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-5",
+    "category": "Scientific English",
+    "front": "Cardiac output",
+    "pronunciation": "",
+    "back": "Минутный объём сердца.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-6",
+    "category": "Scientific English",
+    "front": "Stroke volume",
+    "pronunciation": "",
+    "back": "Ударный объём крови.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-7",
+    "category": "Scientific English",
+    "front": "Selectively permeable",
+    "pronunciation": "",
+    "back": "Избирательно проницаемый.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
+  },
+  {
+    "id": "v8-scientific-english-8",
+    "category": "Scientific English",
+    "front": "Template strand",
+    "pronunciation": "",
+    "back": "Матричная цепь нуклеиновой кислоты.",
+    "interval": 1,
+    "nextReview": 0,
+    "mastery": 0
   }
 ]
