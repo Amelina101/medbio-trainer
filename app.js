@@ -24,10 +24,13 @@ let quizScore = 0;
 let lessonSearchQuery = "";
 let quizAnswerLocked = false;
 let weeklyControlActive = false;
+let favoritesOnly = false;
 
 const defaults = {
   cards: [],
   completedLessons: [],
+  favoriteLessons: [],
+  lessonNotes: {},
   sessions: [],
   quizHistory: [],
   quizMistakes: [],
@@ -102,6 +105,17 @@ function normalizeState(raw) {
     completedLessons: Array.isArray(source.completedLessons)
       ? source.completedLessons.filter((id) => typeof id === "string")
       : [],
+    favoriteLessons: Array.isArray(source.favoriteLessons)
+      ? [...new Set(source.favoriteLessons.filter((id) => typeof id === "string"))]
+      : [],
+    lessonNotes:
+      source.lessonNotes && typeof source.lessonNotes === "object" && !Array.isArray(source.lessonNotes)
+        ? Object.fromEntries(
+            Object.entries(source.lessonNotes)
+              .filter(([id, note]) => typeof id === "string" && typeof note === "string")
+              .map(([id, note]) => [id, note.slice(0, 12000)])
+          )
+        : {},
     sessions: Array.isArray(source.sessions)
       ? source.sessions.filter(
           (item) =>
@@ -376,7 +390,9 @@ function renderModules() {
 
   visibleModules.forEach((module) => {
     const moduleLessons = lessons.filter(
-      (lesson) => lesson.moduleId === module.id
+      (lesson) =>
+        lesson.moduleId === module.id &&
+        (!favoritesOnly || state.favoriteLessons.includes(lesson.id))
     );
     const total = moduleLessons.length;
     const done = moduleLessons.filter((lesson) =>
@@ -465,6 +481,7 @@ function renderLessons() {
   const query = lessonSearchQuery.trim().toLocaleLowerCase("ru");
   const moduleLessons = lessons
     .filter((lesson) => lesson.moduleId === activeModuleId)
+    .filter((lesson) => !favoritesOnly || state.favoriteLessons.includes(lesson.id))
     .filter((lesson) => {
       if (!query) return true;
       const text = [
@@ -490,11 +507,12 @@ function renderLessons() {
     const button = document.createElement("button");
     button.className = "lesson-card glass-card";
     const isCompleted = state.completedLessons.includes(lesson.id);
+    const isFavorite = state.favoriteLessons.includes(lesson.id);
 
     button.innerHTML = `
       <div class="lesson-thumb"></div>
       <div>
-        <h3>${lesson.title}</h3>
+        <h3>${isFavorite ? "★ " : ""}${lesson.title}</h3>
         <p>
           ${lesson.level || "Биология"} • ${lesson.duration || 0} минут
           ${isCompleted ? " • завершён ✓" : ""}
@@ -521,9 +539,111 @@ function openLesson(id) {
   state.lastLessonId = id;
   saveState();
 
-  $("lessonArticle").innerHTML = lesson.content || "";
+  renderLessonWorkspace(lesson);
   goTo("lessonView");
   updateLessonView();
+}
+
+
+function renderLessonWorkspace(lesson) {
+  const isFavorite = state.favoriteLessons.includes(lesson.id);
+  const note = state.lessonNotes[lesson.id] || "";
+
+  $("lessonArticle").innerHTML = `
+    <div class="lesson-workspace-bar">
+      <button id="favoriteLessonBtn" class="${isFavorite ? "favorite-active" : ""}"
+        aria-pressed="${isFavorite}" type="button">
+        ${isFavorite ? "★ В избранном" : "☆ В избранное"}
+      </button>
+      <span class="autosave-status">Заметка сохраняется автоматически</span>
+    </div>
+    <div class="lesson-source-content">${lesson.content || ""}</div>
+    <section class="lesson-note-card">
+      <div>
+        <span class="section-label">Личная тетрадь</span>
+        <h3>Мои заметки к уроку</h3>
+      </div>
+      <textarea id="lessonNoteInput" maxlength="12000"
+        placeholder="Запиши определение, схему, вопрос преподавателю или идею для повторения…"></textarea>
+      <div class="note-footer">
+        <span id="noteCounter">0 / 12000</span>
+        <button id="clearLessonNoteBtn" class="text-button" type="button">Очистить</button>
+      </div>
+    </section>
+  `;
+
+  const noteInput = $("lessonNoteInput");
+  noteInput.value = note;
+  updateNoteCounter();
+
+  $("favoriteLessonBtn").onclick = () => toggleFavoriteLesson(lesson.id);
+  $("clearLessonNoteBtn").onclick = () => {
+    if (!noteInput.value || confirm("Очистить заметку к этому уроку?")) {
+      noteInput.value = "";
+      saveLessonNote(lesson.id, "");
+    }
+  };
+
+  let noteTimer = null;
+  noteInput.addEventListener("input", () => {
+    updateNoteCounter();
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(() => saveLessonNote(lesson.id, noteInput.value), 250);
+  });
+  noteInput.addEventListener("blur", () => saveLessonNote(lesson.id, noteInput.value));
+}
+
+function updateNoteCounter() {
+  const input = $("lessonNoteInput");
+  const counter = $("noteCounter");
+  if (input && counter) counter.textContent = `${input.value.length} / 12000`;
+}
+
+function saveLessonNote(lessonId, value) {
+  const clean = String(value || "").slice(0, 12000);
+  if (clean.trim()) state.lessonNotes[lessonId] = clean;
+  else delete state.lessonNotes[lessonId];
+  saveState();
+}
+
+function toggleFavoriteLesson(lessonId) {
+  const set = new Set(state.favoriteLessons);
+  if (set.has(lessonId)) set.delete(lessonId);
+  else set.add(lessonId);
+  state.favoriteLessons = [...set];
+  saveState();
+  const lesson = lessons.find((item) => item.id === lessonId);
+  if (lesson) renderLessonWorkspace(lesson);
+  renderLessons();
+  updateFavoritesButton();
+}
+
+function ensureNotesFavoritesUi() {
+  if (!$("favoritesFilterBtn")) {
+    const heading = $("lessonsHeading");
+    const wrapper = heading && heading.parentElement;
+    if (wrapper) {
+      const button = document.createElement("button");
+      button.id = "favoritesFilterBtn";
+      button.className = "favorites-filter";
+      button.type = "button";
+      button.onclick = () => {
+        favoritesOnly = !favoritesOnly;
+        activeModuleId = null;
+        updateFavoritesButton();
+        renderLessons();
+      };
+      wrapper.appendChild(button);
+    }
+  }
+  updateFavoritesButton();
+}
+
+function updateFavoritesButton() {
+  const button = $("favoritesFilterBtn");
+  if (!button || !state) return;
+  button.classList.toggle("active", favoritesOnly);
+  button.textContent = `${favoritesOnly ? "★" : "☆"} Избранное (${state.favoriteLessons.length})`;
 }
 
 function buildDeck() {
@@ -1578,6 +1698,7 @@ function renderDailyStudyPlan() {
 }
 
 function renderAll() {
+  updateFavoritesButton();
   renderHome();
   renderLessons();
   buildDeck();
@@ -1790,6 +1911,7 @@ if ("serviceWorker" in navigator) {
   await loadData();
   state = loadState();
   ensureSmartLearningUi();
+  ensureNotesFavoritesUi();
   syncDataSelectors();
   $("quizLength").value = String(state.quizSettings.length);
   $("mistakesOnly").checked = state.quizSettings.mistakesOnly;
