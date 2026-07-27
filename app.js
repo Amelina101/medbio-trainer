@@ -315,6 +315,7 @@ function goTo(page) {
   if (page === "cards") buildDeck();
   if (page === "quiz") startQuiz();
   if (page === "training") renderTrainingCenter();
+  if (page === "moduleExam") renderExamSetup();
 }
 
 function renderHome() {
@@ -1277,7 +1278,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • OLYMPIAD CONTENT V8";
+  if (brand) brand.textContent = "MEDBIO TRAINER • MODULE EXAMS V9";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
@@ -2034,3 +2035,220 @@ if ("serviceWorker" in navigator) {
   saveState();
   renderAll();
 })();
+
+
+// ===== Module Exams V9 =====
+const EXAM_STORAGE_KEY = "medbio_module_exams_v9";
+let examQuestions = [];
+let examIndex = 0;
+let examScore = 0;
+let examAnswers = [];
+let examLocked = false;
+let examModuleId = "all";
+
+function loadExamHistory() {
+  try {
+    const value = JSON.parse(localStorage.getItem(EXAM_STORAGE_KEY) || "[]");
+    return Array.isArray(value) ? value : [];
+  } catch (_) {
+    return [];
+  }
+}
+
+function saveExamHistory(items) {
+  localStorage.setItem(EXAM_STORAGE_KEY, JSON.stringify(items.slice(0, 30)));
+}
+
+function examCategoryForModule(moduleId) {
+  const map = { cytology: "cell" };
+  return map[moduleId] || moduleId;
+}
+
+function examModuleTitle(moduleId) {
+  if (moduleId === "all") return "Смешанный экзамен";
+  const item = modules.find((module) => module.id === moduleId);
+  return item ? item.title : moduleId;
+}
+
+function renderExamSetup() {
+  const setup = $("examSetup");
+  const box = $("examBox");
+  const result = $("examResult");
+  if (!setup || !box || !result) return;
+
+  box.classList.add("hidden");
+  result.classList.add("hidden");
+  setup.classList.remove("hidden");
+
+  const available = modules.filter((module) =>
+    quizBank.some((question) => question.category === examCategoryForModule(module.id))
+  );
+
+  setup.innerHTML = `
+    <span class="section-label">Настройка экзамена</span>
+    <h3>Выбери модуль и объём</h3>
+    <div class="exam-form-grid">
+      <label>Модуль
+        <select id="examModuleSelect">
+          <option value="all">Смешанный экзамен</option>
+          ${available.map((module) => `<option value="${module.id}">${escapeHTML(module.title)}</option>`).join("")}
+        </select>
+      </label>
+      <label>Количество вопросов
+        <select id="examLengthSelect">
+          <option value="10">10 вопросов</option>
+          <option value="20" selected>20 вопросов</option>
+          <option value="30">30 вопросов</option>
+        </select>
+      </label>
+    </div>
+    <div class="exam-rules">
+      <strong>Правила:</strong> один ответ на вопрос, результат сохраняется. После завершения доступен разбор всех ошибок.
+    </div>
+    <button id="startModuleExamBtn" class="gold-button wide">Начать экзамен</button>
+  `;
+
+  $("startModuleExamBtn").onclick = startModuleExam;
+  renderExamHistory();
+}
+
+function startModuleExam() {
+  examModuleId = $("examModuleSelect").value;
+  const length = Number($("examLengthSelect").value) || 20;
+  const category = examCategoryForModule(examModuleId);
+  let pool = examModuleId === "all"
+    ? [...quizBank]
+    : quizBank.filter((question) => question.category === category);
+
+  examQuestions = pool.sort(() => Math.random() - 0.5).slice(0, length);
+  examIndex = 0;
+  examScore = 0;
+  examAnswers = [];
+  examLocked = false;
+
+  $("examSetup").classList.add("hidden");
+  $("examResult").classList.add("hidden");
+  $("examBox").classList.remove("hidden");
+  renderExamQuestion();
+}
+
+function renderExamQuestion() {
+  const box = $("examBox");
+  if (!box) return;
+  if (examIndex >= examQuestions.length) {
+    finishModuleExam();
+    return;
+  }
+
+  examLocked = false;
+  const question = examQuestions[examIndex];
+  box.innerHTML = `
+    <div class="quiz-topline">
+      <span class="section-label">Вопрос ${examIndex + 1} из ${examQuestions.length}</span>
+      <span>${examScore} правильных</span>
+    </div>
+    <div class="exam-progress"><span style="width:${Math.round((examIndex / examQuestions.length) * 100)}%"></span></div>
+    <h3>${escapeHTML(question.q)}</h3>
+    <div id="examOptions" class="options"></div>
+  `;
+
+  const options = $("examOptions");
+  question.options.forEach((text, optionIndex) => {
+    const button = document.createElement("button");
+    button.className = "option";
+    button.textContent = text;
+    button.onclick = () => answerExamQuestion(optionIndex);
+    options.appendChild(button);
+  });
+}
+
+function answerExamQuestion(selectedIndex) {
+  if (examLocked) return;
+  examLocked = true;
+  const question = examQuestions[examIndex];
+  const correct = selectedIndex === question.answer;
+  if (correct) examScore += 1;
+
+  examAnswers.push({
+    id: question.id,
+    q: question.q,
+    options: question.options,
+    selected: selectedIndex,
+    answer: question.answer,
+    explanation: question.explanation || "Правильный ответ следует из ключевых фактов этого раздела. Повтори соответствующий урок и карточки модуля.",
+    correct
+  });
+
+  const buttons = $("examOptions").querySelectorAll("button");
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+    if (index === question.answer) button.classList.add("correct");
+    if (index === selectedIndex && !correct) button.classList.add("wrong");
+  });
+
+  const next = document.createElement("button");
+  next.className = "gold-button exam-next";
+  next.textContent = examIndex + 1 < examQuestions.length ? "Следующий вопрос" : "Завершить экзамен";
+  next.onclick = () => { examIndex += 1; renderExamQuestion(); };
+  $("examBox").appendChild(next);
+}
+
+function finishModuleExam() {
+  const percent = examQuestions.length ? Math.round((examScore / examQuestions.length) * 100) : 0;
+  const grade = percent >= 90 ? "Отлично" : percent >= 75 ? "Хорошо" : percent >= 60 ? "Зачёт" : "Нужно повторить";
+  const record = {
+    date: new Date().toISOString(),
+    moduleId: examModuleId,
+    title: examModuleTitle(examModuleId),
+    score: examScore,
+    total: examQuestions.length,
+    percent
+  };
+  const history = loadExamHistory();
+  history.unshift(record);
+  saveExamHistory(history);
+
+  const mistakes = examAnswers.filter((answer) => !answer.correct);
+  $("examBox").classList.add("hidden");
+  const result = $("examResult");
+  result.classList.remove("hidden");
+  result.innerHTML = `
+    <div class="exam-score-ring"><strong>${percent}%</strong><span>${grade}</span></div>
+    <h3>${escapeHTML(record.title)}</h3>
+    <p>Результат: <strong>${examScore} из ${examQuestions.length}</strong>. Ошибок: ${mistakes.length}.</p>
+    <div class="exam-result-actions">
+      <button id="repeatExamBtn" class="gold-button">Повторить</button>
+      <button id="newExamBtn" class="soft-button">Новый экзамен</button>
+    </div>
+    <div class="exam-review">
+      <h3>Разбор ошибок</h3>
+      ${mistakes.length ? mistakes.map((item, index) => `
+        <article class="exam-mistake">
+          <span class="section-label">Ошибка ${index + 1}</span>
+          <h4>${escapeHTML(item.q)}</h4>
+          <p><b>Твой ответ:</b> ${escapeHTML(item.options[item.selected] || "—")}</p>
+          <p><b>Правильный ответ:</b> ${escapeHTML(item.options[item.answer] || "—")}</p>
+          <p class="exam-explanation">${escapeHTML(item.explanation)}</p>
+        </article>
+      `).join("") : '<p class="empty-state">Все ответы правильные — разбор ошибок не требуется.</p>'}
+    </div>
+  `;
+  $("repeatExamBtn").onclick = startModuleExam;
+  $("newExamBtn").onclick = renderExamSetup;
+  renderExamHistory();
+}
+
+function renderExamHistory() {
+  const target = $("examHistory");
+  if (!target) return;
+  const history = loadExamHistory();
+  target.innerHTML = `
+    <h3>История экзаменов</h3>
+    ${history.length ? `<div class="exam-history-list">${history.slice(0, 10).map((item) => `
+      <div class="exam-history-item">
+        <div><strong>${escapeHTML(item.title)}</strong><small>${new Date(item.date).toLocaleDateString("ru-RU")}</small></div>
+        <b>${item.score}/${item.total} · ${item.percent}%</b>
+      </div>
+    `).join("")}</div>` : '<p class="empty-state">Пройденных экзаменов пока нет.</p>'}
+  `;
+}
