@@ -1276,7 +1276,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • STUDY PLAN V3";
+  if (brand) brand.textContent = "MEDBIO TRAINER • DEEP BIOLOGY PACK V13 • 160 УРОКОВ";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
@@ -1727,10 +1727,10 @@ async function fetchJSON(url) {
 async function loadData() {
   const [loadedLessons, loadedCards, loadedTests, loadedModules] =
     await Promise.all([
-      fetchJSON("./data/lessons.json"),
-      fetchJSON("./data/flashcards.json"),
-      fetchJSON("./data/tests.json"),
-      fetchJSON("./data/modules.json")
+      fetchJSON("./data/lessons.json?v=13"),
+      fetchJSON("./data/flashcards.json?v=13"),
+      fetchJSON("./data/tests.json?v=13"),
+      fetchJSON("./data/modules.json?v=13")
     ]);
 
   lessons = loadedLessons;

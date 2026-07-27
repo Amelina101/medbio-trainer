@@ -240,3 +240,6 @@ textarea{min-height:120px;resize:vertical}
 
 /* V12 deep lessons */
 .lesson-diagram{display:block;width:100%;height:auto;margin:22px 0;padding:12px;background:rgba(255,255,255,.035);border:1px solid rgba(123,216,189,.28);border-radius:22px;overflow:visible}.lesson-source{margin:12px 0 22px;padding:14px 16px;border-left:4px solid var(--gold,#d9b86c);background:rgba(217,184,108,.08);border-radius:10px}.example-box{padding:16px 18px;margin:16px 0;border-radius:16px;background:rgba(110,182,255,.09);border:1px solid rgba(110,182,255,.25);line-height:1.65}.lesson-article table{display:block;overflow-x:auto}.lesson-article h3{margin-top:28px}.lesson-article p,.lesson-article li{line-height:1.72}
+
+/* V13 visible build marker */
+.version-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:.45rem;padding:.12rem .42rem;border-radius:999px;background:rgba(107,255,198,.16);border:1px solid rgba(107,255,198,.5);font-size:.72rem;font-weight:800;letter-spacing:.08em;color:#9fffd8;vertical-align:middle}
