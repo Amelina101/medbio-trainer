@@ -243,3 +243,79 @@ textarea{min-height:120px;resize:vertical}
 
 /* V13 visible build marker */
 .version-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:.45rem;padding:.12rem .42rem;border-radius:999px;background:rgba(107,255,198,.16);border:1px solid rgba(107,255,198,.5);font-size:.72rem;font-weight:800;letter-spacing:.08em;color:#9fffd8;vertical-align:middle}
+
+
+/* V14 DEEP LESSONS */
+.deep-explanation {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(202, 168, 91, .28);
+}
+.deep-explanation h2,
+.deep-explanation h3 {
+  margin-top: 24px;
+}
+.beginner-callout {
+  border-left: 4px solid #72c7a2;
+}
+.olympiad-callout {
+  border-left: 4px solid #d6ae5d;
+}
+.reasoning-steps {
+  display: grid;
+  gap: 10px;
+  padding-left: 24px;
+}
+.reasoning-steps li,
+.worked-example,
+.mistake-card {
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.deep-diagram {
+  overflow-x: auto;
+}
+.deep-diagram svg {
+  min-width: 680px;
+  width: 100%;
+  height: auto;
+  background: rgba(5, 25, 19, .72);
+  border-radius: 18px;
+}
+.diagram-box {
+  fill: rgba(48, 119, 90, .28);
+  stroke: #8bd0b0;
+  stroke-width: 2;
+}
+.diagram-text,
+.diagram-title {
+  fill: #eef8f2;
+  font-size: 15px;
+  font-family: system-ui, sans-serif;
+}
+.diagram-title {
+  fill: #e4c477;
+  font-size: 20px;
+  font-weight: 700;
+}
+.diagram-arrow {
+  stroke: #d6ae5d;
+  stroke-width: 3;
+  fill: none;
+}
+.diagram-arrow-head {
+  fill: #d6ae5d;
+}
+.deep-explanation details {
+  margin: 10px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.deep-explanation summary {
+  cursor: pointer;
+  font-weight: 700;
+}

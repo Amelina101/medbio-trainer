@@ -1,51 +1,61 @@
-const CACHE = "medbio-v27-v13";
+const CACHE_NAME = "medbio-v14-20260727";
 
-const ASSETS = [
+const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
+  "./styles.css?v=14",
+  "./app.js?v=14",
   "./manifest.webmanifest",
   "./icon-192.svg",
   "./icon-512.svg",
-  "./data/lessons.json",
-  "./data/flashcards.json",
-  "./data/tests.json",
-  "./data/modules.json"
+  "./data/modules.json?v=14",
+  "./data/lessons.json?v=14",
+  "./data/flashcards.json?v=14",
+  "./data/tests.json?v=14"
 ];
 
 self.addEventListener("install", event => {
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_ASSETS))
+  );
 });
 
 self.addEventListener("activate", event => {
-  event.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)));
-    await self.clients.claim();
-  })());
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener("fetch", event => {
-  const request = event.request;
-  const url = new URL(request.url);
+  if (event.request.method !== "GET") return;
 
-  if (request.method !== "GET") return;
+  const url = new URL(event.request.url);
+  const freshFirst =
+    url.pathname.includes("/data/") ||
+    url.pathname.endsWith("/index.html") ||
+    url.pathname.endsWith("/app.js") ||
+    url.pathname.endsWith("/styles.css") ||
+    url.pathname.endsWith("/medbio-trainer/");
 
-  if (url.pathname.includes("/data/") || url.pathname.endsWith("index.html") || url.pathname.endsWith("app.js") || url.pathname.endsWith("styles.css")) {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(request, { cache: "no-store" });
-        const cache = await caches.open(CACHE);
-        cache.put(request, fresh.clone());
-        return fresh;
-      } catch (error) {
-        return (await caches.match(request)) || (await caches.match(url.pathname.replace(/\?v=\d+$/, "")));
-      }
-    })());
+  if (freshFirst) {
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" })
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
     return;
   }
 
-  event.respondWith(caches.match(request).then(cached => cached || fetch(request)));
+  event.respondWith(
+    caches.match(event.request).then(cached => cached || fetch(event.request))
+  );
 });
