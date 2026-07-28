@@ -1276,7 +1276,7 @@ function ensureSmartLearningUi() {
   injectSmartLearningStyles();
 
   const brand = document.querySelector(".brand-kicker");
-  if (brand) brand.textContent = "MEDBIO TRAINER • DEEP BIOLOGY PACK V15 • 117 УРОКОВ";
+  if (brand) brand.textContent = "MEDBIO TRAINER • DEEP BIOLOGY PACK V16 • 117 УРОКОВ";
 
   if (!$("lessonSearch")) {
     const wrapper = document.createElement("div");
@@ -1727,10 +1727,10 @@ async function fetchJSON(url) {
 async function loadData() {
   const [loadedLessons, loadedCards, loadedTests, loadedModules] =
     await Promise.all([
-      fetchJSON("./data/lessons.json?v=1501"),
-      fetchJSON("./data/flashcards.json?v=1501"),
-      fetchJSON("./data/tests.json?v=1501"),
-      fetchJSON("./data/modules.json?v=1501")
+      fetchJSON("./data/lessons.json?v=16"),
+      fetchJSON("./data/flashcards.json?v=16"),
+      fetchJSON("./data/tests.json?v=16"),
+      fetchJSON("./data/modules.json?v=16")
     ]);
 
   lessons = loadedLessons;
@@ -1919,3 +1919,74 @@ if ("serviceWorker" in navigator) {
   saveState();
   renderAll();
 })();
+
+
+// ===== V16: SEARCH, FILTERS, PROGRESS =====
+function normalizeSearchText(value = "") {
+  return String(value).toLocaleLowerCase("ru-RU").trim();
+}
+
+function setupLessonToolbar() {
+  const search = document.getElementById("lessonSearch");
+  const filter = document.getElementById("moduleFilter");
+  const reset = document.getElementById("resetLessonFilters");
+  if (!search || !filter) return;
+
+  filter.innerHTML = '<option value="">Все модули</option>';
+  state.modules.forEach(module => {
+    const option = document.createElement("option");
+    option.value = module.id;
+    option.textContent = module.title;
+    filter.appendChild(option);
+  });
+
+  const apply = () => {
+    const query = normalizeSearchText(search.value);
+    const moduleId = filter.value;
+
+    const visible = state.lessons.filter(lesson => {
+      const haystack = normalizeSearchText(
+        `${lesson.title} ${lesson.description || ""} ${lesson.content || ""}`
+      );
+      return (!query || haystack.includes(query)) &&
+             (!moduleId || lesson.moduleId === moduleId);
+    });
+
+    renderFilteredLessons(visible);
+  };
+
+  search.addEventListener("input", apply);
+  filter.addEventListener("change", apply);
+  reset?.addEventListener("click", () => {
+    search.value = "";
+    filter.value = "";
+    apply();
+  });
+}
+
+function renderFilteredLessons(list) {
+  const container =
+    document.getElementById("lessonGrid") ||
+    document.querySelector("#lessons .grid") ||
+    document.querySelector("#lessons .cards-grid");
+
+  if (!container) return;
+
+  if (!list.length) {
+    container.innerHTML = '<div class="empty-state">Ничего не найдено. Измени запрос или фильтр.</div>';
+    return;
+  }
+
+  container.innerHTML = list.map(lesson => `
+    <article class="lesson-card" data-module="${lesson.moduleId}">
+      <div class="lesson-card__meta">${lesson.level || "урок"} · ${lesson.duration || 20} мин</div>
+      <h3>${lesson.title}</h3>
+      <p>${lesson.description || ""}</p>
+      <button type="button" onclick="openLesson('${lesson.id}')">Открыть урок</button>
+    </article>
+  `).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.setTimeout(setupLessonToolbar, 300);
+});

@@ -9,23 +9,16 @@
   <meta name="apple-mobile-web-app-title" content="MedBio">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icon-192.svg">
-  <link rel="stylesheet" href="styles.css?v=1501">
-  <title>MedBio Trainer V15 FIXED</title>
+  <link rel="stylesheet" href="styles.css?v=16">
+  <title>MedBio Trainer 0.16 — Deep Biology Pack</title>
 </head>
 <body>
-<div id="deploymentMarker" style="
-position:fixed;top:8px;right:8px;z-index:99999;
-background:#d6ae5d;color:#07110d;padding:6px 10px;
-border-radius:999px;font:700 12px system-ui">
-V15 FIXED
-</div>
-
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
 
   <header class="app-header">
     <div>
-      <div class="brand-kicker">MEDBIO TRAINER <span class="version-badge">V15</span></div>
+      <div class="brand-kicker">MEDBIO TRAINER <span class="version-badge">V16</span></div>
       <h1>Добро пожаловать, <span>Амелина</span></h1>
       <p>«Природа не спешит, но всё совершает»</p>
     </div>
@@ -122,6 +115,14 @@ V15 FIXED
     </section>
 
     <section id="lessons" class="page">
+<section class="trainer-toolbar" aria-label="Поиск и фильтрация">
+  <input id="lessonSearch" type="search" placeholder="Поиск по урокам…" autocomplete="off">
+  <select id="moduleFilter">
+    <option value="">Все модули</option>
+  </select>
+  <button id="resetLessonFilters" type="button">Сбросить</button>
+</section>
+
       <div class="page-heading">
         <div>
           <span class="section-label">Учебная база</span>
@@ -252,8 +253,8 @@ V15 FIXED
     <button data-page="backup"><span>•••</span>Ещё</button>
   </nav>
 
-  <footer class="app-footer">MEDBIO TRAINER • DEEP BIOLOGY PACK V15 • 117 УРОКОВ</footer>
+  <footer class="app-footer">MEDBIO TRAINER • DEEP BIOLOGY PACK V16 • 117 УРОКОВ</footer>
 
-  <script src="app.js?v=1501"></script>
+  <script src="app.js?v=16"></script>
 </body>
 </html>

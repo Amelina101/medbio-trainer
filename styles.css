@@ -319,3 +319,49 @@ textarea{min-height:120px;resize:vertical}
   cursor: pointer;
   font-weight: 700;
 }
+
+
+/* V16 TOOLBAR */
+.trainer-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 260px) auto;
+  gap: 12px;
+  margin: 18px 0 24px;
+}
+.trainer-toolbar input,
+.trainer-toolbar select,
+.trainer-toolbar button {
+  min-height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  padding: 0 14px;
+  font: inherit;
+}
+.trainer-toolbar button {
+  cursor: pointer;
+  font-weight: 700;
+}
+.lesson-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lesson-card__meta {
+  opacity: .72;
+  font-size: .88rem;
+}
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 28px;
+  text-align: center;
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 16px;
+  opacity: .78;
+}
+@media (max-width: 760px) {
+  .trainer-toolbar {
+    grid-template-columns: 1fr;
+  }
+}
