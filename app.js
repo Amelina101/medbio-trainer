@@ -1727,10 +1727,10 @@ async function fetchJSON(url) {
 async function loadData() {
   const [loadedLessons, loadedCards, loadedTests, loadedModules] =
     await Promise.all([
-      fetchJSON("./data/lessons.json?v=15"),
-      fetchJSON("./data/flashcards.json?v=15"),
-      fetchJSON("./data/tests.json?v=15"),
-      fetchJSON("./data/modules.json?v=15")
+      fetchJSON("./data/lessons.json?v=1501"),
+      fetchJSON("./data/flashcards.json?v=1501"),
+      fetchJSON("./data/tests.json?v=1501"),
+      fetchJSON("./data/modules.json?v=1501")
     ]);
 
   lessons = loadedLessons;
